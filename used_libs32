@@ -1,0 +1,8 @@
+libX11.so.6
+libc.so.6
+libdl.so.2
+libm.so.6
+libpthread.so.0
+libpulse.so.0
+libresolv.so.2
+libxml2.so.2

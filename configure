@@ -1,0 +1,3 @@
+--disable-win16
+--disable-win64
+--libdir=/usr/lib32
