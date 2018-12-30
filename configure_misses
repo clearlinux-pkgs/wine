@@ -212,7 +212,9 @@ Configure miss: -lGL
 Configure miss: -lGLU
 Configure miss: -lOSMesa
 Configure miss: -lxslt
-Configure miss: -ldbus-1
+Configure miss: hal/libhal.h usability
+Configure miss: hal/libhal.h presence
+Configure miss: hal/libhal.h
 Configure miss: -lgnutls
 Configure miss: gnutls_cipher_init
 Configure miss: sane/sane.h usability
@@ -232,7 +234,6 @@ Configure miss: gst/gst.h presence
 Configure miss: gst/gst.h
 Configure miss: snd_pcm_hw_params_get_access_mask in -lasound
 Configure miss: oss_sysinfo.numaudioengines
-Configure miss: udev_new in -ludev
 Configure miss: -lSDL2
 Configure miss: capi20.h
 Configure miss: -lcups

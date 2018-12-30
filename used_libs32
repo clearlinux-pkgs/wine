@@ -5,4 +5,5 @@ libm.so.6
 libpthread.so.0
 libpulse.so.0
 libresolv.so.2
+libudev.so.1
 libxml2.so.2
