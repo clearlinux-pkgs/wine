@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.0.rc4
-Release  : 2
+Release  : 3
 URL      : https://dl.winehq.org/wine/source/4.0/wine-4.0-rc4.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.0/wine-4.0-rc4.tar.xz
 Source99 : https://dl.winehq.org/wine/source/4.0/wine-4.0-rc4.tar.xz.sign
