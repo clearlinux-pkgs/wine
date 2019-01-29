@@ -2,8 +2,10 @@ libX11.so.6
 libc.so.6
 libdl.so.2
 libm.so.6
+libopenal.so.1
 libpthread.so.0
 libpulse.so.0
 libresolv.so.2
 libudev.so.1
 libxml2.so.2
+libz.so.1

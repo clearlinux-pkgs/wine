@@ -197,19 +197,13 @@ Configure miss: i586-w64-mingw32-clang
 Configure miss: i486-w64-mingw32-clang
 Configure miss: i386-w64-mingw32-clang
 Configure miss: mingw32-gcc
-Configure miss: IceConnectionNumber in -lICE
 Configure miss: -lXext
-Configure miss: -lXcursor
-Configure miss: XShmQueryExtension in -lXext
-Configure miss: XShapeQueryExtension in -lXext
+Configure miss: -lXi
 Configure miss: -lXxf86vm
-Configure miss: -lXrandr
+Configure miss: -lXrender
 Configure miss: -lXfixes
 Configure miss: -lXinerama
 Configure miss: -lXcomposite
-Configure miss: -lGL
-Configure miss: -lGL
-Configure miss: -lGLU
 Configure miss: -lOSMesa
 Configure miss: -lxslt
 Configure miss: hal/libhal.h usability
@@ -228,16 +222,13 @@ Configure miss: pthread_attr_get_np
 Configure miss: pthread_getthreadid_np
 Configure miss: pthread_get_stackaddr_np
 Configure miss: pthread_get_stacksize_np
-Configure miss: inflate in -lz
 Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
 Configure miss: gst/gst.h
 Configure miss: snd_pcm_hw_params_get_access_mask in -lasound
 Configure miss: oss_sysinfo.numaudioengines
-Configure miss: -lSDL2
 Configure miss: capi20.h
 Configure miss: -lcups
-Configure miss: -lfontconfig
 Configure miss: krb5/krb5.h usability
 Configure miss: krb5/krb5.h presence
 Configure miss: krb5/krb5.h
@@ -245,11 +236,8 @@ Configure miss: -lgssapi_krb5
 Configure miss: -lpng
 Configure miss: -ltiff
 Configure miss: mpg123_feed in -lmpg123
-Configure miss: -lopenal
 Configure miss: -lodbc
 Configure miss: -lnetapi
-Configure miss: -lvulkan
-Configure miss: -lMoltenVK
 Configure miss: -lvkd3d
 Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option

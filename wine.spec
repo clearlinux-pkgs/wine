@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.0.rc4
-Release  : 3
+Release  : 7
 URL      : https://dl.winehq.org/wine/source/4.0/wine-4.0-rc4.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.0/wine-4.0-rc4.tar.xz
 Source99 : https://dl.winehq.org/wine/source/4.0/wine-4.0-rc4.tar.xz.sign
@@ -18,13 +18,17 @@ Requires: wine-data = %{version}-%{release}
 Requires: wine-license = %{version}-%{release}
 Requires: wine-man = %{version}-%{release}
 BuildRequires : SDL2-dev
+BuildRequires : SDL2-dev32
+BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
+BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
 BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
 BuildRequires : fontconfig-dev
+BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
 BuildRequires : gcc-libgcc32
@@ -35,12 +39,21 @@ BuildRequires : gnutls-dev
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
 BuildRequires : lcms2-dev
+BuildRequires : libX11-dev
 BuildRequires : libX11-dev32
 BuildRequires : libXcomposite-dev
+BuildRequires : libXcomposite-dev32
 BuildRequires : libXcursor-dev
+BuildRequires : libXcursor-dev32
+BuildRequires : libXfixes-dev
+BuildRequires : libXfixes-dev32
+BuildRequires : libXi-dev
 BuildRequires : libXi-dev32
 BuildRequires : libXinerama-dev
+BuildRequires : libXinerama-dev32
 BuildRequires : libXrandr-dev
+BuildRequires : libXrandr-dev32
+BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
 BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
@@ -50,15 +63,31 @@ BuildRequires : libxslt-dev
 BuildRequires : mpg123-dev
 BuildRequires : ncurses-dev32
 BuildRequires : openal-soft-dev
+BuildRequires : openal-soft-dev32
 BuildRequires : openldap-dev
+BuildRequires : pkgconfig(32gl)
+BuildRequires : pkgconfig(32glu)
+BuildRequires : pkgconfig(32ice)
+BuildRequires : pkgconfig(32libpulse)
+BuildRequires : pkgconfig(32vulkan)
+BuildRequires : pkgconfig(32x11)
+BuildRequires : pkgconfig(32xext)
+BuildRequires : pkgconfig(OpenCL)
+BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(glu)
+BuildRequires : pkgconfig(gnutls)
+BuildRequires : pkgconfig(gstreamer-1.0)
 BuildRequires : pkgconfig(ice)
+BuildRequires : pkgconfig(lcms2)
+BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(xext)
 BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xi)
 BuildRequires : pkgconfig(xrandr)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : pulseaudio-dev32
 BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
@@ -152,7 +181,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546138538
+export SOURCE_DATE_EPOCH=1548795860
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
@@ -162,7 +191,7 @@ unset LDFLAGS
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1546138538
+export SOURCE_DATE_EPOCH=1548795860
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -782,6 +811,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/olethk32.dll
 /usr/lib32/wine/fakedlls/oleview.exe
 /usr/lib32/wine/fakedlls/opcservices.dll
+/usr/lib32/wine/fakedlls/openal32.dll
 /usr/lib32/wine/fakedlls/opengl32.dll
 /usr/lib32/wine/fakedlls/packager.dll
 /usr/lib32/wine/fakedlls/pdh.dll
@@ -981,6 +1011,29 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/wuapi.dll
 /usr/lib32/wine/fakedlls/wuaueng.dll
 /usr/lib32/wine/fakedlls/wusa.exe
+/usr/lib32/wine/fakedlls/x3daudio1_0.dll
+/usr/lib32/wine/fakedlls/x3daudio1_1.dll
+/usr/lib32/wine/fakedlls/x3daudio1_2.dll
+/usr/lib32/wine/fakedlls/x3daudio1_3.dll
+/usr/lib32/wine/fakedlls/x3daudio1_4.dll
+/usr/lib32/wine/fakedlls/x3daudio1_5.dll
+/usr/lib32/wine/fakedlls/x3daudio1_6.dll
+/usr/lib32/wine/fakedlls/x3daudio1_7.dll
+/usr/lib32/wine/fakedlls/xapofx1_1.dll
+/usr/lib32/wine/fakedlls/xapofx1_2.dll
+/usr/lib32/wine/fakedlls/xapofx1_3.dll
+/usr/lib32/wine/fakedlls/xapofx1_4.dll
+/usr/lib32/wine/fakedlls/xapofx1_5.dll
+/usr/lib32/wine/fakedlls/xaudio2_0.dll
+/usr/lib32/wine/fakedlls/xaudio2_1.dll
+/usr/lib32/wine/fakedlls/xaudio2_2.dll
+/usr/lib32/wine/fakedlls/xaudio2_3.dll
+/usr/lib32/wine/fakedlls/xaudio2_4.dll
+/usr/lib32/wine/fakedlls/xaudio2_5.dll
+/usr/lib32/wine/fakedlls/xaudio2_6.dll
+/usr/lib32/wine/fakedlls/xaudio2_7.dll
+/usr/lib32/wine/fakedlls/xaudio2_8.dll
+/usr/lib32/wine/fakedlls/xaudio2_9.dll
 /usr/lib32/wine/fakedlls/xcopy.exe
 /usr/lib32/wine/fakedlls/xinput1_1.dll
 /usr/lib32/wine/fakedlls/xinput1_2.dll
@@ -2824,6 +2877,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/olethk32.dll.so
 /usr/lib32/wine/oleview.exe.so
 /usr/lib32/wine/opcservices.dll.so
+/usr/lib32/wine/openal32.dll.so
 /usr/lib32/wine/opengl32.dll.so
 /usr/lib32/wine/packager.dll.so
 /usr/lib32/wine/pdh.dll.so
@@ -3023,6 +3077,29 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/wuapi.dll.so
 /usr/lib32/wine/wuaueng.dll.so
 /usr/lib32/wine/wusa.exe.so
+/usr/lib32/wine/x3daudio1_0.dll.so
+/usr/lib32/wine/x3daudio1_1.dll.so
+/usr/lib32/wine/x3daudio1_2.dll.so
+/usr/lib32/wine/x3daudio1_3.dll.so
+/usr/lib32/wine/x3daudio1_4.dll.so
+/usr/lib32/wine/x3daudio1_5.dll.so
+/usr/lib32/wine/x3daudio1_6.dll.so
+/usr/lib32/wine/x3daudio1_7.dll.so
+/usr/lib32/wine/xapofx1_1.dll.so
+/usr/lib32/wine/xapofx1_2.dll.so
+/usr/lib32/wine/xapofx1_3.dll.so
+/usr/lib32/wine/xapofx1_4.dll.so
+/usr/lib32/wine/xapofx1_5.dll.so
+/usr/lib32/wine/xaudio2_0.dll.so
+/usr/lib32/wine/xaudio2_1.dll.so
+/usr/lib32/wine/xaudio2_2.dll.so
+/usr/lib32/wine/xaudio2_3.dll.so
+/usr/lib32/wine/xaudio2_4.dll.so
+/usr/lib32/wine/xaudio2_5.dll.so
+/usr/lib32/wine/xaudio2_6.dll.so
+/usr/lib32/wine/xaudio2_7.dll.so
+/usr/lib32/wine/xaudio2_8.dll.so
+/usr/lib32/wine/xaudio2_9.dll.so
 /usr/lib32/wine/xcopy.exe.so
 /usr/lib32/wine/xinput1_1.dll.so
 /usr/lib32/wine/xinput1_2.dll.so
