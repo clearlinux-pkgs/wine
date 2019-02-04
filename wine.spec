@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.0
-Release  : 8
+Release  : 13
 URL      : https://dl.winehq.org/wine/source/4.0/wine-4.0.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.0/wine-4.0.tar.xz
 Source99 : https://dl.winehq.org/wine/source/4.0/wine-4.0.tar.xz.sign
@@ -17,14 +17,17 @@ Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
 Requires: wine-license = %{version}-%{release}
 Requires: wine-man = %{version}-%{release}
+BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
+BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
+BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
@@ -35,15 +38,14 @@ BuildRequires : glibc-libc32
 BuildRequires : gnutls-dev
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
-BuildRequires : libX11-dev
+BuildRequires : lcms2-dev
 BuildRequires : libX11-dev32
 BuildRequires : libXcomposite-dev
 BuildRequires : libXcomposite-dev32
 BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
-BuildRequires : libXfixes-dev
+BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
-BuildRequires : libXi-dev
 BuildRequires : libXi-dev32
 BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
@@ -54,6 +56,7 @@ BuildRequires : libXrender-dev32
 BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
+BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
 BuildRequires : libxslt-dev
 BuildRequires : mpg123-dev
@@ -63,28 +66,31 @@ BuildRequires : openal-soft-dev32
 BuildRequires : openldap-dev
 BuildRequires : pkgconfig(32gl)
 BuildRequires : pkgconfig(32glu)
+BuildRequires : pkgconfig(32gnutls)
 BuildRequires : pkgconfig(32ice)
 BuildRequires : pkgconfig(32libpulse)
+BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
-BuildRequires : pkgconfig(OpenCL)
-BuildRequires : pkgconfig(dbus-1)
-BuildRequires : pkgconfig(gnutls)
+BuildRequires : pkgconfig(gl)
+BuildRequires : pkgconfig(glu)
 BuildRequires : pkgconfig(gstreamer-1.0)
-BuildRequires : pkgconfig(lcms2)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(xext)
 BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xi)
-BuildRequires : pkgconfig(zlib)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
+BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
 BuildRequires : valgrind
+BuildRequires : zlib-dev
 
 %description
 1. INTRODUCTION
@@ -171,7 +177,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549127550
+export SOURCE_DATE_EPOCH=1549313817
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
@@ -181,10 +187,11 @@ unset LDFLAGS
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1549127550
+export SOURCE_DATE_EPOCH=1549313817
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
+cp LICENSE %{buildroot}/usr/share/package-licenses/wine/LICENSE
 cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 %make_install
 
@@ -3103,6 +3110,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/wine/COPYING.LIB
+/usr/share/package-licenses/wine/LICENSE
 /usr/share/package-licenses/wine/LICENSE.OLD
 
 %files man

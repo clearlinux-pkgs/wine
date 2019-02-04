@@ -5,14 +5,11 @@
 32gl
 32glu
 32x11
-zlib
 ncurses
 ncursesw
 32vulkan
-lcms2
-gnutls
-dbus-1
-OpenCL
+32gnutls
+32libxslt
 libcdio
 32libpulse
 gstreamer-1.0

@@ -205,12 +205,9 @@ Configure miss: -lXfixes
 Configure miss: -lXinerama
 Configure miss: -lXcomposite
 Configure miss: -lOSMesa
-Configure miss: -lxslt
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
 Configure miss: hal/libhal.h
-Configure miss: -lgnutls
-Configure miss: gnutls_cipher_init
 Configure miss: sane/sane.h usability
 Configure miss: sane/sane.h presence
 Configure miss: sane/sane.h
@@ -233,7 +230,6 @@ Configure miss: krb5/krb5.h usability
 Configure miss: krb5/krb5.h presence
 Configure miss: krb5/krb5.h
 Configure miss: -lgssapi_krb5
-Configure miss: -lpng
 Configure miss: -ltiff
 Configure miss: mpg123_feed in -lmpg123
 Configure miss: -lodbc
