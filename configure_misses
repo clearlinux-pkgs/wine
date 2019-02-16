@@ -214,9 +214,6 @@ Configure miss: sane/sane.h
 Configure miss: -lv4l1
 Configure miss: gp_camera_new in -lgphoto2
 Configure miss: gp_port_info_list_new in -lgphoto2_port
-Configure miss: lcms2.h usability
-Configure miss: lcms2.h presence
-Configure miss: lcms2.h
 Configure miss: pthread_attr_get_np
 Configure miss: pthread_getthreadid_np
 Configure miss: pthread_get_stackaddr_np
@@ -231,18 +228,8 @@ Configure miss: -lcups
 Configure miss: krb5/krb5.h usability
 Configure miss: krb5/krb5.h presence
 Configure miss: krb5/krb5.h
-Configure miss: gssapi/gssapi.h usability
-Configure miss: gssapi/gssapi.h presence
-Configure miss: gssapi/gssapi.h
-Configure miss: gssapi/gssapi_ext.h usability
-Configure miss: gssapi/gssapi_ext.h presence
-Configure miss: gssapi/gssapi_ext.h
-Configure miss: tiffio.h usability
-Configure miss: tiffio.h presence
-Configure miss: tiffio.h
-Configure miss: mpg123.h usability
-Configure miss: mpg123.h presence
-Configure miss: mpg123.h
+Configure miss: -lgssapi_krb5
+Configure miss: -ltiff
 Configure miss: -lodbc
 Configure miss: -lnetapi
 Configure miss: -lvkd3d

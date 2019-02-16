@@ -35,3 +35,5 @@ unixODBC-dev
 valgrind
 libpng-dev32
 libXi-dev32
+mpg123-dev32
+lcms2-dev32
