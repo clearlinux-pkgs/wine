@@ -34,3 +34,4 @@ systemd-dev32
 unixODBC-dev
 valgrind
 libpng-dev32
+libXi-dev32
