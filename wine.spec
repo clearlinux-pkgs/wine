@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.2
-Release  : 16
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.2.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.2.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.2.tar.xz.sign
+Version  : 4.3
+Release  : 17
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz
+Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -18,17 +18,14 @@ Requires: wine-data = %{version}-%{release}
 Requires: wine-license = %{version}-%{release}
 Requires: wine-man = %{version}-%{release}
 Requires: freetype-lib32
-BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
-BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
-BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
@@ -36,35 +33,23 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
-BuildRequires : gnutls-dev
-BuildRequires : gstreamer-dev
-BuildRequires : krb5-dev
-BuildRequires : lcms2-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
-BuildRequires : libXcomposite-dev
 BuildRequires : libXcomposite-dev32
-BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
 BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
 BuildRequires : libXi-dev32
 BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
-BuildRequires : libXrandr-dev
 BuildRequires : libXrandr-dev32
-BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
-BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
-BuildRequires : libxslt-dev
-BuildRequires : mpg123-dev
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
-BuildRequires : openal-soft-dev
 BuildRequires : openal-soft-dev32
 BuildRequires : openldap-dev
 BuildRequires : pkgconfig(32gl)
@@ -76,24 +61,18 @@ BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
-BuildRequires : pkgconfig(gl)
-BuildRequires : pkgconfig(glu)
 BuildRequires : pkgconfig(gstreamer-1.0)
-BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(xext)
 BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xi)
-BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
-BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
-BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
+BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
-BuildRequires : zlib-dev
 
 %description
 1. INTRODUCTION
@@ -109,7 +88,6 @@ Summary: bin components for the wine package.
 Group: Binaries
 Requires: wine-data = %{version}-%{release}
 Requires: wine-license = %{version}-%{release}
-Requires: wine-man = %{version}-%{release}
 
 %description bin
 bin components for the wine package.
@@ -128,7 +106,9 @@ Summary: dev components for the wine package.
 Group: Development
 Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
+Requires: wine-man = %{version}-%{release}
 Provides: wine-devel = %{version}-%{release}
+Requires: wine = %{version}-%{release}
 
 %description dev
 dev components for the wine package.
@@ -173,14 +153,14 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.2
+%setup -q -n wine-4.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550343171
+export SOURCE_DATE_EPOCH=1551542435
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
@@ -190,7 +170,7 @@ unset LDFLAGS
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1550343171
+export SOURCE_DATE_EPOCH=1551542435
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -433,6 +413,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/atl110.dll
 /usr/lib32/wine/fakedlls/atl80.dll
 /usr/lib32/wine/fakedlls/atl90.dll
+/usr/lib32/wine/fakedlls/atlthunk.dll
 /usr/lib32/wine/fakedlls/atmlib.dll
 /usr/lib32/wine/fakedlls/attrib.exe
 /usr/lib32/wine/fakedlls/authz.dll
@@ -584,17 +565,25 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/ext-ms-win-authz-context-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-domainjoin-netjoin-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-dwmapi-ext-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-gdi-dc-create-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-gdi-dc-create-l1-1-1.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-gdi-dc-l1-2-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-gdi-devcaps-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-gdi-draw-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-gdi-draw-l1-1-1.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-gdi-font-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-gdi-font-l1-1-1.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-gdi-render-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-kernel32-package-current-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-kernel32-package-l1-1-1.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-ntuser-dialogbox-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-draw-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-ntuser-gui-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-gui-l1-3-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-keyboard-l1-3-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-ntuser-message-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-message-l1-1-1.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-ntuser-misc-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-misc-l1-2-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-misc-l1-5-1.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-mouse-l1-1-0.dll
@@ -602,8 +591,10 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-private-l1-3-1.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-rectangle-ext-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-uicontext-ext-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-ntuser-window-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-window-l1-1-1.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-window-l1-1-4.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-ntuser-windowclass-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ntuser-windowclass-l1-1-1.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-oleacc-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-ras-rasapi32-l1-1-0.dll
@@ -695,6 +686,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/mf.dll
 /usr/lib32/wine/fakedlls/mf3216.dll
 /usr/lib32/wine/fakedlls/mfplat.dll
+/usr/lib32/wine/fakedlls/mfplay.dll
 /usr/lib32/wine/fakedlls/mfreadwrite.dll
 /usr/lib32/wine/fakedlls/mgmtapi.dll
 /usr/lib32/wine/fakedlls/midimap.dll
@@ -1012,29 +1004,6 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/wuapi.dll
 /usr/lib32/wine/fakedlls/wuaueng.dll
 /usr/lib32/wine/fakedlls/wusa.exe
-/usr/lib32/wine/fakedlls/x3daudio1_0.dll
-/usr/lib32/wine/fakedlls/x3daudio1_1.dll
-/usr/lib32/wine/fakedlls/x3daudio1_2.dll
-/usr/lib32/wine/fakedlls/x3daudio1_3.dll
-/usr/lib32/wine/fakedlls/x3daudio1_4.dll
-/usr/lib32/wine/fakedlls/x3daudio1_5.dll
-/usr/lib32/wine/fakedlls/x3daudio1_6.dll
-/usr/lib32/wine/fakedlls/x3daudio1_7.dll
-/usr/lib32/wine/fakedlls/xapofx1_1.dll
-/usr/lib32/wine/fakedlls/xapofx1_2.dll
-/usr/lib32/wine/fakedlls/xapofx1_3.dll
-/usr/lib32/wine/fakedlls/xapofx1_4.dll
-/usr/lib32/wine/fakedlls/xapofx1_5.dll
-/usr/lib32/wine/fakedlls/xaudio2_0.dll
-/usr/lib32/wine/fakedlls/xaudio2_1.dll
-/usr/lib32/wine/fakedlls/xaudio2_2.dll
-/usr/lib32/wine/fakedlls/xaudio2_3.dll
-/usr/lib32/wine/fakedlls/xaudio2_4.dll
-/usr/lib32/wine/fakedlls/xaudio2_5.dll
-/usr/lib32/wine/fakedlls/xaudio2_6.dll
-/usr/lib32/wine/fakedlls/xaudio2_7.dll
-/usr/lib32/wine/fakedlls/xaudio2_8.dll
-/usr/lib32/wine/fakedlls/xaudio2_9.dll
 /usr/lib32/wine/fakedlls/xcopy.exe
 /usr/lib32/wine/fakedlls/xinput1_1.dll
 /usr/lib32/wine/fakedlls/xinput1_2.dll
@@ -1052,6 +1021,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/libatl.def
 /usr/lib32/wine/libatl100.def
 /usr/lib32/wine/libatl80.def
+/usr/lib32/wine/libatlthunk.def
 /usr/lib32/wine/libavicap32.def
 /usr/lib32/wine/libavifil32.def
 /usr/lib32/wine/libavrt.def
@@ -1393,6 +1363,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/include/wine/windows/atlcom.h
 /usr/include/wine/windows/atliface.h
 /usr/include/wine/windows/atliface.idl
+/usr/include/wine/windows/atlthunk.h
 /usr/include/wine/windows/atlwin.h
 /usr/include/wine/windows/audevcod.h
 /usr/include/wine/windows/audioclient.h
@@ -2507,6 +2478,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/atl110.dll.so
 /usr/lib32/wine/atl80.dll.so
 /usr/lib32/wine/atl90.dll.so
+/usr/lib32/wine/atlthunk.dll.so
 /usr/lib32/wine/atmlib.dll.so
 /usr/lib32/wine/attrib.exe.so
 /usr/lib32/wine/authz.dll.so
@@ -2658,17 +2630,25 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/ext-ms-win-authz-context-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-domainjoin-netjoin-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-dwmapi-ext-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-gdi-dc-create-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-gdi-dc-create-l1-1-1.dll.so
 /usr/lib32/wine/ext-ms-win-gdi-dc-l1-2-0.dll.so
 /usr/lib32/wine/ext-ms-win-gdi-devcaps-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-gdi-draw-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-gdi-draw-l1-1-1.dll.so
+/usr/lib32/wine/ext-ms-win-gdi-font-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-gdi-font-l1-1-1.dll.so
 /usr/lib32/wine/ext-ms-win-gdi-render-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-kernel32-package-current-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-kernel32-package-l1-1-1.dll.so
+/usr/lib32/wine/ext-ms-win-ntuser-dialogbox-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-draw-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-ntuser-gui-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-gui-l1-3-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-keyboard-l1-3-0.dll.so
+/usr/lib32/wine/ext-ms-win-ntuser-message-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-message-l1-1-1.dll.so
+/usr/lib32/wine/ext-ms-win-ntuser-misc-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-misc-l1-2-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-misc-l1-5-1.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-mouse-l1-1-0.dll.so
@@ -2676,8 +2656,10 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/ext-ms-win-ntuser-private-l1-3-1.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-rectangle-ext-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-uicontext-ext-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-ntuser-window-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-window-l1-1-1.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-window-l1-1-4.dll.so
+/usr/lib32/wine/ext-ms-win-ntuser-windowclass-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ntuser-windowclass-l1-1-1.dll.so
 /usr/lib32/wine/ext-ms-win-oleacc-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-ras-rasapi32-l1-1-0.dll.so
@@ -2769,6 +2751,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/mf.dll.so
 /usr/lib32/wine/mf3216.dll.so
 /usr/lib32/wine/mfplat.dll.so
+/usr/lib32/wine/mfplay.dll.so
 /usr/lib32/wine/mfreadwrite.dll.so
 /usr/lib32/wine/mgmtapi.dll.so
 /usr/lib32/wine/midimap.dll.so
@@ -3086,29 +3069,6 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/wuapi.dll.so
 /usr/lib32/wine/wuaueng.dll.so
 /usr/lib32/wine/wusa.exe.so
-/usr/lib32/wine/x3daudio1_0.dll.so
-/usr/lib32/wine/x3daudio1_1.dll.so
-/usr/lib32/wine/x3daudio1_2.dll.so
-/usr/lib32/wine/x3daudio1_3.dll.so
-/usr/lib32/wine/x3daudio1_4.dll.so
-/usr/lib32/wine/x3daudio1_5.dll.so
-/usr/lib32/wine/x3daudio1_6.dll.so
-/usr/lib32/wine/x3daudio1_7.dll.so
-/usr/lib32/wine/xapofx1_1.dll.so
-/usr/lib32/wine/xapofx1_2.dll.so
-/usr/lib32/wine/xapofx1_3.dll.so
-/usr/lib32/wine/xapofx1_4.dll.so
-/usr/lib32/wine/xapofx1_5.dll.so
-/usr/lib32/wine/xaudio2_0.dll.so
-/usr/lib32/wine/xaudio2_1.dll.so
-/usr/lib32/wine/xaudio2_2.dll.so
-/usr/lib32/wine/xaudio2_3.dll.so
-/usr/lib32/wine/xaudio2_4.dll.so
-/usr/lib32/wine/xaudio2_5.dll.so
-/usr/lib32/wine/xaudio2_6.dll.so
-/usr/lib32/wine/xaudio2_7.dll.so
-/usr/lib32/wine/xaudio2_8.dll.so
-/usr/lib32/wine/xaudio2_9.dll.so
 /usr/lib32/wine/xcopy.exe.so
 /usr/lib32/wine/xinput1_1.dll.so
 /usr/lib32/wine/xinput1_2.dll.so
