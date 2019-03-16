@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.3
-Release  : 17
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz.sign
+Version  : 4.4
+Release  : 18
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz
+Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -33,6 +33,8 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
+BuildRequires : gstreamer-dev
+BuildRequires : krb5-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
 BuildRequires : libXcomposite-dev32
@@ -43,13 +45,16 @@ BuildRequires : libXi-dev32
 BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
 BuildRequires : libXrandr-dev32
+BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
+BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
+BuildRequires : openal-soft-dev
 BuildRequires : openal-soft-dev32
 BuildRequires : openldap-dev
 BuildRequires : pkgconfig(32gl)
@@ -70,6 +75,7 @@ BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xi)
 BuildRequires : pulseaudio-dev32
 BuildRequires : systemd-dev32
+BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
 BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
@@ -106,7 +112,6 @@ Summary: dev components for the wine package.
 Group: Development
 Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
-Requires: wine-man = %{version}-%{release}
 Provides: wine-devel = %{version}-%{release}
 Requires: wine = %{version}-%{release}
 
@@ -153,24 +158,25 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.3
+%setup -q -n wine-4.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551542435
+export SOURCE_DATE_EPOCH=1552761510
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %configure --disable-static --disable-win16 \
 --disable-win64 \
 --libdir=/usr/lib32
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1551542435
+export SOURCE_DATE_EPOCH=1552761510
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -188,6 +194,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/adsldpc.dll
 /usr/lib32/wine/fakedlls/advapi32.dll
 /usr/lib32/wine/fakedlls/advpack.dll
+/usr/lib32/wine/fakedlls/amsi.dll
 /usr/lib32/wine/fakedlls/amstream.dll
 /usr/lib32/wine/fakedlls/api-ms-win-appmodel-identity-l1-1-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-appmodel-runtime-l1-1-1.dll
@@ -718,6 +725,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/mshtml.dll
 /usr/lib32/wine/fakedlls/mshtml.tlb
 /usr/lib32/wine/fakedlls/msi.dll
+/usr/lib32/wine/fakedlls/msidb.exe
 /usr/lib32/wine/fakedlls/msident.dll
 /usr/lib32/wine/fakedlls/msiexec.exe
 /usr/lib32/wine/fakedlls/msimg32.dll
@@ -1197,6 +1205,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/function_grep.pl
+/usr/bin/msidb
 /usr/bin/msiexec
 /usr/bin/notepad
 /usr/bin/regedit
@@ -1348,6 +1357,8 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/include/wine/windows/advpub.h
 /usr/include/wine/windows/af_irda.h
 /usr/include/wine/windows/amaudio.h
+/usr/include/wine/windows/amsi.h
+/usr/include/wine/windows/amsi.idl
 /usr/include/wine/windows/amstream.h
 /usr/include/wine/windows/amstream.idl
 /usr/include/wine/windows/amvideo.h
@@ -2253,6 +2264,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/adsldpc.dll.so
 /usr/lib32/wine/advapi32.dll.so
 /usr/lib32/wine/advpack.dll.so
+/usr/lib32/wine/amsi.dll.so
 /usr/lib32/wine/amstream.dll.so
 /usr/lib32/wine/api-ms-win-appmodel-identity-l1-1-0.dll.so
 /usr/lib32/wine/api-ms-win-appmodel-runtime-l1-1-1.dll.so
@@ -2783,6 +2795,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/mshtml.dll.so
 /usr/lib32/wine/mshtml.tlb.so
 /usr/lib32/wine/msi.dll.so
+/usr/lib32/wine/msidb.exe.so
 /usr/lib32/wine/msident.dll.so
 /usr/lib32/wine/msiexec.exe.so
 /usr/lib32/wine/msimg32.dll.so

@@ -56,8 +56,6 @@ Configure miss: alias.h
 Configure miss: asm/user.h usability
 Configure miss: asm/user.h presence
 Configure miss: asm/user.h
-Configure miss: direct.h usability
-Configure miss: direct.h presence
 Configure miss: gsm.h usability
 Configure miss: gsm.h presence
 Configure miss: gsm.h
@@ -112,8 +110,6 @@ Configure miss: pcap/pcap.h
 Configure miss: port.h usability
 Configure miss: port.h presence
 Configure miss: port.h
-Configure miss: process.h usability
-Configure miss: process.h presence
 Configure miss: sys/attr.h usability
 Configure miss: sys/attr.h presence
 Configure miss: sys/attr.h
@@ -229,15 +225,8 @@ Configure miss: -lcups
 Configure miss: krb5/krb5.h usability
 Configure miss: krb5/krb5.h presence
 Configure miss: krb5/krb5.h
-Configure miss: gssapi/gssapi.h usability
-Configure miss: gssapi/gssapi.h presence
-Configure miss: gssapi/gssapi.h
-Configure miss: gssapi/gssapi_ext.h usability
-Configure miss: gssapi/gssapi_ext.h presence
-Configure miss: gssapi/gssapi_ext.h
-Configure miss: tiffio.h usability
-Configure miss: tiffio.h presence
-Configure miss: tiffio.h
+Configure miss: -lgssapi_krb5
+Configure miss: -ltiff
 Configure miss: -lodbc
 Configure miss: -lnetapi
 Configure miss: -lvkd3d
@@ -250,17 +239,7 @@ Configure miss: whether external symbols need an underscore prefix
 Configure miss: whether external symbols need stdcall decoration
 Configure miss: __res_get_state
 Configure miss: __res_getservers
-Configure miss: _finite
-Configure miss: _isnan
-Configure miss: _pclose
-Configure miss: _popen
 Configure miss: _spawnvp
-Configure miss: _strdup
-Configure miss: _stricmp
-Configure miss: _strnicmp
-Configure miss: _strtoi64
-Configure miss: _strtoui64
-Configure miss: chsize
 Configure miss: getattrlist
 Configure miss: port_create
 Configure miss: proc_pidinfo
@@ -275,7 +254,6 @@ Configure miss: ldap_parse_sort_control
 Configure miss: ldap_parse_sortresponse_control
 Configure miss: ldap_parse_vlv_control
 Configure miss: ldap_parse_vlvresponse_control
-Configure miss: whether mkdir takes only one argument
 Configure miss: request_sense
 Configure miss: struct xinpgen
 Configure miss: struct statfs.f_favail
