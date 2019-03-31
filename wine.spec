@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.4
-Release  : 18
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz.sign
+Version  : 4.5
+Release  : 19
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.5.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.5.tar.xz
+Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.5.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -158,25 +158,24 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.4
+%setup -q -n wine-4.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552761510
+export SOURCE_DATE_EPOCH=1554055321
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %configure --disable-static --disable-win16 \
 --disable-win64 \
 --libdir=/usr/lib32
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1552761510
+export SOURCE_DATE_EPOCH=1554055321
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -692,6 +691,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/mciwave.dll
 /usr/lib32/wine/fakedlls/mf.dll
 /usr/lib32/wine/fakedlls/mf3216.dll
+/usr/lib32/wine/fakedlls/mferror.dll
 /usr/lib32/wine/fakedlls/mfplat.dll
 /usr/lib32/wine/fakedlls/mfplay.dll
 /usr/lib32/wine/fakedlls/mfreadwrite.dll
@@ -1113,7 +1113,6 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/libmsvcr71.def
 /usr/lib32/wine/libmsvcr80.def
 /usr/lib32/wine/libmsvcr90.def
-/usr/lib32/wine/libmsvcrt.def
 /usr/lib32/wine/libmsvcrtd.def
 /usr/lib32/wine/libmsvfw32.def
 /usr/lib32/wine/libmswsock.def
@@ -2762,6 +2761,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/mciwave.dll.so
 /usr/lib32/wine/mf.dll.so
 /usr/lib32/wine/mf3216.dll.so
+/usr/lib32/wine/mferror.dll.so
 /usr/lib32/wine/mfplat.dll.so
 /usr/lib32/wine/mfplay.dll.so
 /usr/lib32/wine/mfreadwrite.dll.so
