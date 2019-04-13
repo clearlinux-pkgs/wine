@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.5
-Release  : 19
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.5.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.5.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.5.tar.xz.sign
+Version  : 4.6
+Release  : 20
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.6.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.6.tar.xz
+Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.6.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -158,14 +158,14 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.5
+%setup -q -n wine-4.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554055321
+export SOURCE_DATE_EPOCH=1555176922
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
@@ -175,7 +175,7 @@ unset LDFLAGS
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1554055321
+export SOURCE_DATE_EPOCH=1555176922
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -674,6 +674,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/kerberos.dll
 /usr/lib32/wine/fakedlls/kernel32.dll
 /usr/lib32/wine/fakedlls/kernelbase.dll
+/usr/lib32/wine/fakedlls/ksecdd.sys
 /usr/lib32/wine/fakedlls/ksuser.dll
 /usr/lib32/wine/fakedlls/ktmw32.dll
 /usr/lib32/wine/fakedlls/l3codeca.acm
@@ -916,6 +917,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/fakedlls/twain_32.dll
 /usr/lib32/wine/fakedlls/tzres.dll
 /usr/lib32/wine/fakedlls/ucrtbase.dll
+/usr/lib32/wine/fakedlls/uianimation.dll
 /usr/lib32/wine/fakedlls/uiautomationcore.dll
 /usr/lib32/wine/fakedlls/uiribbon.dll
 /usr/lib32/wine/fakedlls/unicows.dll
@@ -1339,7 +1341,6 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/include/wine/msvcrt/wctype.h
 /usr/include/wine/svcctl.h
 /usr/include/wine/svcctl.idl
-/usr/include/wine/unicode.h
 /usr/include/wine/windows/accctrl.h
 /usr/include/wine/windows/access.idl
 /usr/include/wine/windows/aclapi.h
@@ -1528,6 +1529,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/include/wine/windows/dbccmd.idl
 /usr/include/wine/windows/dbcses.idl
 /usr/include/wine/windows/dbdsad.idl
+/usr/include/wine/windows/dbgeng.h
 /usr/include/wine/windows/dbghelp.h
 /usr/include/wine/windows/dbinit.idl
 /usr/include/wine/windows/dbprop.idl
@@ -2744,6 +2746,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/kerberos.dll.so
 /usr/lib32/wine/kernel32.dll.so
 /usr/lib32/wine/kernelbase.dll.so
+/usr/lib32/wine/ksecdd.sys.so
 /usr/lib32/wine/ksuser.dll.so
 /usr/lib32/wine/ktmw32.dll.so
 /usr/lib32/wine/l3codeca.acm.so
@@ -2986,6 +2989,7 @@ cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
 /usr/lib32/wine/twain_32.dll.so
 /usr/lib32/wine/tzres.dll.so
 /usr/lib32/wine/ucrtbase.dll.so
+/usr/lib32/wine/uianimation.dll.so
 /usr/lib32/wine/uiautomationcore.dll.so
 /usr/lib32/wine/uiribbon.dll.so
 /usr/lib32/wine/unicows.dll.so
