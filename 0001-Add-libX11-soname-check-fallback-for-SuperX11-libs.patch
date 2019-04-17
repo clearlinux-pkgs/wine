@@ -1,0 +1,31 @@
+From 2dce658ac78a707a8e6ee4c87f23294539a4f4a6 Mon Sep 17 00:00:00 2001
+From: Peter O'Connor <sunnyflunk@gmail.com>
+Date: Wed, 17 Apr 2019 12:23:33 +1000
+Subject: [PATCH] Add libX11 soname check fallback for SuperX11 libs
+
+Adds fallback to test explicitly for libX11 when test program has compiled but
+failed to detect the tested soname. This is the case for all libX* libraries
+statically linked into libX11, allowing them to be detected and enabled in the
+wine build.
+---
+ aclocal.m4 | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/aclocal.m4 b/aclocal.m4
+index a812648..6ac82d4 100644
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -82,7 +82,9 @@ LIBS="-l$1 $5 $LIBS"
+     dylib) AS_VAR_SET(ac_Lib,[`$OTOOL -L conftest$ac_exeext | grep "ac_lib_pattern\\.[[0-9A-Za-z.]]*dylib" | sed -e "s/^.*\/\(ac_lib_pattern\.[[0-9A-Za-z.]]*dylib\).*$/\1/"';2,$d'`]) ;;
+     *) AS_VAR_SET(ac_Lib,[`$READELF -d conftest$ac_exeext | grep "NEEDED.*ac_lib_pattern\\.$LIBEXT" | sed -e "s/^.*\\m4_dquote(\\(ac_lib_pattern\\.$LIBEXT[[^	 ]]*\\)\\).*$/\1/"';2,$d'`])
+        AS_VAR_IF([ac_Lib],[],
+-             [AS_VAR_SET(ac_Lib,[`$LDD conftest$ac_exeext | grep "ac_lib_pattern\\.$LIBEXT" | sed -e "s/^.*\(ac_lib_pattern\.$LIBEXT[[^	 ]]*\).*$/\1/"';2,$d'`])]) ;;
++             [AS_VAR_SET(ac_Lib,[`$LDD conftest$ac_exeext | grep "ac_lib_pattern\\.$LIBEXT" | sed -e "s/^.*\(ac_lib_pattern\.$LIBEXT[[^	 ]]*\).*$/\1/"';2,$d'`])])
++       AS_VAR_IF([ac_Lib],[],
++             [AS_VAR_SET(ac_Lib,[`$READELF -d conftest$ac_exeext | grep "NEEDED.*libX11\\.$LIBEXT" | sed -e "s/^.*\\m4_dquote(\\(libX11\\.$LIBEXT[[^	 ]]*\\)\\).*$/\1/"';2,$d'`])]) ;;
+   esac])
+   LIBS=$ac_check_soname_save_LIBS])dnl
+ AS_VAR_IF([ac_Lib],[],
+-- 
+2.21.0
+
