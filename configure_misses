@@ -191,6 +191,7 @@ Configure miss: i586-w64-mingw32-clang
 Configure miss: i486-w64-mingw32-clang
 Configure miss: i386-w64-mingw32-clang
 Configure miss: mingw32-gcc
+Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
 Configure miss: hal/libhal.h
