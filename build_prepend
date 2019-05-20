@@ -1,0 +1,12 @@
+pushd ..
+cp -a wine-%{version} build64
+popd
+
+pushd ../build64
+export CFLAGS="`echo "$CFLAGS" | sed s/-m32/-m64/`"
+export CXXFLAGS=$CFLAGS
+%reconfigure --enable-win64 \
+--without-gssapi \
+--without-krb5
+make  %{?_smp_mflags}
+popd
