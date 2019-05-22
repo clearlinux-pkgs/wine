@@ -170,6 +170,244 @@ Configure miss: libprocstat.h
 Configure miss: x86_64-generic-linux-gnu-otool
 Configure miss: otool
 Configure miss: x86_64-generic-linux-gnu-readelf
+Configure miss: x86_64-pc-mingw32-gcc
+Configure miss: amd64-pc-mingw32-gcc
+Configure miss: x86_64-w64-mingw32-gcc
+Configure miss: amd64-w64-mingw32-gcc
+Configure miss: x86_64-mingw32msvc-gcc
+Configure miss: amd64-mingw32msvc-gcc
+Configure miss: x86_64-w64-mingw32-clang
+Configure miss: amd64-w64-mingw32-clang
+Configure miss: inotify_add_watch in -linotify
+Configure miss: hal/libhal.h usability
+Configure miss: hal/libhal.h presence
+Configure miss: hal/libhal.h
+Configure miss: sane/sane.h usability
+Configure miss: sane/sane.h presence
+Configure miss: sane/sane.h
+Configure miss: pthread_getthreadid_np
+Configure miss: -lpthread
+Configure miss: gst/gst.h usability
+Configure miss: gst/gst.h presence
+Configure miss: gst/gst.h
+Configure miss: oss_sysinfo.numaudioengines
+Configure miss: FAudio.h usability
+Configure miss: FAudio.h presence
+Configure miss: FAudio.h
+Configure miss: capi20.h
+Configure miss: -lcups
+Configure miss: -lnetapi
+Configure miss: -lvkd3d
+Configure miss: gcc strength-reduce bug
+Configure miss: whether the compiler supports -Werror=unknown-warning-option
+Configure miss: whether the compiler supports -Wpragma-pack
+Configure miss: broken string.h that generates warnings with -Wpointer-arith
+Configure miss: broken string.h that generates warnings with -Wlogical-op
+Configure miss: whether external symbols need an underscore prefix
+Configure miss: __res_get_state
+Configure miss: __res_getservers
+Configure miss: _spawnvp
+Configure miss: getattrlist
+Configure miss: port_create
+Configure miss: proc_pidinfo
+Configure miss: setprogname
+Configure miss: thr_kill2
+Configure miss: ldap_parse_sort_control
+Configure miss: ldap_parse_vlv_control
+Configure miss: request_sense
+Configure miss: struct xinpgen
+Configure miss: struct statfs.f_favail
+Configure miss: struct msghdr.msg_accrights
+Configure miss: scsireq_t.cmd
+Configure miss: struct mtget.mt_blksiz
+Configure miss: struct stat.st_mtimespec
+Configure miss: struct stat.st_ctimespec
+Configure miss: struct stat.st_atimespec
+Configure miss: struct stat.st_birthtime
+Configure miss: struct stat.st_birthtim
+Configure miss: struct stat.st_birthtimespec
+Configure miss: struct stat.__st_birthtime
+Configure miss: struct stat.__st_birthtim
+Configure miss: struct icmpstat.icps_inhist
+Configure miss: struct icmpstat.icps_outhist
+Configure miss: struct ipstat.ips_total
+Configure miss: struct ip_stats.ips_total
+Configure miss: struct tcpstat.tcps_connattempt
+Configure miss: struct tcp_stats.tcps_connattempt
+Configure miss: struct udpstat.udps_ipackets
+Configure miss: whether we need to define __x86_64__
+Configure miss: x86_64-generic-linux-gnu-cpp
+Configure miss: x86_64-generic-linux-gnu-ld
+Configure miss: i386_set_ldt in -li386
+Configure miss: _oss_ioctl in -lossaudio
+Configure miss: ApplicationServices/ApplicationServices.h usability
+Configure miss: ApplicationServices/ApplicationServices.h presence
+Configure miss: ApplicationServices/ApplicationServices.h
+Configure miss: AudioToolbox/AudioConverter.h usability
+Configure miss: AudioToolbox/AudioConverter.h presence
+Configure miss: AudioToolbox/AudioConverter.h
+Configure miss: AudioUnit/AudioUnit.h usability
+Configure miss: AudioUnit/AudioUnit.h presence
+Configure miss: AudioUnit/AudioUnit.h
+Configure miss: AudioUnit/AudioComponent.h usability
+Configure miss: AudioUnit/AudioComponent.h presence
+Configure miss: AudioUnit/AudioComponent.h
+Configure miss: CL/cl.h usability
+Configure miss: CL/cl.h presence
+Configure miss: CL/cl.h
+Configure miss: Carbon/Carbon.h usability
+Configure miss: Carbon/Carbon.h presence
+Configure miss: Carbon/Carbon.h
+Configure miss: CommonCrypto/CommonCryptor.h usability
+Configure miss: CommonCrypto/CommonCryptor.h presence
+Configure miss: CommonCrypto/CommonCryptor.h
+Configure miss: CoreAudio/CoreAudio.h usability
+Configure miss: CoreAudio/CoreAudio.h presence
+Configure miss: CoreAudio/CoreAudio.h
+Configure miss: CoreServices/CoreServices.h usability
+Configure miss: CoreServices/CoreServices.h presence
+Configure miss: CoreServices/CoreServices.h
+Configure miss: DiskArbitration/DiskArbitration.h usability
+Configure miss: DiskArbitration/DiskArbitration.h presence
+Configure miss: DiskArbitration/DiskArbitration.h
+Configure miss: IOKit/IOKitLib.h usability
+Configure miss: IOKit/IOKitLib.h presence
+Configure miss: IOKit/IOKitLib.h
+Configure miss: IOKit/hid/IOHIDLib.h usability
+Configure miss: IOKit/hid/IOHIDLib.h presence
+Configure miss: IOKit/hid/IOHIDLib.h
+Configure miss: OpenAL/al.h usability
+Configure miss: OpenAL/al.h presence
+Configure miss: OpenAL/al.h
+Configure miss: OpenCL/opencl.h usability
+Configure miss: OpenCL/opencl.h presence
+Configure miss: OpenCL/opencl.h
+Configure miss: QuickTime/ImageCompression.h usability
+Configure miss: QuickTime/ImageCompression.h presence
+Configure miss: QuickTime/ImageCompression.h
+Configure miss: Security/Security.h usability
+Configure miss: Security/Security.h presence
+Configure miss: Security/Security.h
+Configure miss: alias.h usability
+Configure miss: alias.h presence
+Configure miss: alias.h
+Configure miss: asm/user.h usability
+Configure miss: asm/user.h presence
+Configure miss: asm/user.h
+Configure miss: gsm.h usability
+Configure miss: gsm.h presence
+Configure miss: gsm.h
+Configure miss: gsm/gsm.h usability
+Configure miss: gsm/gsm.h presence
+Configure miss: gsm/gsm.h
+Configure miss: inet/mib2.h usability
+Configure miss: inet/mib2.h presence
+Configure miss: inet/mib2.h
+Configure miss: kstat.h usability
+Configure miss: kstat.h presence
+Configure miss: kstat.h
+Configure miss: libproc.h usability
+Configure miss: libproc.h presence
+Configure miss: libproc.h
+Configure miss: linux/compiler.h usability
+Configure miss: linux/compiler.h presence
+Configure miss: linux/compiler.h
+Configure miss: linux/ucdrom.h usability
+Configure miss: linux/ucdrom.h presence
+Configure miss: linux/ucdrom.h
+Configure miss: lwp.h usability
+Configure miss: lwp.h presence
+Configure miss: lwp.h
+Configure miss: mach-o/nlist.h usability
+Configure miss: mach-o/nlist.h presence
+Configure miss: mach-o/nlist.h
+Configure miss: mach-o/loader.h usability
+Configure miss: mach-o/loader.h presence
+Configure miss: mach-o/loader.h
+Configure miss: mach/mach.h usability
+Configure miss: mach/mach.h presence
+Configure miss: mach/mach.h
+Configure miss: mach/machine.h usability
+Configure miss: mach/machine.h presence
+Configure miss: mach/machine.h
+Configure miss: machine/cpu.h usability
+Configure miss: machine/cpu.h presence
+Configure miss: machine/cpu.h
+Configure miss: machine/limits.h usability
+Configure miss: machine/limits.h presence
+Configure miss: machine/limits.h
+Configure miss: machine/sysarch.h usability
+Configure miss: machine/sysarch.h presence
+Configure miss: machine/sysarch.h
+Configure miss: netinet/tcp_fsm.h usability
+Configure miss: netinet/tcp_fsm.h presence
+Configure miss: netinet/tcp_fsm.h
+Configure miss: pcap/pcap.h usability
+Configure miss: pcap/pcap.h presence
+Configure miss: pcap/pcap.h
+Configure miss: port.h usability
+Configure miss: port.h presence
+Configure miss: port.h
+Configure miss: sys/attr.h usability
+Configure miss: sys/attr.h presence
+Configure miss: sys/attr.h
+Configure miss: sys/cdio.h usability
+Configure miss: sys/cdio.h presence
+Configure miss: sys/cdio.h
+Configure miss: sys/elf32.h usability
+Configure miss: sys/elf32.h presence
+Configure miss: sys/elf32.h
+Configure miss: sys/event.h usability
+Configure miss: sys/event.h presence
+Configure miss: sys/event.h
+Configure miss: sys/exec_elf.h usability
+Configure miss: sys/exec_elf.h presence
+Configure miss: sys/exec_elf.h
+Configure miss: sys/limits.h usability
+Configure miss: sys/limits.h presence
+Configure miss: sys/link.h usability
+Configure miss: sys/link.h presence
+Configure miss: sys/link.h
+Configure miss: sys/modem.h usability
+Configure miss: sys/modem.h presence
+Configure miss: sys/modem.h
+Configure miss: sys/protosw.h usability
+Configure miss: sys/protosw.h presence
+Configure miss: sys/protosw.h
+Configure miss: sys/scsiio.h usability
+Configure miss: sys/scsiio.h presence
+Configure miss: sys/scsiio.h
+Configure miss: sys/strtio.h usability
+Configure miss: sys/strtio.h presence
+Configure miss: sys/strtio.h
+Configure miss: sys/tihdr.h usability
+Configure miss: sys/tihdr.h presence
+Configure miss: sys/tihdr.h
+Configure miss: sys/timeout.h usability
+Configure miss: sys/timeout.h presence
+Configure miss: sys/timeout.h
+Configure miss: sys/vnode.h usability
+Configure miss: sys/vnode.h presence
+Configure miss: sys/vnode.h
+Configure miss: valgrind/memcheck.h usability
+Configure miss: valgrind/memcheck.h presence
+Configure miss: valgrind/memcheck.h
+Configure miss: net/if_types.h
+Configure miss: netinet/if_inarp.h
+Configure miss: netinet/in_pcb.h
+Configure miss: netinet/ip_var.h
+Configure miss: netinet/tcp_timer.h
+Configure miss: netinet/udp_var.h
+Configure miss: netinet/icmp_var.h
+Configure miss: netinet/tcp_var.h
+Configure miss: linux/irda.h
+Configure miss: mach-o/dyld_images.h
+Configure miss: sys/thr.h
+Configure miss: pthread_np.h
+Configure miss: libprocstat.h
+Configure miss: x86_64-generic-linux-gnu-otool
+Configure miss: otool
+Configure miss: x86_64-generic-linux-gnu-readelf
 Configure miss: i686-w64-mingw32-gcc
 Configure miss: i586-w64-mingw32-gcc
 Configure miss: i486-w64-mingw32-gcc

@@ -3,8 +3,9 @@ cp -a wine-%{version} build64
 popd
 
 pushd ../build64
+export CFLAGS="`echo "$CFLAGS" | sed 's/-ffat-lto-objects -flto//'`"
 export CFLAGS="`echo "$CFLAGS" | sed s/-m32/-m64/`"
-export CXXFLAGS=$CFLAGS
+export CXXFLAGS="$CFLAGS"
 %reconfigure --enable-win64 \
 --without-gssapi \
 --without-krb5
