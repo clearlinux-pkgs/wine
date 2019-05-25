@@ -194,6 +194,8 @@ Configure miss: oss_sysinfo.numaudioengines
 Configure miss: FAudio.h usability
 Configure miss: FAudio.h presence
 Configure miss: FAudio.h
+Configure miss: FAudio_CommitOperationSet
+Configure miss: F3DAudioInitialize8
 Configure miss: capi20.h
 Configure miss: -lcups
 Configure miss: -lnetapi
@@ -203,7 +205,6 @@ Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
-Configure miss: whether external symbols need an underscore prefix
 Configure miss: __res_get_state
 Configure miss: __res_getservers
 Configure miss: _spawnvp
@@ -448,6 +449,8 @@ Configure miss: oss_sysinfo.numaudioengines
 Configure miss: FAudio.h usability
 Configure miss: FAudio.h presence
 Configure miss: FAudio.h
+Configure miss: FAudio_CommitOperationSet
+Configure miss: F3DAudioInitialize8
 Configure miss: capi20.h
 Configure miss: -lcups
 Configure miss: krb5/krb5.h usability
@@ -463,8 +466,6 @@ Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
-Configure miss: whether external symbols need an underscore prefix
-Configure miss: whether external symbols need stdcall decoration
 Configure miss: __res_get_state
 Configure miss: __res_getservers
 Configure miss: _spawnvp

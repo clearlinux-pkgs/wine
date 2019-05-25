@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.8
-Release  : 24
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.8.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.8.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.8.tar.xz.sign
+Version  : 4.9
+Release  : 25
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.9.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.9.tar.xz
+Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.9.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -20,17 +20,14 @@ Requires: wine-license = %{version}-%{release}
 Requires: wine-man = %{version}-%{release}
 Requires: freetype-lib32
 Requires: wine-lib32
-BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
-BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
-BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
@@ -38,32 +35,22 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
-BuildRequires : gnutls-dev
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
-BuildRequires : lcms2-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
-BuildRequires : libXcomposite-dev
 BuildRequires : libXcomposite-dev32
-BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
 BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
 BuildRequires : libXi-dev32
-BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
-BuildRequires : libXrandr-dev
 BuildRequires : libXrandr-dev32
-BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
-BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
-BuildRequires : libxslt-dev
-BuildRequires : mpg123-dev
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
 BuildRequires : openal-soft-dev
@@ -78,25 +65,16 @@ BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
-BuildRequires : pkgconfig(gl)
-BuildRequires : pkgconfig(glu)
 BuildRequires : pkgconfig(gstreamer-1.0)
-BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
-BuildRequires : pkgconfig(xext)
-BuildRequires : pkgconfig(xfixes)
-BuildRequires : pkgconfig(xi)
-BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
-BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
 BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
-BuildRequires : zlib-dev
 Patch1: 0001-Add-libX11-soname-check-fallback-for-SuperX11-libs.patch
 
 %description
@@ -133,6 +111,7 @@ Requires: wine-lib = %{version}-%{release}
 Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
 Provides: wine-devel = %{version}-%{release}
+Requires: wine = %{version}-%{release}
 Requires: wine = %{version}-%{release}
 
 %description dev
@@ -188,7 +167,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.8
+%setup -q -n wine-4.9
 %patch1 -p1
 
 %build
@@ -210,8 +189,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1558555067
-export GCC_IGNORE_WERROR=1
+export SOURCE_DATE_EPOCH=1558824524
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
@@ -224,7 +202,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1558555067
+export SOURCE_DATE_EPOCH=1558824524
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -1226,14 +1204,6 @@ popd
 /usr/lib32/wine/libmsi.def
 /usr/lib32/wine/libmsimg32.def
 /usr/lib32/wine/libmspatcha.def
-/usr/lib32/wine/libmsvcr100.def
-/usr/lib32/wine/libmsvcr110.def
-/usr/lib32/wine/libmsvcr120.def
-/usr/lib32/wine/libmsvcr70.def
-/usr/lib32/wine/libmsvcr71.def
-/usr/lib32/wine/libmsvcr80.def
-/usr/lib32/wine/libmsvcr90.def
-/usr/lib32/wine/libmsvcrtd.def
 /usr/lib32/wine/libmsvfw32.def
 /usr/lib32/wine/libmswsock.def
 /usr/lib32/wine/libnddeapi.def
@@ -1283,7 +1253,6 @@ popd
 /usr/lib32/wine/libsxs.def
 /usr/lib32/wine/libt2embed.def
 /usr/lib32/wine/libtapi32.def
-/usr/lib32/wine/libucrtbase.def
 /usr/lib32/wine/libuiautomationcore.def
 /usr/lib32/wine/libunicows.def
 /usr/lib32/wine/liburl.def
@@ -2246,14 +2215,6 @@ popd
 /usr/lib64/wine/libmsi.def
 /usr/lib64/wine/libmsimg32.def
 /usr/lib64/wine/libmspatcha.def
-/usr/lib64/wine/libmsvcr100.def
-/usr/lib64/wine/libmsvcr110.def
-/usr/lib64/wine/libmsvcr120.def
-/usr/lib64/wine/libmsvcr70.def
-/usr/lib64/wine/libmsvcr71.def
-/usr/lib64/wine/libmsvcr80.def
-/usr/lib64/wine/libmsvcr90.def
-/usr/lib64/wine/libmsvcrtd.def
 /usr/lib64/wine/libmsvfw32.def
 /usr/lib64/wine/libmswsock.def
 /usr/lib64/wine/libnddeapi.def
@@ -2303,7 +2264,6 @@ popd
 /usr/lib64/wine/libsxs.def
 /usr/lib64/wine/libt2embed.def
 /usr/lib64/wine/libtapi32.def
-/usr/lib64/wine/libucrtbase.def
 /usr/lib64/wine/libuiautomationcore.def
 /usr/lib64/wine/libunicows.def
 /usr/lib64/wine/liburl.def
