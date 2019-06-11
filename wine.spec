@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.9
-Release  : 25
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.9.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.9.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.9.tar.xz.sign
+Version  : 4.10
+Release  : 26
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.10.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.10.tar.xz
+Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.10.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -167,7 +167,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.9
+%setup -q -n wine-4.10
 %patch1 -p1
 
 %build
@@ -189,7 +189,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1558824524
+export SOURCE_DATE_EPOCH=1560271083
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
@@ -202,7 +202,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1558824524
+export SOURCE_DATE_EPOCH=1560271083
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -657,6 +657,9 @@ popd
 /usr/lib32/wine/fakedlls/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-security-credui-l1-1-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-security-cryptui-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-shell-comctl32-init-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-shell-comdlg32-l1-1-0.dll
+/usr/lib32/wine/fakedlls/ext-ms-win-shell-shell32-l1-2-0.dll
 /usr/lib32/wine/fakedlls/ext-ms-win-uxtheme-themes-l1-1-0.dll
 /usr/lib32/wine/fakedlls/extrac32.exe
 /usr/lib32/wine/fakedlls/faultrep.dll
@@ -1722,6 +1725,9 @@ popd
 /usr/lib64/wine/fakedlls/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll
 /usr/lib64/wine/fakedlls/ext-ms-win-security-credui-l1-1-0.dll
 /usr/lib64/wine/fakedlls/ext-ms-win-security-cryptui-l1-1-0.dll
+/usr/lib64/wine/fakedlls/ext-ms-win-shell-comctl32-init-l1-1-0.dll
+/usr/lib64/wine/fakedlls/ext-ms-win-shell-comdlg32-l1-1-0.dll
+/usr/lib64/wine/fakedlls/ext-ms-win-shell-shell32-l1-2-0.dll
 /usr/lib64/wine/fakedlls/ext-ms-win-uxtheme-themes-l1-1-0.dll
 /usr/lib64/wine/fakedlls/extrac32.exe
 /usr/lib64/wine/fakedlls/faultrep.dll
@@ -2392,6 +2398,7 @@ popd
 /usr/share/wine/fonts/wingding.ttf
 /usr/share/wine/l_intl.nls
 /usr/share/wine/wine.inf
+/usr/share/wine/winehid.inf
 
 %files dev
 %defattr(-,root,root,-)
@@ -2994,6 +3001,7 @@ popd
 /usr/include/wine/windows/netioapi.h
 /usr/include/wine/windows/netlistmgr.h
 /usr/include/wine/windows/netlistmgr.idl
+/usr/include/wine/windows/newdev.h
 /usr/include/wine/windows/nldef.h
 /usr/include/wine/windows/npapi.h
 /usr/include/wine/windows/nserror.h
@@ -3176,6 +3184,7 @@ popd
 /usr/include/wine/windows/textserv.h
 /usr/include/wine/windows/textstor.h
 /usr/include/wine/windows/textstor.idl
+/usr/include/wine/windows/timezoneapi.h
 /usr/include/wine/windows/tlhelp32.h
 /usr/include/wine/windows/tlogstg.h
 /usr/include/wine/windows/tlogstg.idl
@@ -3795,6 +3804,9 @@ popd
 /usr/lib64/wine/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll.so
 /usr/lib64/wine/ext-ms-win-security-credui-l1-1-0.dll.so
 /usr/lib64/wine/ext-ms-win-security-cryptui-l1-1-0.dll.so
+/usr/lib64/wine/ext-ms-win-shell-comctl32-init-l1-1-0.dll.so
+/usr/lib64/wine/ext-ms-win-shell-comdlg32-l1-1-0.dll.so
+/usr/lib64/wine/ext-ms-win-shell-shell32-l1-2-0.dll.so
 /usr/lib64/wine/ext-ms-win-uxtheme-themes-l1-1-0.dll.so
 /usr/lib64/wine/extrac32.exe.so
 /usr/lib64/wine/faultrep.dll.so
@@ -4649,6 +4661,9 @@ popd
 /usr/lib32/wine/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-security-credui-l1-1-0.dll.so
 /usr/lib32/wine/ext-ms-win-security-cryptui-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-shell-comctl32-init-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-shell-comdlg32-l1-1-0.dll.so
+/usr/lib32/wine/ext-ms-win-shell-shell32-l1-2-0.dll.so
 /usr/lib32/wine/ext-ms-win-uxtheme-themes-l1-1-0.dll.so
 /usr/lib32/wine/extrac32.exe.so
 /usr/lib32/wine/faultrep.dll.so
