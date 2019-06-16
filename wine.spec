@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.10
-Release  : 27
+Release  : 28
 URL      : https://dl.winehq.org/wine/source/4.x/wine-4.10.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.10.tar.xz
 Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.10.tar.xz.sign
@@ -18,15 +18,45 @@ Requires: wine-data = %{version}-%{release}
 Requires: wine-lib = %{version}-%{release}
 Requires: wine-license = %{version}-%{release}
 Requires: wine-man = %{version}-%{release}
+Requires: SDL2-lib
+Requires: SDL2-lib32
+Requires: Vulkan-Loader-lib
+Requires: Vulkan-Loader-lib32
+Requires: cups-lib
+Requires: dbus-lib
+Requires: dbus-lib32
 Requires: elfutils-lib32
 Requires: expat-lib32
+Requires: fontconfig-lib
 Requires: fontconfig-lib32
+Requires: freetype-lib
 Requires: freetype-lib32
+Requires: glu-lib
+Requires: glu-lib32
+Requires: gnutls-lib
+Requires: gnutls-lib32
+Requires: libX11-lib
+Requires: libX11-lib32
+Requires: libXcursor-lib
 Requires: libXcursor-lib32
 Requires: libdrm-lib32
+Requires: libjpeg-turbo-lib
+Requires: libjpeg-turbo-lib32
+Requires: libpng-lib
+Requires: libpng-lib32
+Requires: libxslt-lib
+Requires: libxslt-lib32
+Requires: mesa-lib
 Requires: mesa-lib32
 Requires: mpg123-lib32
+Requires: ncurses-lib
 Requires: ncurses-lib32
+Requires: samba-lib
+Requires: tiff-lib
+Requires: tiff-lib32
+Requires: unixODBC-lib
+Requires: v4l-utils-lib
+Requires: v4l-utils-lib32
 Requires: wine-lib32
 BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
@@ -98,6 +128,7 @@ BuildRequires : pkgconfig(xfixes)
 BuildRequires : pkgconfig(xi)
 BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
+BuildRequires : sane-backends-dev
 BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
@@ -206,7 +237,7 @@ pushd ..
 cp -a wine-%{version} build64
 popd
 pushd ../build64
-export CFLAGS="`echo "$CFLAGS" | sed 's/-ffat-lto-objects -flto//'`"
+export CFLAGS="`echo "$CFLAGS -O3" | sed 's/-ffat-lto-objects -flto//'`"
 export CFLAGS="`echo "$CFLAGS" | sed s/-m32/-m64/`"
 export CXXFLAGS="$CFLAGS"
 %reconfigure --enable-win64 \
@@ -219,20 +250,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1560606659
+export SOURCE_DATE_EPOCH=1560693369
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 unset LDFLAGS
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %reconfigure --disable-static --with-wine64=%{_builddir}/build64 \
 --libdir=/usr/lib32
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1560606659
+export SOURCE_DATE_EPOCH=1560693369
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
