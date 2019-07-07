@@ -199,6 +199,7 @@ Configure miss: -lnetapi
 Configure miss: -lvkd3d
 Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
+Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
@@ -458,6 +459,7 @@ Configure miss: -lnetapi
 Configure miss: -lvkd3d
 Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
+Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
