@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.12.1
-Release  : 30
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.12.1.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.12.1.tar.xz
-Source99 : https://dl.winehq.org/wine/source/4.x/wine-4.12.1.tar.xz.sign
+Version  : 4.13
+Release  : 31
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.13.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.13.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.13.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -206,7 +206,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.12.1
+%setup -q -n wine-4.13
 %patch1 -p1
 
 %build
@@ -228,7 +228,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562526912
+export SOURCE_DATE_EPOCH=1564855492
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -242,7 +242,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1562526912
+export SOURCE_DATE_EPOCH=1564855492
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -808,6 +808,7 @@ popd
 /usr/lib32/wine/fakedlls/mscat32.dll
 /usr/lib32/wine/fakedlls/mscms.dll
 /usr/lib32/wine/fakedlls/mscoree.dll
+/usr/lib32/wine/fakedlls/mscorwks.dll
 /usr/lib32/wine/fakedlls/msctf.dll
 /usr/lib32/wine/fakedlls/msctfp.dll
 /usr/lib32/wine/fakedlls/msdaps.dll
@@ -1866,6 +1867,7 @@ popd
 /usr/lib64/wine/fakedlls/mscat32.dll
 /usr/lib64/wine/fakedlls/mscms.dll
 /usr/lib64/wine/fakedlls/mscoree.dll
+/usr/lib64/wine/fakedlls/mscorwks.dll
 /usr/lib64/wine/fakedlls/msctf.dll
 /usr/lib64/wine/fakedlls/msctfp.dll
 /usr/lib64/wine/fakedlls/msdaps.dll
@@ -2833,6 +2835,8 @@ popd
 /usr/include/wine/windows/fci.h
 /usr/include/wine/windows/fdi.h
 /usr/include/wine/windows/fileapi.h
+/usr/include/wine/windows/filter.h
+/usr/include/wine/windows/filter.idl
 /usr/include/wine/windows/fltdefs.h
 /usr/include/wine/windows/fontsub.h
 /usr/include/wine/windows/fusion.h
@@ -3212,6 +3216,7 @@ popd
 /usr/include/wine/windows/storage.h
 /usr/include/wine/windows/strmif.h
 /usr/include/wine/windows/strmif.idl
+/usr/include/wine/windows/strongname.h
 /usr/include/wine/windows/strsafe.h
 /usr/include/wine/windows/structuredquerycondition.h
 /usr/include/wine/windows/structuredquerycondition.idl
@@ -3227,6 +3232,8 @@ popd
 /usr/include/wine/windows/textserv.h
 /usr/include/wine/windows/textstor.h
 /usr/include/wine/windows/textstor.idl
+/usr/include/wine/windows/thumbcache.h
+/usr/include/wine/windows/thumbcache.idl
 /usr/include/wine/windows/timezoneapi.h
 /usr/include/wine/windows/tlhelp32.h
 /usr/include/wine/windows/tlogstg.h
@@ -3947,6 +3954,7 @@ popd
 /usr/lib64/wine/mscat32.dll.so
 /usr/lib64/wine/mscms.dll.so
 /usr/lib64/wine/mscoree.dll.so
+/usr/lib64/wine/mscorwks.dll.so
 /usr/lib64/wine/msctf.dll.so
 /usr/lib64/wine/msctfp.dll.so
 /usr/lib64/wine/msdaps.dll.so
@@ -4815,6 +4823,7 @@ popd
 /usr/lib32/wine/mscat32.dll.so
 /usr/lib32/wine/mscms.dll.so
 /usr/lib32/wine/mscoree.dll.so
+/usr/lib32/wine/mscorwks.dll.so
 /usr/lib32/wine/msctf.dll.so
 /usr/lib32/wine/msctfp.dll.so
 /usr/lib32/wine/msdaps.dll.so
