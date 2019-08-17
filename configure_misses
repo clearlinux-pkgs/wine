@@ -110,6 +110,9 @@ Configure miss: pcap/pcap.h
 Configure miss: port.h usability
 Configure miss: port.h presence
 Configure miss: port.h
+Configure miss: stropts.h usability
+Configure miss: stropts.h presence
+Configure miss: stropts.h
 Configure miss: sys/attr.h usability
 Configure miss: sys/attr.h presence
 Configure miss: sys/attr.h
@@ -183,7 +186,6 @@ Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
 Configure miss: hal/libhal.h
 Configure miss: pthread_getthreadid_np
-Configure miss: -lpthread
 Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
 Configure miss: gst/gst.h
@@ -347,6 +349,9 @@ Configure miss: pcap/pcap.h
 Configure miss: port.h usability
 Configure miss: port.h presence
 Configure miss: port.h
+Configure miss: stropts.h usability
+Configure miss: stropts.h presence
+Configure miss: stropts.h
 Configure miss: sys/attr.h usability
 Configure miss: sys/attr.h presence
 Configure miss: sys/attr.h
@@ -436,7 +441,6 @@ Configure miss: -lsane
 Configure miss: gp_camera_new in -lgphoto2
 Configure miss: gp_port_info_list_new in -lgphoto2_port
 Configure miss: pthread_getthreadid_np
-Configure miss: -lpthread
 Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
 Configure miss: gst/gst.h

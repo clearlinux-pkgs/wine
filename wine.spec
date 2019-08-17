@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.13
-Release  : 31
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.13.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.13.tar.xz
-Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.13.tar.xz.sign
+Version  : 4.14
+Release  : 32
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.14.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.14.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.14.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -206,7 +206,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.13
+%setup -q -n wine-4.14
 %patch1 -p1
 
 %build
@@ -228,7 +228,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564855492
+export SOURCE_DATE_EPOCH=1566056990
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -242,7 +243,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1564855492
+export SOURCE_DATE_EPOCH=1566056990
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -1047,6 +1048,7 @@ popd
 /usr/lib32/wine/fakedlls/user32.dll
 /usr/lib32/wine/fakedlls/userenv.dll
 /usr/lib32/wine/fakedlls/usp10.dll
+/usr/lib32/wine/fakedlls/utildll.dll
 /usr/lib32/wine/fakedlls/uxtheme.dll
 /usr/lib32/wine/fakedlls/vbscript.dll
 /usr/lib32/wine/fakedlls/vcomp.dll
@@ -1129,6 +1131,7 @@ popd
 /usr/lib32/wine/fakedlls/winusb.dll
 /usr/lib32/wine/fakedlls/winver.exe
 /usr/lib32/wine/fakedlls/wlanapi.dll
+/usr/lib32/wine/fakedlls/wlanui.dll
 /usr/lib32/wine/fakedlls/wldap32.dll
 /usr/lib32/wine/fakedlls/wmasf.dll
 /usr/lib32/wine/fakedlls/wmi.dll
@@ -2085,6 +2088,7 @@ popd
 /usr/lib64/wine/fakedlls/user32.dll
 /usr/lib64/wine/fakedlls/userenv.dll
 /usr/lib64/wine/fakedlls/usp10.dll
+/usr/lib64/wine/fakedlls/utildll.dll
 /usr/lib64/wine/fakedlls/uxtheme.dll
 /usr/lib64/wine/fakedlls/vbscript.dll
 /usr/lib64/wine/fakedlls/vcomp.dll
@@ -2147,6 +2151,7 @@ popd
 /usr/lib64/wine/fakedlls/winusb.dll
 /usr/lib64/wine/fakedlls/winver.exe
 /usr/lib64/wine/fakedlls/wlanapi.dll
+/usr/lib64/wine/fakedlls/wlanui.dll
 /usr/lib64/wine/fakedlls/wldap32.dll
 /usr/lib64/wine/fakedlls/wmasf.dll
 /usr/lib64/wine/fakedlls/wmi.dll
@@ -2453,6 +2458,7 @@ popd
 /usr/include/wine/library.h
 /usr/include/wine/msvcrt/assert.h
 /usr/include/wine/msvcrt/conio.h
+/usr/include/wine/msvcrt/corecrt.h
 /usr/include/wine/msvcrt/crtdbg.h
 /usr/include/wine/msvcrt/crtdefs.h
 /usr/include/wine/msvcrt/ctype.h
@@ -3241,6 +3247,7 @@ popd
 /usr/include/wine/windows/tmschema.h
 /usr/include/wine/windows/tom.h
 /usr/include/wine/windows/tom.idl
+/usr/include/wine/windows/tpcshrd.h
 /usr/include/wine/windows/traffic.h
 /usr/include/wine/windows/transact.h
 /usr/include/wine/windows/transact.idl
@@ -4172,6 +4179,7 @@ popd
 /usr/lib64/wine/user32.dll.so
 /usr/lib64/wine/userenv.dll.so
 /usr/lib64/wine/usp10.dll.so
+/usr/lib64/wine/utildll.dll.so
 /usr/lib64/wine/uxtheme.dll.so
 /usr/lib64/wine/vbscript.dll.so
 /usr/lib64/wine/vcomp.dll.so
@@ -4234,6 +4242,7 @@ popd
 /usr/lib64/wine/winusb.dll.so
 /usr/lib64/wine/winver.exe.so
 /usr/lib64/wine/wlanapi.dll.so
+/usr/lib64/wine/wlanui.dll.so
 /usr/lib64/wine/wldap32.dll.so
 /usr/lib64/wine/wmasf.dll.so
 /usr/lib64/wine/wmi.dll.so
@@ -5062,6 +5071,7 @@ popd
 /usr/lib32/wine/user32.dll.so
 /usr/lib32/wine/userenv.dll.so
 /usr/lib32/wine/usp10.dll.so
+/usr/lib32/wine/utildll.dll.so
 /usr/lib32/wine/uxtheme.dll.so
 /usr/lib32/wine/vbscript.dll.so
 /usr/lib32/wine/vcomp.dll.so
@@ -5144,6 +5154,7 @@ popd
 /usr/lib32/wine/winusb.dll.so
 /usr/lib32/wine/winver.exe.so
 /usr/lib32/wine/wlanapi.dll.so
+/usr/lib32/wine/wlanui.dll.so
 /usr/lib32/wine/wldap32.dll.so
 /usr/lib32/wine/wmasf.dll.so
 /usr/lib32/wine/wmi.dll.so
