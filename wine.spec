@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.14
-Release  : 32
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.14.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.14.tar.xz
-Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.14.tar.xz.sign
+Version  : 4.15
+Release  : 33
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.15.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.15.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.15.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -206,7 +206,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.14
+%setup -q -n wine-4.15
 %patch1 -p1
 
 %build
@@ -228,7 +228,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566056990
+export SOURCE_DATE_EPOCH=1567298140
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -243,7 +243,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1566056990
+export SOURCE_DATE_EPOCH=1567298140
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -730,6 +730,7 @@ popd
 /usr/lib32/wine/fakedlls/hlink.dll
 /usr/lib32/wine/fakedlls/hnetcfg.dll
 /usr/lib32/wine/fakedlls/hostname.exe
+/usr/lib32/wine/fakedlls/http.sys
 /usr/lib32/wine/fakedlls/httpapi.dll
 /usr/lib32/wine/fakedlls/icacls.exe
 /usr/lib32/wine/fakedlls/iccvid.dll
@@ -784,6 +785,7 @@ popd
 /usr/lib32/wine/fakedlls/mf.dll
 /usr/lib32/wine/fakedlls/mf3216.dll
 /usr/lib32/wine/fakedlls/mferror.dll
+/usr/lib32/wine/fakedlls/mfmediaengine.dll
 /usr/lib32/wine/fakedlls/mfplat.dll
 /usr/lib32/wine/fakedlls/mfplay.dll
 /usr/lib32/wine/fakedlls/mfreadwrite.dll
@@ -950,6 +952,7 @@ popd
 /usr/lib32/wine/fakedlls/regapi.dll
 /usr/lib32/wine/fakedlls/regasm.exe
 /usr/lib32/wine/fakedlls/regedit.exe
+/usr/lib32/wine/fakedlls/regini.exe
 /usr/lib32/wine/fakedlls/regsvcs.exe
 /usr/lib32/wine/fakedlls/regsvr32.exe
 /usr/lib32/wine/fakedlls/resutils.dll
@@ -1155,6 +1158,7 @@ popd
 /usr/lib32/wine/fakedlls/wtsapi32.dll
 /usr/lib32/wine/fakedlls/wuapi.dll
 /usr/lib32/wine/fakedlls/wuaueng.dll
+/usr/lib32/wine/fakedlls/wuauserv.exe
 /usr/lib32/wine/fakedlls/wusa.exe
 /usr/lib32/wine/fakedlls/xcopy.exe
 /usr/lib32/wine/fakedlls/xinput1_1.dll
@@ -1239,6 +1243,7 @@ popd
 /usr/lib32/wine/liblz32.def
 /usr/lib32/wine/libmapi32.def
 /usr/lib32/wine/libmf.def
+/usr/lib32/wine/libmfmediaengine.def
 /usr/lib32/wine/libmfplat.def
 /usr/lib32/wine/libmfreadwrite.def
 /usr/lib32/wine/libmlang.def
@@ -1801,6 +1806,7 @@ popd
 /usr/lib64/wine/fakedlls/hlink.dll
 /usr/lib64/wine/fakedlls/hnetcfg.dll
 /usr/lib64/wine/fakedlls/hostname.exe
+/usr/lib64/wine/fakedlls/http.sys
 /usr/lib64/wine/fakedlls/httpapi.dll
 /usr/lib64/wine/fakedlls/icacls.exe
 /usr/lib64/wine/fakedlls/iccvid.dll
@@ -1850,6 +1856,7 @@ popd
 /usr/lib64/wine/fakedlls/mf.dll
 /usr/lib64/wine/fakedlls/mf3216.dll
 /usr/lib64/wine/fakedlls/mferror.dll
+/usr/lib64/wine/fakedlls/mfmediaengine.dll
 /usr/lib64/wine/fakedlls/mfplat.dll
 /usr/lib64/wine/fakedlls/mfplay.dll
 /usr/lib64/wine/fakedlls/mfreadwrite.dll
@@ -2001,6 +2008,7 @@ popd
 /usr/lib64/wine/fakedlls/regapi.dll
 /usr/lib64/wine/fakedlls/regasm.exe
 /usr/lib64/wine/fakedlls/regedit.exe
+/usr/lib64/wine/fakedlls/regini.exe
 /usr/lib64/wine/fakedlls/regsvcs.exe
 /usr/lib64/wine/fakedlls/regsvr32.exe
 /usr/lib64/wine/fakedlls/resutils.dll
@@ -2174,6 +2182,7 @@ popd
 /usr/lib64/wine/fakedlls/wtsapi32.dll
 /usr/lib64/wine/fakedlls/wuapi.dll
 /usr/lib64/wine/fakedlls/wuaueng.dll
+/usr/lib64/wine/fakedlls/wuauserv.exe
 /usr/lib64/wine/fakedlls/wusa.exe
 /usr/lib64/wine/fakedlls/xcopy.exe
 /usr/lib64/wine/fakedlls/xinput1_1.dll
@@ -2257,6 +2266,7 @@ popd
 /usr/lib64/wine/liblz32.def
 /usr/lib64/wine/libmapi32.def
 /usr/lib64/wine/libmf.def
+/usr/lib64/wine/libmfmediaengine.def
 /usr/lib64/wine/libmfplat.def
 /usr/lib64/wine/libmfreadwrite.def
 /usr/lib64/wine/libmlang.def
@@ -2966,6 +2976,8 @@ popd
 /usr/include/wine/windows/mferror.h
 /usr/include/wine/windows/mfidl.h
 /usr/include/wine/windows/mfidl.idl
+/usr/include/wine/windows/mfmediaengine.h
+/usr/include/wine/windows/mfmediaengine.idl
 /usr/include/wine/windows/mfobjects.h
 /usr/include/wine/windows/mfobjects.idl
 /usr/include/wine/windows/mfplay.h
@@ -3892,6 +3904,7 @@ popd
 /usr/lib64/wine/hlink.dll.so
 /usr/lib64/wine/hnetcfg.dll.so
 /usr/lib64/wine/hostname.exe.so
+/usr/lib64/wine/http.sys.so
 /usr/lib64/wine/httpapi.dll.so
 /usr/lib64/wine/icacls.exe.so
 /usr/lib64/wine/iccvid.dll.so
@@ -3941,6 +3954,7 @@ popd
 /usr/lib64/wine/mf.dll.so
 /usr/lib64/wine/mf3216.dll.so
 /usr/lib64/wine/mferror.dll.so
+/usr/lib64/wine/mfmediaengine.dll.so
 /usr/lib64/wine/mfplat.dll.so
 /usr/lib64/wine/mfplay.dll.so
 /usr/lib64/wine/mfreadwrite.dll.so
@@ -4092,6 +4106,7 @@ popd
 /usr/lib64/wine/regapi.dll.so
 /usr/lib64/wine/regasm.exe.so
 /usr/lib64/wine/regedit.exe.so
+/usr/lib64/wine/regini.exe.so
 /usr/lib64/wine/regsvcs.exe.so
 /usr/lib64/wine/regsvr32.exe.so
 /usr/lib64/wine/resutils.dll.so
@@ -4265,6 +4280,7 @@ popd
 /usr/lib64/wine/wtsapi32.dll.so
 /usr/lib64/wine/wuapi.dll.so
 /usr/lib64/wine/wuaueng.dll.so
+/usr/lib64/wine/wuauserv.exe.so
 /usr/lib64/wine/wusa.exe.so
 /usr/lib64/wine/xcopy.exe.so
 /usr/lib64/wine/xinput1_1.dll.so
@@ -4753,6 +4769,7 @@ popd
 /usr/lib32/wine/hlink.dll.so
 /usr/lib32/wine/hnetcfg.dll.so
 /usr/lib32/wine/hostname.exe.so
+/usr/lib32/wine/http.sys.so
 /usr/lib32/wine/httpapi.dll.so
 /usr/lib32/wine/icacls.exe.so
 /usr/lib32/wine/iccvid.dll.so
@@ -4807,6 +4824,7 @@ popd
 /usr/lib32/wine/mf.dll.so
 /usr/lib32/wine/mf3216.dll.so
 /usr/lib32/wine/mferror.dll.so
+/usr/lib32/wine/mfmediaengine.dll.so
 /usr/lib32/wine/mfplat.dll.so
 /usr/lib32/wine/mfplay.dll.so
 /usr/lib32/wine/mfreadwrite.dll.so
@@ -4973,6 +4991,7 @@ popd
 /usr/lib32/wine/regapi.dll.so
 /usr/lib32/wine/regasm.exe.so
 /usr/lib32/wine/regedit.exe.so
+/usr/lib32/wine/regini.exe.so
 /usr/lib32/wine/regsvcs.exe.so
 /usr/lib32/wine/regsvr32.exe.so
 /usr/lib32/wine/resutils.dll.so
@@ -5178,6 +5197,7 @@ popd
 /usr/lib32/wine/wtsapi32.dll.so
 /usr/lib32/wine/wuapi.dll.so
 /usr/lib32/wine/wuaueng.dll.so
+/usr/lib32/wine/wuauserv.exe.so
 /usr/lib32/wine/wusa.exe.so
 /usr/lib32/wine/xcopy.exe.so
 /usr/lib32/wine/xinput1_1.dll.so

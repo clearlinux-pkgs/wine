@@ -1,7 +1,6 @@
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld
 Configure miss: i386_set_ldt in -li386
-Configure miss: _oss_ioctl in -lossaudio
 Configure miss: ApplicationServices/ApplicationServices.h usability
 Configure miss: ApplicationServices/ApplicationServices.h presence
 Configure miss: ApplicationServices/ApplicationServices.h
@@ -190,6 +189,8 @@ Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
 Configure miss: gst/gst.h
 Configure miss: oss_sysinfo.numaudioengines
+Configure miss: unw_getcontext
+Configure miss: unw_getcontext in libunwind
 Configure miss: FAudio.h usability
 Configure miss: FAudio.h presence
 Configure miss: FAudio.h
@@ -240,7 +241,6 @@ Configure miss: whether we need to define __x86_64__
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld
 Configure miss: i386_set_ldt in -li386
-Configure miss: _oss_ioctl in -lossaudio
 Configure miss: ApplicationServices/ApplicationServices.h usability
 Configure miss: ApplicationServices/ApplicationServices.h presence
 Configure miss: ApplicationServices/ApplicationServices.h
