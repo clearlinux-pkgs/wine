@@ -189,8 +189,8 @@ Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
 Configure miss: gst/gst.h
 Configure miss: oss_sysinfo.numaudioengines
-Configure miss: unw_getcontext
-Configure miss: unw_getcontext in libunwind
+Configure miss: unw_step
+Configure miss: unw_step in libunwind
 Configure miss: FAudio.h usability
 Configure miss: FAudio.h presence
 Configure miss: FAudio.h

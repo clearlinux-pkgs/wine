@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.15
-Release  : 33
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.15.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.15.tar.xz
-Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.15.tar.xz.sign
+Version  : 4.16
+Release  : 34
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.16.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.16.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.16.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -206,7 +206,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.15
+%setup -q -n wine-4.16
 %patch1 -p1
 
 %build
@@ -228,7 +228,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567298140
+export SOURCE_DATE_EPOCH=1568916428
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -243,7 +243,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1567298140
+export SOURCE_DATE_EPOCH=1568916428
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
@@ -2925,6 +2925,7 @@ popd
 /usr/include/wine/windows/inspectable.idl
 /usr/include/wine/windows/interactioncontext.h
 /usr/include/wine/windows/intshcut.h
+/usr/include/wine/windows/ip2string.h
 /usr/include/wine/windows/ipexport.h
 /usr/include/wine/windows/iphlpapi.h
 /usr/include/wine/windows/ipifcons.h
