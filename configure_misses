@@ -153,9 +153,6 @@ Configure miss: sys/timeout.h
 Configure miss: sys/vnode.h usability
 Configure miss: sys/vnode.h presence
 Configure miss: sys/vnode.h
-Configure miss: valgrind/memcheck.h usability
-Configure miss: valgrind/memcheck.h presence
-Configure miss: valgrind/memcheck.h
 Configure miss: net/if_types.h
 Configure miss: netinet/if_inarp.h
 Configure miss: netinet/in_pcb.h
@@ -197,7 +194,6 @@ Configure miss: FAudio.h
 Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
 Configure miss: capi20.h
-Configure miss: -lcups
 Configure miss: -lnetapi
 Configure miss: -lvkd3d
 Configure miss: gcc strength-reduce bug
@@ -393,9 +389,6 @@ Configure miss: sys/timeout.h
 Configure miss: sys/vnode.h usability
 Configure miss: sys/vnode.h presence
 Configure miss: sys/vnode.h
-Configure miss: valgrind/memcheck.h usability
-Configure miss: valgrind/memcheck.h presence
-Configure miss: valgrind/memcheck.h
 Configure miss: net/if_types.h
 Configure miss: netinet/if_inarp.h
 Configure miss: netinet/in_pcb.h

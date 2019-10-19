@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.17
-Release  : 35
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.17.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.17.tar.xz
-Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.17.tar.xz.sign
+Version  : 4.18
+Release  : 36
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -114,6 +114,7 @@ BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
 BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
+BuildRequires : valgrind-dev
 Patch1: 0001-Add-libX11-soname-check-fallback-for-SuperX11-libs.patch
 
 %description
@@ -206,7 +207,7 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.17
+%setup -q -n wine-4.18
 %patch1 -p1
 
 %build
@@ -228,7 +229,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569904328
+export SOURCE_DATE_EPOCH=1571504631
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -243,12 +244,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1569904328
+export SOURCE_DATE_EPOCH=1571504631
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/COPYING.LIB
-cp LICENSE %{buildroot}/usr/share/package-licenses/wine/LICENSE
-cp LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/LICENSE.OLD
+cp %{_builddir}/wine-4.18/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-4.18/LICENSE %{buildroot}/usr/share/package-licenses/wine/028b80eb431125914ad2f8883b0ad4ff40daefa6
+cp %{_builddir}/wine-4.18/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -3184,6 +3185,7 @@ popd
 /usr/include/wine/windows/sal.h
 /usr/include/wine/windows/sapi.h
 /usr/include/wine/windows/sapi.idl
+/usr/include/wine/windows/sapiaut.idl
 /usr/include/wine/windows/sapiddk.h
 /usr/include/wine/windows/sapiddk.idl
 /usr/include/wine/windows/scarderr.h
@@ -5215,9 +5217,9 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/wine/COPYING.LIB
-/usr/share/package-licenses/wine/LICENSE
-/usr/share/package-licenses/wine/LICENSE.OLD
+/usr/share/package-licenses/wine/028b80eb431125914ad2f8883b0ad4ff40daefa6
+/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
 
 %files man
 %defattr(0644,root,root,0755)
