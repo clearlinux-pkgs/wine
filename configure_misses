@@ -195,7 +195,6 @@ Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
 Configure miss: capi20.h
 Configure miss: -lnetapi
-Configure miss: -lvkd3d
 Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument

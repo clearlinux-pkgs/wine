@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.18
-Release  : 36
+Release  : 37
 URL      : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz.sign
@@ -58,14 +58,17 @@ Requires: unixODBC-lib
 Requires: v4l-utils-lib
 Requires: v4l-utils-lib32
 Requires: wine-lib32
+BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
+BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
+BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
@@ -73,22 +76,32 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
+BuildRequires : gnutls-dev
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
+BuildRequires : lcms2-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
+BuildRequires : libXcomposite-dev
 BuildRequires : libXcomposite-dev32
+BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
 BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
 BuildRequires : libXi-dev32
+BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
+BuildRequires : libXrandr-dev
 BuildRequires : libXrandr-dev32
+BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
+BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
+BuildRequires : libxslt-dev
+BuildRequires : mpg123-dev
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
 BuildRequires : openal-soft-dev
@@ -103,18 +116,29 @@ BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
+BuildRequires : pkgconfig(gl)
+BuildRequires : pkgconfig(glu)
 BuildRequires : pkgconfig(gstreamer-1.0)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
+BuildRequires : pkgconfig(xext)
+BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xi)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
 BuildRequires : sane-backends-dev
+BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
+BuildRequires : util-linux
 BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
 BuildRequires : valgrind-dev
+BuildRequires : vkd3d-dev
+BuildRequires : zlib-dev
 Patch1: 0001-Add-libX11-soname-check-fallback-for-SuperX11-libs.patch
 
 %description
@@ -151,7 +175,6 @@ Requires: wine-lib = %{version}-%{release}
 Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
 Provides: wine-devel = %{version}-%{release}
-Requires: wine = %{version}-%{release}
 Requires: wine = %{version}-%{release}
 
 %description dev
@@ -229,8 +252,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571504631
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1572234557
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -244,7 +266,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1571504631
+export SOURCE_DATE_EPOCH=1572234557
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-4.18/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
@@ -1626,6 +1648,7 @@ popd
 /usr/lib64/wine/fakedlls/d3d10_1.dll
 /usr/lib64/wine/fakedlls/d3d10core.dll
 /usr/lib64/wine/fakedlls/d3d11.dll
+/usr/lib64/wine/fakedlls/d3d12.dll
 /usr/lib64/wine/fakedlls/d3d8.dll
 /usr/lib64/wine/fakedlls/d3d9.dll
 /usr/lib64/wine/fakedlls/d3dcompiler_33.dll
@@ -2226,6 +2249,7 @@ popd
 /usr/lib64/wine/libd3d10_1.def
 /usr/lib64/wine/libd3d10core.def
 /usr/lib64/wine/libd3d11.def
+/usr/lib64/wine/libd3d12.def
 /usr/lib64/wine/libd3d8.def
 /usr/lib64/wine/libd3d9.def
 /usr/lib64/wine/libd3dcompiler.def
@@ -3728,6 +3752,7 @@ popd
 /usr/lib64/wine/d3d10_1.dll.so
 /usr/lib64/wine/d3d10core.dll.so
 /usr/lib64/wine/d3d11.dll.so
+/usr/lib64/wine/d3d12.dll.so
 /usr/lib64/wine/d3d8.dll.so
 /usr/lib64/wine/d3d9.dll.so
 /usr/lib64/wine/d3dcompiler_33.dll.so
