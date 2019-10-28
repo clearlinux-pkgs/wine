@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.18
-Release  : 38
+Release  : 40
 URL      : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz.sign
@@ -194,6 +194,14 @@ Requires: wine-dev = %{version}-%{release}
 dev32 components for the wine package.
 
 
+%package extras-staticdev
+Summary: extras-staticdev components for the wine package.
+Group: Default
+
+%description extras-staticdev
+extras-staticdev components for the wine package.
+
+
 %package lib
 Summary: lib components for the wine package.
 Group: Libraries
@@ -253,7 +261,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572236488
+export SOURCE_DATE_EPOCH=1572289300
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -267,7 +275,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1572236488
+export SOURCE_DATE_EPOCH=1572289300
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-4.18/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
@@ -278,6 +286,8 @@ cp %{_builddir}/wine-4.18/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wi
 pushd ../build64
 %make_install
 popd
+find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib32/wine/ \;
+find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
 ## install_append end
 
 %files
@@ -3469,6 +3479,55 @@ popd
 %files dev32
 %defattr(-,root,root,-)
 /usr/lib32/libwine.so
+
+%files extras-staticdev
+%defattr(-,root,root,-)
+/usr/lib32/wine/libadsiid.a
+/usr/lib32/wine/libdinput.a
+/usr/lib32/wine/libdinput8.a
+/usr/lib32/wine/libdmoguids.a
+/usr/lib32/wine/libdxerr8.a
+/usr/lib32/wine/libdxerr9.a
+/usr/lib32/wine/libdxguid.a
+/usr/lib32/wine/libmfuuid.a
+/usr/lib32/wine/libmsvcr100.a
+/usr/lib32/wine/libmsvcr110.a
+/usr/lib32/wine/libmsvcr120.a
+/usr/lib32/wine/libmsvcr70.a
+/usr/lib32/wine/libmsvcr71.a
+/usr/lib32/wine/libmsvcr80.a
+/usr/lib32/wine/libmsvcr90.a
+/usr/lib32/wine/libmsvcrt.a
+/usr/lib32/wine/libmsvcrtd.a
+/usr/lib32/wine/libstrmbase.a
+/usr/lib32/wine/libstrmiids.a
+/usr/lib32/wine/libucrtbase.a
+/usr/lib32/wine/libuuid.a
+/usr/lib32/wine/libwinecrt0.a
+/usr/lib32/wine/libwmcodecdspuuid.a
+/usr/lib64/wine/libadsiid.a
+/usr/lib64/wine/libdinput.a
+/usr/lib64/wine/libdinput8.a
+/usr/lib64/wine/libdmoguids.a
+/usr/lib64/wine/libdxerr8.a
+/usr/lib64/wine/libdxerr9.a
+/usr/lib64/wine/libdxguid.a
+/usr/lib64/wine/libmfuuid.a
+/usr/lib64/wine/libmsvcr100.a
+/usr/lib64/wine/libmsvcr110.a
+/usr/lib64/wine/libmsvcr120.a
+/usr/lib64/wine/libmsvcr70.a
+/usr/lib64/wine/libmsvcr71.a
+/usr/lib64/wine/libmsvcr80.a
+/usr/lib64/wine/libmsvcr90.a
+/usr/lib64/wine/libmsvcrt.a
+/usr/lib64/wine/libmsvcrtd.a
+/usr/lib64/wine/libstrmbase.a
+/usr/lib64/wine/libstrmiids.a
+/usr/lib64/wine/libucrtbase.a
+/usr/lib64/wine/libuuid.a
+/usr/lib64/wine/libwinecrt0.a
+/usr/lib64/wine/libwmcodecdspuuid.a
 
 %files lib
 %defattr(-,root,root,-)
