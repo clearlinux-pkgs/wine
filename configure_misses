@@ -452,7 +452,6 @@ Configure miss: -lgssapi_krb5
 Configure miss: -ltiff
 Configure miss: -lodbc
 Configure miss: -lnetapi
-Configure miss: -lvkd3d
 Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
