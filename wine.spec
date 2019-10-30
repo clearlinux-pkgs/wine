@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.18
-Release  : 41
+Release  : 42
 URL      : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz.sign
@@ -262,7 +262,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572369102
+export SOURCE_DATE_EPOCH=1572469468
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -272,11 +272,12 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-s
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %reconfigure --disable-static --with-wine64=%{_builddir}/build64 \
---libdir=/usr/lib32
+--libdir=/usr/lib32 \
+--disable-win16
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1572369102
+export SOURCE_DATE_EPOCH=1572469468
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-4.18/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
@@ -534,7 +535,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/authz.dll
 /usr/lib32/wine/fakedlls/avicap32.dll
 /usr/lib32/wine/fakedlls/avifil32.dll
-/usr/lib32/wine/fakedlls/avifile.dll16
 /usr/lib32/wine/fakedlls/avrt.dll
 /usr/lib32/wine/fakedlls/bcrypt.dll
 /usr/lib32/wine/fakedlls/bluetoothapis.dll
@@ -554,9 +554,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/comcat.dll
 /usr/lib32/wine/fakedlls/comctl32.dll
 /usr/lib32/wine/fakedlls/comdlg32.dll
-/usr/lib32/wine/fakedlls/comm.drv16
-/usr/lib32/wine/fakedlls/commdlg.dll16
-/usr/lib32/wine/fakedlls/compobj.dll16
 /usr/lib32/wine/fakedlls/compstui.dll
 /usr/lib32/wine/fakedlls/comsvcs.dll
 /usr/lib32/wine/fakedlls/concrt140.dll
@@ -573,9 +570,7 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/cryptui.dll
 /usr/lib32/wine/fakedlls/cscript.exe
 /usr/lib32/wine/fakedlls/ctapi32.dll
-/usr/lib32/wine/fakedlls/ctl3d.dll16
 /usr/lib32/wine/fakedlls/ctl3d32.dll
-/usr/lib32/wine/fakedlls/ctl3dv2.dll16
 /usr/lib32/wine/fakedlls/d2d1.dll
 /usr/lib32/wine/fakedlls/d3d10.dll
 /usr/lib32/wine/fakedlls/d3d10_1.dll
@@ -637,7 +632,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/dbgeng.dll
 /usr/lib32/wine/fakedlls/dbghelp.dll
 /usr/lib32/wine/fakedlls/dciman32.dll
-/usr/lib32/wine/fakedlls/ddeml.dll16
 /usr/lib32/wine/fakedlls/ddraw.dll
 /usr/lib32/wine/fakedlls/ddrawex.dll
 /usr/lib32/wine/fakedlls/devenum.dll
@@ -647,9 +641,7 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/dinput.dll
 /usr/lib32/wine/fakedlls/dinput8.dll
 /usr/lib32/wine/fakedlls/dism.exe
-/usr/lib32/wine/fakedlls/dispdib.dll16
 /usr/lib32/wine/fakedlls/dispex.dll
-/usr/lib32/wine/fakedlls/display.drv16
 /usr/lib32/wine/fakedlls/dmband.dll
 /usr/lib32/wine/fakedlls/dmcompos.dll
 /usr/lib32/wine/fakedlls/dmime.dll
@@ -753,7 +745,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/fusion.dll
 /usr/lib32/wine/fakedlls/fwpuclnt.dll
 /usr/lib32/wine/fakedlls/gameux.dll
-/usr/lib32/wine/fakedlls/gdi.exe16
 /usr/lib32/wine/fakedlls/gdi32.dll
 /usr/lib32/wine/fakedlls/gdiplus.dll
 /usr/lib32/wine/fakedlls/glu32.dll
@@ -776,10 +767,8 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/ieframe.dll
 /usr/lib32/wine/fakedlls/ieproxy.dll
 /usr/lib32/wine/fakedlls/iexplore.exe
-/usr/lib32/wine/fakedlls/ifsmgr.vxd
 /usr/lib32/wine/fakedlls/imaadp32.acm
 /usr/lib32/wine/fakedlls/imagehlp.dll
-/usr/lib32/wine/fakedlls/imm.dll16
 /usr/lib32/wine/fakedlls/imm32.dll
 /usr/lib32/wine/fakedlls/inetcomm.dll
 /usr/lib32/wine/fakedlls/inetcpl.cpl
@@ -800,8 +789,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/kerberos.dll
 /usr/lib32/wine/fakedlls/kernel32.dll
 /usr/lib32/wine/fakedlls/kernelbase.dll
-/usr/lib32/wine/fakedlls/keyboard.drv16
-/usr/lib32/wine/fakedlls/krnl386.exe16
 /usr/lib32/wine/fakedlls/ksecdd.sys
 /usr/lib32/wine/fakedlls/ksuser.dll
 /usr/lib32/wine/fakedlls/ktmw32.dll
@@ -811,7 +798,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/localui.dll
 /usr/lib32/wine/fakedlls/lodctr.exe
 /usr/lib32/wine/fakedlls/lz32.dll
-/usr/lib32/wine/fakedlls/lzexpand.dll16
 /usr/lib32/wine/fakedlls/mapi32.dll
 /usr/lib32/wine/fakedlls/mapistub.dll
 /usr/lib32/wine/fakedlls/mciavi32.dll
@@ -831,16 +817,11 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/mlang.dll
 /usr/lib32/wine/fakedlls/mmcndmgr.dll
 /usr/lib32/wine/fakedlls/mmdevapi.dll
-/usr/lib32/wine/fakedlls/mmdevldr.vxd
-/usr/lib32/wine/fakedlls/mmsystem.dll16
 /usr/lib32/wine/fakedlls/mofcomp.exe
-/usr/lib32/wine/fakedlls/monodebg.vxd
 /usr/lib32/wine/fakedlls/mountmgr.sys
-/usr/lib32/wine/fakedlls/mouse.drv16
 /usr/lib32/wine/fakedlls/mp3dmod.dll
 /usr/lib32/wine/fakedlls/mpr.dll
 /usr/lib32/wine/fakedlls/mprapi.dll
-/usr/lib32/wine/fakedlls/msacm.dll16
 /usr/lib32/wine/fakedlls/msacm32.dll
 /usr/lib32/wine/fakedlls/msacm32.drv
 /usr/lib32/wine/fakedlls/msadp32.acm
@@ -907,7 +888,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/msvcrtd.dll
 /usr/lib32/wine/fakedlls/msvfw32.dll
 /usr/lib32/wine/fakedlls/msvidc32.dll
-/usr/lib32/wine/fakedlls/msvideo.dll16
 /usr/lib32/wine/fakedlls/mswsock.dll
 /usr/lib32/wine/fakedlls/msxml.dll
 /usr/lib32/wine/fakedlls/msxml2.dll
@@ -939,21 +919,13 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/odbc32.dll
 /usr/lib32/wine/fakedlls/odbccp32.dll
 /usr/lib32/wine/fakedlls/odbccu32.dll
-/usr/lib32/wine/fakedlls/ole2.dll16
-/usr/lib32/wine/fakedlls/ole2conv.dll16
-/usr/lib32/wine/fakedlls/ole2disp.dll16
-/usr/lib32/wine/fakedlls/ole2nls.dll16
-/usr/lib32/wine/fakedlls/ole2prox.dll16
-/usr/lib32/wine/fakedlls/ole2thk.dll16
 /usr/lib32/wine/fakedlls/ole32.dll
 /usr/lib32/wine/fakedlls/oleacc.dll
 /usr/lib32/wine/fakedlls/oleaut32.dll
-/usr/lib32/wine/fakedlls/olecli.dll16
 /usr/lib32/wine/fakedlls/olecli32.dll
 /usr/lib32/wine/fakedlls/oledb32.dll
 /usr/lib32/wine/fakedlls/oledlg.dll
 /usr/lib32/wine/fakedlls/olepro32.dll
-/usr/lib32/wine/fakedlls/olesvr.dll16
 /usr/lib32/wine/fakedlls/olesvr32.dll
 /usr/lib32/wine/fakedlls/olethk32.dll
 /usr/lib32/wine/fakedlls/oleview.exe
@@ -982,7 +954,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/quartz.dll
 /usr/lib32/wine/fakedlls/query.dll
 /usr/lib32/wine/fakedlls/qwave.dll
-/usr/lib32/wine/fakedlls/rasapi16.dll16
 /usr/lib32/wine/fakedlls/rasapi32.dll
 /usr/lib32/wine/fakedlls/rasdlg.dll
 /usr/lib32/wine/fakedlls/reg.exe
@@ -1001,7 +972,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/rsaenh.dll
 /usr/lib32/wine/fakedlls/rstrtmgr.dll
 /usr/lib32/wine/fakedlls/rtutils.dll
-/usr/lib32/wine/fakedlls/rundll.exe16
 /usr/lib32/wine/fakedlls/rundll32.exe
 /usr/lib32/wine/fakedlls/samlib.dll
 /usr/lib32/wine/fakedlls/sane.ds
@@ -1025,13 +995,11 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/servicemodelreg.exe
 /usr/lib32/wine/fakedlls/services.exe
 /usr/lib32/wine/fakedlls/setupapi.dll
-/usr/lib32/wine/fakedlls/setupx.dll16
 /usr/lib32/wine/fakedlls/sfc.dll
 /usr/lib32/wine/fakedlls/sfc_os.dll
 /usr/lib32/wine/fakedlls/shcore.dll
 /usr/lib32/wine/fakedlls/shdoclc.dll
 /usr/lib32/wine/fakedlls/shdocvw.dll
-/usr/lib32/wine/fakedlls/shell.dll16
 /usr/lib32/wine/fakedlls/shell32.dll
 /usr/lib32/wine/fakedlls/shfolder.dll
 /usr/lib32/wine/fakedlls/shlwapi.dll
@@ -1040,7 +1008,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/slc.dll
 /usr/lib32/wine/fakedlls/snmpapi.dll
 /usr/lib32/wine/fakedlls/softpub.dll
-/usr/lib32/wine/fakedlls/sound.drv16
 /usr/lib32/wine/fakedlls/spoolss.dll
 /usr/lib32/wine/fakedlls/spoolsv.exe
 /usr/lib32/wine/fakedlls/srclient.dll
@@ -1049,14 +1016,11 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/stdole2.tlb
 /usr/lib32/wine/fakedlls/stdole32.tlb
 /usr/lib32/wine/fakedlls/sti.dll
-/usr/lib32/wine/fakedlls/storage.dll16
-/usr/lib32/wine/fakedlls/stress.dll16
 /usr/lib32/wine/fakedlls/strmdll.dll
 /usr/lib32/wine/fakedlls/subst.exe
 /usr/lib32/wine/fakedlls/svchost.exe
 /usr/lib32/wine/fakedlls/svrapi.dll
 /usr/lib32/wine/fakedlls/sxs.dll
-/usr/lib32/wine/fakedlls/system.drv16
 /usr/lib32/wine/fakedlls/systeminfo.exe
 /usr/lib32/wine/fakedlls/t2embed.dll
 /usr/lib32/wine/fakedlls/tapi32.dll
@@ -1067,11 +1031,8 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/tdh.dll
 /usr/lib32/wine/fakedlls/tdi.sys
 /usr/lib32/wine/fakedlls/termsv.exe
-/usr/lib32/wine/fakedlls/toolhelp.dll16
 /usr/lib32/wine/fakedlls/traffic.dll
-/usr/lib32/wine/fakedlls/twain.dll16
 /usr/lib32/wine/fakedlls/twain_32.dll
-/usr/lib32/wine/fakedlls/typelib.dll16
 /usr/lib32/wine/fakedlls/tzres.dll
 /usr/lib32/wine/fakedlls/ucrtbase.dll
 /usr/lib32/wine/fakedlls/uianimation.dll
@@ -1084,7 +1045,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/url.dll
 /usr/lib32/wine/fakedlls/urlmon.dll
 /usr/lib32/wine/fakedlls/usbd.sys
-/usr/lib32/wine/fakedlls/user.exe16
 /usr/lib32/wine/fakedlls/user32.dll
 /usr/lib32/wine/fakedlls/userenv.dll
 /usr/lib32/wine/fakedlls/usp10.dll
@@ -1098,21 +1058,12 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/vcomp140.dll
 /usr/lib32/wine/fakedlls/vcomp90.dll
 /usr/lib32/wine/fakedlls/vcruntime140.dll
-/usr/lib32/wine/fakedlls/vdhcp.vxd
 /usr/lib32/wine/fakedlls/vdmdbg.dll
-/usr/lib32/wine/fakedlls/ver.dll16
 /usr/lib32/wine/fakedlls/version.dll
 /usr/lib32/wine/fakedlls/view.exe
 /usr/lib32/wine/fakedlls/virtdisk.dll
-/usr/lib32/wine/fakedlls/vmm.vxd
-/usr/lib32/wine/fakedlls/vnbt.vxd
-/usr/lib32/wine/fakedlls/vnetbios.vxd
 /usr/lib32/wine/fakedlls/vssapi.dll
-/usr/lib32/wine/fakedlls/vtdapi.vxd
 /usr/lib32/wine/fakedlls/vulkan-1.dll
-/usr/lib32/wine/fakedlls/vwin32.vxd
-/usr/lib32/wine/fakedlls/w32skrnl.dll
-/usr/lib32/wine/fakedlls/w32sys.dll16
 /usr/lib32/wine/fakedlls/wbemdisp.dll
 /usr/lib32/wine/fakedlls/wbemprox.dll
 /usr/lib32/wine/fakedlls/wdscore.dll
@@ -1122,10 +1073,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/wevtutil.exe
 /usr/lib32/wine/fakedlls/wiaservc.dll
 /usr/lib32/wine/fakedlls/wimgapi.dll
-/usr/lib32/wine/fakedlls/win32s16.dll16
-/usr/lib32/wine/fakedlls/win87em.dll16
-/usr/lib32/wine/fakedlls/winaspi.dll16
-/usr/lib32/wine/fakedlls/windebug.dll16
 /usr/lib32/wine/fakedlls/windowscodecs.dll
 /usr/lib32/wine/fakedlls/windowscodecsext.dll
 /usr/lib32/wine/fakedlls/wineboot.exe
@@ -1145,27 +1092,19 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/winemsibuilder.exe
 /usr/lib32/wine/fakedlls/winepath.exe
 /usr/lib32/wine/fakedlls/wineps.drv
-/usr/lib32/wine/fakedlls/wineps16.drv16
 /usr/lib32/wine/fakedlls/winepulse.drv
-/usr/lib32/wine/fakedlls/winevdm.exe
 /usr/lib32/wine/fakedlls/winevulkan.dll
 /usr/lib32/wine/fakedlls/winex11.drv
-/usr/lib32/wine/fakedlls/wing.dll16
 /usr/lib32/wine/fakedlls/wing32.dll
-/usr/lib32/wine/fakedlls/winhelp.exe16
 /usr/lib32/wine/fakedlls/winhlp32.exe
 /usr/lib32/wine/fakedlls/winhttp.dll
 /usr/lib32/wine/fakedlls/wininet.dll
 /usr/lib32/wine/fakedlls/winmgmt.exe
 /usr/lib32/wine/fakedlls/winmm.dll
-/usr/lib32/wine/fakedlls/winnls.dll16
 /usr/lib32/wine/fakedlls/winnls32.dll
-/usr/lib32/wine/fakedlls/winoldap.mod16
 /usr/lib32/wine/fakedlls/winscard.dll
-/usr/lib32/wine/fakedlls/winsock.dll16
 /usr/lib32/wine/fakedlls/winspool.drv
 /usr/lib32/wine/fakedlls/winsta.dll
-/usr/lib32/wine/fakedlls/wintab.dll16
 /usr/lib32/wine/fakedlls/wintab32.dll
 /usr/lib32/wine/fakedlls/wintrust.dll
 /usr/lib32/wine/fakedlls/winusb.dll
@@ -1183,7 +1122,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fakedlls/wmvcore.dll
 /usr/lib32/wine/fakedlls/wnaspi32.dll
 /usr/lib32/wine/fakedlls/wordpad.exe
-/usr/lib32/wine/fakedlls/wow32.dll
 /usr/lib32/wine/fakedlls/wpc.dll
 /usr/lib32/wine/fakedlls/write.exe
 /usr/lib32/wine/fakedlls/ws2_32.dll
@@ -1274,7 +1212,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/libinetcomm.def
 /usr/lib32/wine/libiphlpapi.def
 /usr/lib32/wine/libjsproxy.def
-/usr/lib32/wine/libkernel.def
 /usr/lib32/wine/libkernel32.def
 /usr/lib32/wine/libkernelbase.def
 /usr/lib32/wine/libloadperf.def
@@ -1374,7 +1311,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/libwldap32.def
 /usr/lib32/wine/libwmvcore.def
 /usr/lib32/wine/libwnaspi32.def
-/usr/lib32/wine/libwow32.def
 /usr/lib32/wine/libws2_32.def
 /usr/lib32/wine/libwsdapi.def
 /usr/lib32/wine/libwsnmp32.def
@@ -4626,7 +4562,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/authz.dll.so
 /usr/lib32/wine/avicap32.dll.so
 /usr/lib32/wine/avifil32.dll.so
-/usr/lib32/wine/avifile.dll16.so
 /usr/lib32/wine/avrt.dll.so
 /usr/lib32/wine/bcrypt.dll.so
 /usr/lib32/wine/bluetoothapis.dll.so
@@ -4646,9 +4581,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/comcat.dll.so
 /usr/lib32/wine/comctl32.dll.so
 /usr/lib32/wine/comdlg32.dll.so
-/usr/lib32/wine/comm.drv16.so
-/usr/lib32/wine/commdlg.dll16.so
-/usr/lib32/wine/compobj.dll16.so
 /usr/lib32/wine/compstui.dll.so
 /usr/lib32/wine/comsvcs.dll.so
 /usr/lib32/wine/concrt140.dll.so
@@ -4665,9 +4597,7 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/cryptui.dll.so
 /usr/lib32/wine/cscript.exe.so
 /usr/lib32/wine/ctapi32.dll.so
-/usr/lib32/wine/ctl3d.dll16.so
 /usr/lib32/wine/ctl3d32.dll.so
-/usr/lib32/wine/ctl3dv2.dll16.so
 /usr/lib32/wine/d2d1.dll.so
 /usr/lib32/wine/d3d12.dll.so
 /usr/lib32/wine/d3d8.dll.so
@@ -4725,7 +4655,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/dbgeng.dll.so
 /usr/lib32/wine/dbghelp.dll.so
 /usr/lib32/wine/dciman32.dll.so
-/usr/lib32/wine/ddeml.dll16.so
 /usr/lib32/wine/ddraw.dll.so
 /usr/lib32/wine/ddrawex.dll.so
 /usr/lib32/wine/devenum.dll.so
@@ -4735,9 +4664,7 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/dinput.dll.so
 /usr/lib32/wine/dinput8.dll.so
 /usr/lib32/wine/dism.exe.so
-/usr/lib32/wine/dispdib.dll16.so
 /usr/lib32/wine/dispex.dll.so
-/usr/lib32/wine/display.drv16.so
 /usr/lib32/wine/dmband.dll.so
 /usr/lib32/wine/dmcompos.dll.so
 /usr/lib32/wine/dmime.dll.so
@@ -4840,7 +4767,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/fusion.dll.so
 /usr/lib32/wine/fwpuclnt.dll.so
 /usr/lib32/wine/gameux.dll.so
-/usr/lib32/wine/gdi.exe16.so
 /usr/lib32/wine/gdi32.dll.so
 /usr/lib32/wine/gdiplus.dll.so
 /usr/lib32/wine/glu32.dll.so
@@ -4863,10 +4789,8 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/ieframe.dll.so
 /usr/lib32/wine/ieproxy.dll.so
 /usr/lib32/wine/iexplore.exe.so
-/usr/lib32/wine/ifsmgr.vxd.so
 /usr/lib32/wine/imaadp32.acm.so
 /usr/lib32/wine/imagehlp.dll.so
-/usr/lib32/wine/imm.dll16.so
 /usr/lib32/wine/imm32.dll.so
 /usr/lib32/wine/inetcomm.dll.so
 /usr/lib32/wine/inetcpl.cpl.so
@@ -4887,8 +4811,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/kerberos.dll.so
 /usr/lib32/wine/kernel32.dll.so
 /usr/lib32/wine/kernelbase.dll.so
-/usr/lib32/wine/keyboard.drv16.so
-/usr/lib32/wine/krnl386.exe16.so
 /usr/lib32/wine/ksecdd.sys.so
 /usr/lib32/wine/ksuser.dll.so
 /usr/lib32/wine/ktmw32.dll.so
@@ -4898,7 +4820,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/localui.dll.so
 /usr/lib32/wine/lodctr.exe.so
 /usr/lib32/wine/lz32.dll.so
-/usr/lib32/wine/lzexpand.dll16.so
 /usr/lib32/wine/mapi32.dll.so
 /usr/lib32/wine/mapistub.dll.so
 /usr/lib32/wine/mciavi32.dll.so
@@ -4918,16 +4839,11 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/mlang.dll.so
 /usr/lib32/wine/mmcndmgr.dll.so
 /usr/lib32/wine/mmdevapi.dll.so
-/usr/lib32/wine/mmdevldr.vxd.so
-/usr/lib32/wine/mmsystem.dll16.so
 /usr/lib32/wine/mofcomp.exe.so
-/usr/lib32/wine/monodebg.vxd.so
 /usr/lib32/wine/mountmgr.sys.so
-/usr/lib32/wine/mouse.drv16.so
 /usr/lib32/wine/mp3dmod.dll.so
 /usr/lib32/wine/mpr.dll.so
 /usr/lib32/wine/mprapi.dll.so
-/usr/lib32/wine/msacm.dll16.so
 /usr/lib32/wine/msacm32.dll.so
 /usr/lib32/wine/msacm32.drv.so
 /usr/lib32/wine/msadp32.acm.so
@@ -4994,7 +4910,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/msvcrtd.dll.so
 /usr/lib32/wine/msvfw32.dll.so
 /usr/lib32/wine/msvidc32.dll.so
-/usr/lib32/wine/msvideo.dll16.so
 /usr/lib32/wine/mswsock.dll.so
 /usr/lib32/wine/msxml.dll.so
 /usr/lib32/wine/msxml2.dll.so
@@ -5026,21 +4941,13 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/odbc32.dll.so
 /usr/lib32/wine/odbccp32.dll.so
 /usr/lib32/wine/odbccu32.dll.so
-/usr/lib32/wine/ole2.dll16.so
-/usr/lib32/wine/ole2conv.dll16.so
-/usr/lib32/wine/ole2disp.dll16.so
-/usr/lib32/wine/ole2nls.dll16.so
-/usr/lib32/wine/ole2prox.dll16.so
-/usr/lib32/wine/ole2thk.dll16.so
 /usr/lib32/wine/ole32.dll.so
 /usr/lib32/wine/oleacc.dll.so
 /usr/lib32/wine/oleaut32.dll.so
-/usr/lib32/wine/olecli.dll16.so
 /usr/lib32/wine/olecli32.dll.so
 /usr/lib32/wine/oledb32.dll.so
 /usr/lib32/wine/oledlg.dll.so
 /usr/lib32/wine/olepro32.dll.so
-/usr/lib32/wine/olesvr.dll16.so
 /usr/lib32/wine/olesvr32.dll.so
 /usr/lib32/wine/olethk32.dll.so
 /usr/lib32/wine/oleview.exe.so
@@ -5069,7 +4976,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/quartz.dll.so
 /usr/lib32/wine/query.dll.so
 /usr/lib32/wine/qwave.dll.so
-/usr/lib32/wine/rasapi16.dll16.so
 /usr/lib32/wine/rasapi32.dll.so
 /usr/lib32/wine/rasdlg.dll.so
 /usr/lib32/wine/reg.exe.so
@@ -5088,7 +4994,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/rsaenh.dll.so
 /usr/lib32/wine/rstrtmgr.dll.so
 /usr/lib32/wine/rtutils.dll.so
-/usr/lib32/wine/rundll.exe16.so
 /usr/lib32/wine/rundll32.exe.so
 /usr/lib32/wine/samlib.dll.so
 /usr/lib32/wine/sane.ds.so
@@ -5112,13 +5017,11 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/servicemodelreg.exe.so
 /usr/lib32/wine/services.exe.so
 /usr/lib32/wine/setupapi.dll.so
-/usr/lib32/wine/setupx.dll16.so
 /usr/lib32/wine/sfc.dll.so
 /usr/lib32/wine/sfc_os.dll.so
 /usr/lib32/wine/shcore.dll.so
 /usr/lib32/wine/shdoclc.dll.so
 /usr/lib32/wine/shdocvw.dll.so
-/usr/lib32/wine/shell.dll16.so
 /usr/lib32/wine/shell32.dll.so
 /usr/lib32/wine/shfolder.dll.so
 /usr/lib32/wine/shlwapi.dll.so
@@ -5127,7 +5030,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/slc.dll.so
 /usr/lib32/wine/snmpapi.dll.so
 /usr/lib32/wine/softpub.dll.so
-/usr/lib32/wine/sound.drv16.so
 /usr/lib32/wine/spoolss.dll.so
 /usr/lib32/wine/spoolsv.exe.so
 /usr/lib32/wine/srclient.dll.so
@@ -5136,14 +5038,11 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/stdole2.tlb.so
 /usr/lib32/wine/stdole32.tlb.so
 /usr/lib32/wine/sti.dll.so
-/usr/lib32/wine/storage.dll16.so
-/usr/lib32/wine/stress.dll16.so
 /usr/lib32/wine/strmdll.dll.so
 /usr/lib32/wine/subst.exe.so
 /usr/lib32/wine/svchost.exe.so
 /usr/lib32/wine/svrapi.dll.so
 /usr/lib32/wine/sxs.dll.so
-/usr/lib32/wine/system.drv16.so
 /usr/lib32/wine/systeminfo.exe.so
 /usr/lib32/wine/t2embed.dll.so
 /usr/lib32/wine/tapi32.dll.so
@@ -5154,11 +5053,8 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/tdh.dll.so
 /usr/lib32/wine/tdi.sys.so
 /usr/lib32/wine/termsv.exe.so
-/usr/lib32/wine/toolhelp.dll16.so
 /usr/lib32/wine/traffic.dll.so
-/usr/lib32/wine/twain.dll16.so
 /usr/lib32/wine/twain_32.dll.so
-/usr/lib32/wine/typelib.dll16.so
 /usr/lib32/wine/tzres.dll.so
 /usr/lib32/wine/ucrtbase.dll.so
 /usr/lib32/wine/uianimation.dll.so
@@ -5171,7 +5067,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/url.dll.so
 /usr/lib32/wine/urlmon.dll.so
 /usr/lib32/wine/usbd.sys.so
-/usr/lib32/wine/user.exe16.so
 /usr/lib32/wine/user32.dll.so
 /usr/lib32/wine/userenv.dll.so
 /usr/lib32/wine/usp10.dll.so
@@ -5185,21 +5080,12 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/vcomp140.dll.so
 /usr/lib32/wine/vcomp90.dll.so
 /usr/lib32/wine/vcruntime140.dll.so
-/usr/lib32/wine/vdhcp.vxd.so
 /usr/lib32/wine/vdmdbg.dll.so
-/usr/lib32/wine/ver.dll16.so
 /usr/lib32/wine/version.dll.so
 /usr/lib32/wine/view.exe.so
 /usr/lib32/wine/virtdisk.dll.so
-/usr/lib32/wine/vmm.vxd.so
-/usr/lib32/wine/vnbt.vxd.so
-/usr/lib32/wine/vnetbios.vxd.so
 /usr/lib32/wine/vssapi.dll.so
-/usr/lib32/wine/vtdapi.vxd.so
 /usr/lib32/wine/vulkan-1.dll.so
-/usr/lib32/wine/vwin32.vxd.so
-/usr/lib32/wine/w32skrnl.dll.so
-/usr/lib32/wine/w32sys.dll16.so
 /usr/lib32/wine/wbemdisp.dll.so
 /usr/lib32/wine/wbemprox.dll.so
 /usr/lib32/wine/wdscore.dll.so
@@ -5209,10 +5095,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/wevtutil.exe.so
 /usr/lib32/wine/wiaservc.dll.so
 /usr/lib32/wine/wimgapi.dll.so
-/usr/lib32/wine/win32s16.dll16.so
-/usr/lib32/wine/win87em.dll16.so
-/usr/lib32/wine/winaspi.dll16.so
-/usr/lib32/wine/windebug.dll16.so
 /usr/lib32/wine/windowscodecs.dll.so
 /usr/lib32/wine/windowscodecsext.dll.so
 /usr/lib32/wine/wineboot.exe.so
@@ -5232,27 +5114,19 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/winemsibuilder.exe.so
 /usr/lib32/wine/winepath.exe.so
 /usr/lib32/wine/wineps.drv.so
-/usr/lib32/wine/wineps16.drv16.so
 /usr/lib32/wine/winepulse.drv.so
-/usr/lib32/wine/winevdm.exe.so
 /usr/lib32/wine/winevulkan.dll.so
 /usr/lib32/wine/winex11.drv.so
-/usr/lib32/wine/wing.dll16.so
 /usr/lib32/wine/wing32.dll.so
-/usr/lib32/wine/winhelp.exe16.so
 /usr/lib32/wine/winhlp32.exe.so
 /usr/lib32/wine/winhttp.dll.so
 /usr/lib32/wine/wininet.dll.so
 /usr/lib32/wine/winmgmt.exe.so
 /usr/lib32/wine/winmm.dll.so
-/usr/lib32/wine/winnls.dll16.so
 /usr/lib32/wine/winnls32.dll.so
-/usr/lib32/wine/winoldap.mod16.so
 /usr/lib32/wine/winscard.dll.so
-/usr/lib32/wine/winsock.dll16.so
 /usr/lib32/wine/winspool.drv.so
 /usr/lib32/wine/winsta.dll.so
-/usr/lib32/wine/wintab.dll16.so
 /usr/lib32/wine/wintab32.dll.so
 /usr/lib32/wine/wintrust.dll.so
 /usr/lib32/wine/winusb.dll.so
@@ -5270,7 +5144,6 @@ rm %{buildroot}/usr/lib{32,64}/wine/{d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 /usr/lib32/wine/wmvcore.dll.so
 /usr/lib32/wine/wnaspi32.dll.so
 /usr/lib32/wine/wordpad.exe.so
-/usr/lib32/wine/wow32.dll.so
 /usr/lib32/wine/wpc.dll.so
 /usr/lib32/wine/write.exe.so
 /usr/lib32/wine/ws2_32.dll.so
