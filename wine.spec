@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 4.18
-Release  : 43
+Release  : 44
 URL      : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz
 Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.18.tar.xz.sign
