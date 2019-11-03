@@ -42,3 +42,8 @@ sane-backends-dev
 krb5-dev
 vkd3d-dev
 vkd3d-dev32
+mingw-binutils
+mingw-crt
+mingw-gcc
+mingw-crt-dev
+
