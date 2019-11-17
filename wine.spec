@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.19
-Release  : 46
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.19.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.19.tar.xz
-Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.19.tar.xz.sign
+Version  : 4.20
+Release  : 47
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.20.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.20.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.20.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -58,17 +58,14 @@ Requires: unixODBC-lib
 Requires: v4l-utils-lib
 Requires: v4l-utils-lib32
 Requires: wine-lib32
-BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
-BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
-BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
@@ -76,36 +73,26 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
-BuildRequires : gnutls-dev
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
-BuildRequires : lcms2-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
-BuildRequires : libXcomposite-dev
 BuildRequires : libXcomposite-dev32
-BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
 BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
 BuildRequires : libXi-dev32
-BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
-BuildRequires : libXrandr-dev
 BuildRequires : libXrandr-dev32
-BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
-BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
-BuildRequires : libxslt-dev
 BuildRequires : mingw-binutils
 BuildRequires : mingw-crt
 BuildRequires : mingw-crt-dev
 BuildRequires : mingw-gcc
-BuildRequires : mpg123-dev
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
 BuildRequires : openal-soft-dev
@@ -120,30 +107,20 @@ BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
-BuildRequires : pkgconfig(gl)
-BuildRequires : pkgconfig(glu)
 BuildRequires : pkgconfig(gstreamer-1.0)
-BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
-BuildRequires : pkgconfig(xext)
-BuildRequires : pkgconfig(xfixes)
-BuildRequires : pkgconfig(xi)
-BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
 BuildRequires : sane-backends-dev
-BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
-BuildRequires : util-linux
 BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
 BuildRequires : valgrind-dev
 BuildRequires : vkd3d-dev
 BuildRequires : vkd3d-dev32
-BuildRequires : zlib-dev
 Patch1: 0001-Add-libX11-soname-check-fallback-for-SuperX11-libs.patch
 
 %description
@@ -244,7 +221,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.19
+%setup -q -n wine-4.20
+cd %{_builddir}/wine-4.20
 %patch1 -p1
 
 %build
@@ -266,7 +244,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572807875
+export SOURCE_DATE_EPOCH=1574011151
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -282,12 +260,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1572807875
+export SOURCE_DATE_EPOCH=1574011151
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-4.19/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-4.19/LICENSE %{buildroot}/usr/share/package-licenses/wine/028b80eb431125914ad2f8883b0ad4ff40daefa6
-cp %{_builddir}/wine-4.19/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-4.20/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-4.20/LICENSE %{buildroot}/usr/share/package-licenses/wine/028b80eb431125914ad2f8883b0ad4ff40daefa6
+cp %{_builddir}/wine-4.20/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -667,6 +645,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/dpvoice.dll
 /usr/lib32/wine/fakedlls/dpwsockx.dll
 /usr/lib32/wine/fakedlls/drmclien.dll
+/usr/lib32/wine/fakedlls/dsdmo.dll
 /usr/lib32/wine/fakedlls/dsound.dll
 /usr/lib32/wine/fakedlls/dsquery.dll
 /usr/lib32/wine/fakedlls/dssenh.dll
@@ -1677,6 +1656,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/dpvoice.dll
 /usr/lib64/wine/dpwsockx.dll
 /usr/lib64/wine/drmclien.dll
+/usr/lib64/wine/dsdmo.dll
 /usr/lib64/wine/dsound.dll
 /usr/lib64/wine/dsquery.dll
 /usr/lib64/wine/dssenh.dll
@@ -2062,6 +2042,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libnetapi32.cross.a
 /usr/lib64/wine/libnetapi32.def
 /usr/lib64/wine/libnewdev.def
+/usr/lib64/wine/libnewdev.delay.a
 /usr/lib64/wine/libninput.cross.a
 /usr/lib64/wine/libninput.def
 /usr/lib64/wine/libnormaliz.def
@@ -2621,6 +2602,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/share/wine/fonts/wingding.ttf
 /usr/share/wine/l_intl.nls
 /usr/share/wine/wine.inf
+/usr/share/wine/winebus.inf
 /usr/share/wine/winehid.inf
 
 %files dev
@@ -4096,6 +4078,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/dpvoice.dll.so
 /usr/lib32/wine/dpwsockx.dll.so
 /usr/lib32/wine/drmclien.dll.so
+/usr/lib32/wine/dsdmo.dll.so
 /usr/lib32/wine/dsound.dll.so
 /usr/lib32/wine/dsquery.dll.so
 /usr/lib32/wine/dssenh.dll.so
