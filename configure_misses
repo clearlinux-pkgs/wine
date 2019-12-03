@@ -49,6 +49,12 @@ Configure miss: QuickTime/ImageCompression.h
 Configure miss: Security/Security.h usability
 Configure miss: Security/Security.h presence
 Configure miss: Security/Security.h
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h usability
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h presence
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h usability
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h presence
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h
 Configure miss: alias.h usability
 Configure miss: alias.h presence
 Configure miss: alias.h
@@ -202,6 +208,7 @@ Configure miss: __res_get_state
 Configure miss: __res_getservers
 Configure miss: _spawnvp
 Configure miss: getattrlist
+Configure miss: mach_continuous_time
 Configure miss: port_create
 Configure miss: proc_pidinfo
 Configure miss: setprogname
@@ -281,6 +288,12 @@ Configure miss: QuickTime/ImageCompression.h
 Configure miss: Security/Security.h usability
 Configure miss: Security/Security.h presence
 Configure miss: Security/Security.h
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h usability
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h presence
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h usability
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h presence
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h
 Configure miss: alias.h usability
 Configure miss: alias.h presence
 Configure miss: alias.h
@@ -459,6 +472,7 @@ Configure miss: __res_get_state
 Configure miss: __res_getservers
 Configure miss: _spawnvp
 Configure miss: getattrlist
+Configure miss: mach_continuous_time
 Configure miss: port_create
 Configure miss: proc_pidinfo
 Configure miss: setprogname

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 4.20
-Release  : 47
-URL      : https://dl.winehq.org/wine/source/4.x/wine-4.20.tar.xz
-Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.20.tar.xz
-Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.20.tar.xz.sign
+Version  : 4.21
+Release  : 48
+URL      : https://dl.winehq.org/wine/source/4.x/wine-4.21.tar.xz
+Source0  : https://dl.winehq.org/wine/source/4.x/wine-4.21.tar.xz
+Source1 : https://dl.winehq.org/wine/source/4.x/wine-4.21.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -58,14 +58,17 @@ Requires: unixODBC-lib
 Requires: v4l-utils-lib
 Requires: v4l-utils-lib32
 Requires: wine-lib32
+BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
+BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
+BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-dev32
 BuildRequires : freetype-dev32
 BuildRequires : gcc-dev32
@@ -73,26 +76,36 @@ BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libstdc++32
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
+BuildRequires : gnutls-dev
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
+BuildRequires : lcms2-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
+BuildRequires : libXcomposite-dev
 BuildRequires : libXcomposite-dev32
+BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
 BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
 BuildRequires : libXi-dev32
+BuildRequires : libXinerama-dev
 BuildRequires : libXinerama-dev32
+BuildRequires : libXrandr-dev
 BuildRequires : libXrandr-dev32
+BuildRequires : libXrender-dev
 BuildRequires : libXrender-dev32
+BuildRequires : libXxf86vm-dev
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
 BuildRequires : libxml2-dev32
+BuildRequires : libxslt-dev
 BuildRequires : mingw-binutils
 BuildRequires : mingw-crt
 BuildRequires : mingw-crt-dev
 BuildRequires : mingw-gcc
+BuildRequires : mpg123-dev
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
 BuildRequires : openal-soft-dev
@@ -107,20 +120,30 @@ BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
+BuildRequires : pkgconfig(gl)
+BuildRequires : pkgconfig(glu)
 BuildRequires : pkgconfig(gstreamer-1.0)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
+BuildRequires : pkgconfig(xext)
+BuildRequires : pkgconfig(xfixes)
+BuildRequires : pkgconfig(xi)
+BuildRequires : pkgconfig(xrandr)
 BuildRequires : pulseaudio-dev32
 BuildRequires : sane-backends-dev
+BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
+BuildRequires : util-linux
 BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
 BuildRequires : valgrind-dev
 BuildRequires : vkd3d-dev
 BuildRequires : vkd3d-dev32
+BuildRequires : zlib-dev
 Patch1: 0001-Add-libX11-soname-check-fallback-for-SuperX11-libs.patch
 
 %description
@@ -221,8 +244,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-4.20
-cd %{_builddir}/wine-4.20
+%setup -q -n wine-4.21
+cd %{_builddir}/wine-4.21
 %patch1 -p1
 
 %build
@@ -244,7 +267,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1574011151
+export SOURCE_DATE_EPOCH=1575401080
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -260,12 +283,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1574011151
+export SOURCE_DATE_EPOCH=1575401080
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-4.20/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-4.20/LICENSE %{buildroot}/usr/share/package-licenses/wine/028b80eb431125914ad2f8883b0ad4ff40daefa6
-cp %{_builddir}/wine-4.20/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-4.21/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-4.21/LICENSE %{buildroot}/usr/share/package-licenses/wine/028b80eb431125914ad2f8883b0ad4ff40daefa6
+cp %{_builddir}/wine-4.21/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -1173,6 +1196,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/libdbghelp.def
 /usr/lib32/wine/libdciman32.def
 /usr/lib32/wine/libddraw.def
+/usr/lib32/wine/libdhcpcsvc.def
 /usr/lib32/wine/libdnsapi.def
 /usr/lib32/wine/libdplayx.def
 /usr/lib32/wine/libdpnet.def
@@ -1545,6 +1569,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/browseui.dll
 /usr/lib64/wine/bthprops.cpl
 /usr/lib64/wine/cabarc.exe
+/usr/lib64/wine/cabinet.dll
 /usr/lib64/wine/cacls.exe
 /usr/lib64/wine/cards.dll
 /usr/lib64/wine/cdosys.dll
@@ -1728,7 +1753,6 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/fakedlls/advapi32.dll
 /usr/lib64/wine/fakedlls/avicap32.dll
 /usr/lib64/wine/fakedlls/bcrypt.dll
-/usr/lib64/wine/fakedlls/cabinet.dll
 /usr/lib64/wine/fakedlls/capi2032.dll
 /usr/lib64/wine/fakedlls/crtdll.dll
 /usr/lib64/wine/fakedlls/crypt32.dll
@@ -1764,7 +1788,6 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/fakedlls/netapi32.dll
 /usr/lib64/wine/fakedlls/ntdll.dll
 /usr/lib64/wine/fakedlls/odbc32.dll
-/usr/lib64/wine/fakedlls/opcservices.dll
 /usr/lib64/wine/fakedlls/openal32.dll
 /usr/lib64/wine/fakedlls/opengl32.dll
 /usr/lib64/wine/fakedlls/qcap.dll
@@ -1787,8 +1810,6 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/fakedlls/winepulse.drv
 /usr/lib64/wine/fakedlls/winevulkan.dll
 /usr/lib64/wine/fakedlls/winex11.drv
-/usr/lib64/wine/fakedlls/winhttp.dll
-/usr/lib64/wine/fakedlls/wininet.dll
 /usr/lib64/wine/fakedlls/winspool.drv
 /usr/lib64/wine/fakedlls/winver.exe
 /usr/lib64/wine/fakedlls/wldap32.dll
@@ -1889,6 +1910,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libcredui.def
 /usr/lib64/wine/libcrypt32.cross.a
 /usr/lib64/wine/libcrypt32.def
+/usr/lib64/wine/libcrypt32.delay.a
 /usr/lib64/wine/libcryptdll.def
 /usr/lib64/wine/libcryptnet.cross.a
 /usr/lib64/wine/libcryptnet.def
@@ -1930,6 +1952,9 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libdciman32.def
 /usr/lib64/wine/libddraw.cross.a
 /usr/lib64/wine/libddraw.def
+/usr/lib64/wine/libdhcpcsvc.cross.a
+/usr/lib64/wine/libdhcpcsvc.def
+/usr/lib64/wine/libdhcpcsvc.delay.a
 /usr/lib64/wine/libdinput.cross.a
 /usr/lib64/wine/libdinput8.cross.a
 /usr/lib64/wine/libdmoguids.cross.a
@@ -2123,6 +2148,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libsxs.def
 /usr/lib64/wine/libt2embed.cross.a
 /usr/lib64/wine/libt2embed.def
+/usr/lib64/wine/libtapi32.cross.a
 /usr/lib64/wine/libtapi32.def
 /usr/lib64/wine/libucrtbase.cross.a
 /usr/lib64/wine/libuiautomationcore.cross.a
@@ -2324,6 +2350,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/olesvr32.dll
 /usr/lib64/wine/olethk32.dll
 /usr/lib64/wine/oleview.exe
+/usr/lib64/wine/opcservices.dll
 /usr/lib64/wine/packager.dll
 /usr/lib64/wine/pdh.dll
 /usr/lib64/wine/photometadatahandler.dll
@@ -2470,6 +2497,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/wineps.drv
 /usr/lib64/wine/wing32.dll
 /usr/lib64/wine/winhlp32.exe
+/usr/lib64/wine/winhttp.dll
+/usr/lib64/wine/wininet.dll
 /usr/lib64/wine/winmgmt.exe
 /usr/lib64/wine/winmm.dll
 /usr/lib64/wine/winnls32.dll
@@ -2738,6 +2767,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/cmnquery.h
 /usr/include/wine/windows/cmnquery.idl
 /usr/include/wine/windows/colinf.idl
+/usr/include/wine/windows/colordlg.h
 /usr/include/wine/windows/comcat.h
 /usr/include/wine/windows/comcat.idl
 /usr/include/wine/windows/commctrl.h
@@ -3646,7 +3676,6 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/advapi32.dll.so
 /usr/lib64/wine/avicap32.dll.so
 /usr/lib64/wine/bcrypt.dll.so
-/usr/lib64/wine/cabinet.dll.so
 /usr/lib64/wine/capi2032.dll.so
 /usr/lib64/wine/crtdll.dll.so
 /usr/lib64/wine/crypt32.dll.so
@@ -3681,7 +3710,6 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/netapi32.dll.so
 /usr/lib64/wine/ntdll.dll.so
 /usr/lib64/wine/odbc32.dll.so
-/usr/lib64/wine/opcservices.dll.so
 /usr/lib64/wine/openal32.dll.so
 /usr/lib64/wine/opengl32.dll.so
 /usr/lib64/wine/qcap.dll.so
@@ -3704,8 +3732,6 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/winepulse.drv.so
 /usr/lib64/wine/winevulkan.dll.so
 /usr/lib64/wine/winex11.drv.so
-/usr/lib64/wine/winhttp.dll.so
-/usr/lib64/wine/wininet.dll.so
 /usr/lib64/wine/winspool.drv.so
 /usr/lib64/wine/winver.exe.so
 /usr/lib64/wine/wldap32.dll.so
