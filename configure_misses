@@ -168,7 +168,6 @@ Configure miss: netinet/udp_var.h
 Configure miss: netinet/icmp_var.h
 Configure miss: netinet/tcp_var.h
 Configure miss: linux/irda.h
-Configure miss: mach-o/dyld_images.h
 Configure miss: sys/thr.h
 Configure miss: pthread_np.h
 Configure miss: libprocstat.h
@@ -179,6 +178,7 @@ Configure miss: x86_64-pc-mingw32-gcc
 Configure miss: amd64-pc-mingw32-gcc
 Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
 Configure miss: whether the cross-compiler supports -Wpragma-pack
+Configure miss: whether the cross-compiler supports -Wincompatible-library-redeclaration
 Configure miss: whether the compiler supports -Wl,-delayload,autoconftest.dll
 Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
@@ -198,7 +198,6 @@ Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
 Configure miss: capi20.h
 Configure miss: -lnetapi
-Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
@@ -407,7 +406,6 @@ Configure miss: netinet/udp_var.h
 Configure miss: netinet/icmp_var.h
 Configure miss: netinet/tcp_var.h
 Configure miss: linux/irda.h
-Configure miss: mach-o/dyld_images.h
 Configure miss: sys/thr.h
 Configure miss: pthread_np.h
 Configure miss: libprocstat.h
@@ -458,11 +456,9 @@ Configure miss: -lcups
 Configure miss: krb5/krb5.h usability
 Configure miss: krb5/krb5.h presence
 Configure miss: krb5/krb5.h
-Configure miss: -lgssapi_krb5
 Configure miss: -ltiff
 Configure miss: -lodbc
 Configure miss: -lnetapi
-Configure miss: gcc strength-reduce bug
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
