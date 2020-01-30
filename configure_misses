@@ -13,9 +13,6 @@ Configure miss: AudioUnit/AudioUnit.h
 Configure miss: AudioUnit/AudioComponent.h usability
 Configure miss: AudioUnit/AudioComponent.h presence
 Configure miss: AudioUnit/AudioComponent.h
-Configure miss: CL/cl.h usability
-Configure miss: CL/cl.h presence
-Configure miss: CL/cl.h
 Configure miss: Carbon/Carbon.h usability
 Configure miss: Carbon/Carbon.h presence
 Configure miss: Carbon/Carbon.h
@@ -180,6 +177,7 @@ Configure miss: whether the cross-compiler supports -Werror=unknown-warning-opti
 Configure miss: whether the cross-compiler supports -Wpragma-pack
 Configure miss: whether the cross-compiler supports -Wincompatible-library-redeclaration
 Configure miss: whether the compiler supports -Wl,-delayload,autoconftest.dll
+Configure miss: clGetPlatformInfo in -lOpenCL
 Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
@@ -251,9 +249,6 @@ Configure miss: AudioUnit/AudioUnit.h
 Configure miss: AudioUnit/AudioComponent.h usability
 Configure miss: AudioUnit/AudioComponent.h presence
 Configure miss: AudioUnit/AudioComponent.h
-Configure miss: CL/cl.h usability
-Configure miss: CL/cl.h presence
-Configure miss: CL/cl.h
 Configure miss: Carbon/Carbon.h usability
 Configure miss: Carbon/Carbon.h presence
 Configure miss: Carbon/Carbon.h
@@ -433,6 +428,7 @@ Configure miss: i586-w64-mingw32-clang
 Configure miss: i486-w64-mingw32-clang
 Configure miss: i386-w64-mingw32-clang
 Configure miss: mingw32-gcc
+Configure miss: clGetPlatformInfo in -lOpenCL
 Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence

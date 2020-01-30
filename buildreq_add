@@ -47,3 +47,4 @@ mingw-crt
 mingw-gcc
 mingw-crt-dev
 
+opencl-headers-dev
