@@ -177,7 +177,6 @@ Configure miss: whether the cross-compiler supports -Werror=unknown-warning-opti
 Configure miss: whether the cross-compiler supports -Wpragma-pack
 Configure miss: whether the cross-compiler supports -Wincompatible-library-redeclaration
 Configure miss: whether the compiler supports -Wl,-delayload,autoconftest.dll
-Configure miss: clGetPlatformInfo in -lOpenCL
 Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence

@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 5.0
-Release  : 50
+Release  : 51
 URL      : https://dl.winehq.org/wine/source/5.0/wine-5.0.tar.xz
 Source0  : https://dl.winehq.org/wine/source/5.0/wine-5.0.tar.xz
 Source1  : https://dl.winehq.org/wine/source/5.0/wine-5.0.tar.xz.sign
@@ -95,6 +95,7 @@ BuildRequires : mingw-crt-dev
 BuildRequires : mingw-gcc
 BuildRequires : mpg123-dev32
 BuildRequires : ncurses-dev32
+BuildRequires : ocl-icd-dev
 BuildRequires : openal-soft-dev
 BuildRequires : openal-soft-dev32
 BuildRequires : opencl-headers-dev
@@ -245,7 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580426944
+export SOURCE_DATE_EPOCH=1580490128
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -260,7 +261,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1580426944
+export SOURCE_DATE_EPOCH=1580490128
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-5.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
@@ -1774,6 +1775,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/fakedlls/ntdll.dll
 /usr/lib64/wine/fakedlls/odbc32.dll
 /usr/lib64/wine/fakedlls/openal32.dll
+/usr/lib64/wine/fakedlls/opencl.dll
 /usr/lib64/wine/fakedlls/opengl32.dll
 /usr/lib64/wine/fakedlls/qcap.dll
 /usr/lib64/wine/fakedlls/sane.ds
@@ -3703,6 +3705,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/ntdll.dll.so
 /usr/lib64/wine/odbc32.dll.so
 /usr/lib64/wine/openal32.dll.so
+/usr/lib64/wine/opencl.dll.so
 /usr/lib64/wine/opengl32.dll.so
 /usr/lib64/wine/qcap.dll.so
 /usr/lib64/wine/sane.ds.so
