@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.1
-Release  : 52
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.1.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.1.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.1.tar.xz.sign
+Version  : 5.2
+Release  : 53
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.2.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.2.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.2.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -223,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.1
-cd %{_builddir}/wine-5.1
+%setup -q -n wine-5.2
+cd %{_builddir}/wine-5.2
 %patch1 -p1
 
 %build
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581641816
+export SOURCE_DATE_EPOCH=1581997642
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -263,12 +263,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1581641816
+export SOURCE_DATE_EPOCH=1581997642
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.1/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.1/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.2/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.2/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -966,6 +966,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/rsaenh.dll
 /usr/lib32/wine/fakedlls/rstrtmgr.dll
 /usr/lib32/wine/fakedlls/rtutils.dll
+/usr/lib32/wine/fakedlls/rtworkq.dll
 /usr/lib32/wine/fakedlls/rundll32.exe
 /usr/lib32/wine/fakedlls/samlib.dll
 /usr/lib32/wine/fakedlls/sane.ds
@@ -1055,6 +1056,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/vcruntime140_1.dll
 /usr/lib32/wine/fakedlls/vdmdbg.dll
 /usr/lib32/wine/fakedlls/version.dll
+/usr/lib32/wine/fakedlls/vga.dll
 /usr/lib32/wine/fakedlls/view.exe
 /usr/lib32/wine/fakedlls/virtdisk.dll
 /usr/lib32/wine/fakedlls/vssapi.dll
@@ -1261,6 +1263,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/librpcrt4.def
 /usr/lib32/wine/librsaenh.def
 /usr/lib32/wine/librtutils.def
+/usr/lib32/wine/librtworkq.def
 /usr/lib32/wine/libsecur32.def
 /usr/lib32/wine/libsensapi.def
 /usr/lib32/wine/libsetupapi.def
@@ -1289,6 +1292,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/libvdmdbg.def
 /usr/lib32/wine/libversion.def
 /usr/lib32/wine/libvulkan-1.def
+/usr/lib32/wine/libwbemuuid.a
 /usr/lib32/wine/libwebservices.def
 /usr/lib32/wine/libwer.def
 /usr/lib32/wine/libwindowscodecs.def
@@ -2106,6 +2110,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/librsaenh.cross.a
 /usr/lib64/wine/librsaenh.def
 /usr/lib64/wine/librtutils.def
+/usr/lib64/wine/librtworkq.cross.a
+/usr/lib64/wine/librtworkq.def
 /usr/lib64/wine/libsecur32.cross.a
 /usr/lib64/wine/libsecur32.def
 /usr/lib64/wine/libsecur32.delay.a
@@ -2167,6 +2173,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libversion.delay.a
 /usr/lib64/wine/libvulkan-1.cross.a
 /usr/lib64/wine/libvulkan-1.def
+/usr/lib64/wine/libwbemuuid.a
 /usr/lib64/wine/libwebservices.cross.a
 /usr/lib64/wine/libwebservices.def
 /usr/lib64/wine/libwer.cross.a
@@ -2382,6 +2389,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/rsaenh.dll
 /usr/lib64/wine/rstrtmgr.dll
 /usr/lib64/wine/rtutils.dll
+/usr/lib64/wine/rtworkq.dll
 /usr/lib64/wine/rundll32.exe
 /usr/lib64/wine/samlib.dll
 /usr/lib64/wine/sapi.dll
@@ -2466,6 +2474,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/vcruntime140_1.dll
 /usr/lib64/wine/vdmdbg.dll
 /usr/lib64/wine/version.dll
+/usr/lib64/wine/vga.dll
 /usr/lib64/wine/view.exe
 /usr/lib64/wine/virtdisk.dll
 /usr/lib64/wine/vssapi.dll
@@ -2622,7 +2631,72 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/share/wine/fonts/vgasysr.fon
 /usr/share/wine/fonts/vgasyst.fon
 /usr/share/wine/fonts/wingding.ttf
-/usr/share/wine/l_intl.nls
+/usr/share/wine/nls/c_037.nls
+/usr/share/wine/nls/c_10000.nls
+/usr/share/wine/nls/c_10001.nls
+/usr/share/wine/nls/c_10002.nls
+/usr/share/wine/nls/c_10003.nls
+/usr/share/wine/nls/c_10004.nls
+/usr/share/wine/nls/c_10005.nls
+/usr/share/wine/nls/c_10006.nls
+/usr/share/wine/nls/c_10007.nls
+/usr/share/wine/nls/c_10008.nls
+/usr/share/wine/nls/c_10010.nls
+/usr/share/wine/nls/c_10017.nls
+/usr/share/wine/nls/c_10021.nls
+/usr/share/wine/nls/c_10029.nls
+/usr/share/wine/nls/c_10079.nls
+/usr/share/wine/nls/c_10081.nls
+/usr/share/wine/nls/c_10082.nls
+/usr/share/wine/nls/c_1026.nls
+/usr/share/wine/nls/c_1250.nls
+/usr/share/wine/nls/c_1251.nls
+/usr/share/wine/nls/c_1252.nls
+/usr/share/wine/nls/c_1253.nls
+/usr/share/wine/nls/c_1254.nls
+/usr/share/wine/nls/c_1255.nls
+/usr/share/wine/nls/c_1256.nls
+/usr/share/wine/nls/c_1257.nls
+/usr/share/wine/nls/c_1258.nls
+/usr/share/wine/nls/c_1361.nls
+/usr/share/wine/nls/c_20127.nls
+/usr/share/wine/nls/c_20866.nls
+/usr/share/wine/nls/c_20932.nls
+/usr/share/wine/nls/c_21866.nls
+/usr/share/wine/nls/c_28591.nls
+/usr/share/wine/nls/c_28592.nls
+/usr/share/wine/nls/c_28593.nls
+/usr/share/wine/nls/c_28594.nls
+/usr/share/wine/nls/c_28595.nls
+/usr/share/wine/nls/c_28596.nls
+/usr/share/wine/nls/c_28597.nls
+/usr/share/wine/nls/c_28598.nls
+/usr/share/wine/nls/c_28599.nls
+/usr/share/wine/nls/c_28603.nls
+/usr/share/wine/nls/c_28605.nls
+/usr/share/wine/nls/c_437.nls
+/usr/share/wine/nls/c_500.nls
+/usr/share/wine/nls/c_737.nls
+/usr/share/wine/nls/c_775.nls
+/usr/share/wine/nls/c_850.nls
+/usr/share/wine/nls/c_852.nls
+/usr/share/wine/nls/c_855.nls
+/usr/share/wine/nls/c_857.nls
+/usr/share/wine/nls/c_860.nls
+/usr/share/wine/nls/c_861.nls
+/usr/share/wine/nls/c_862.nls
+/usr/share/wine/nls/c_863.nls
+/usr/share/wine/nls/c_864.nls
+/usr/share/wine/nls/c_865.nls
+/usr/share/wine/nls/c_866.nls
+/usr/share/wine/nls/c_869.nls
+/usr/share/wine/nls/c_874.nls
+/usr/share/wine/nls/c_875.nls
+/usr/share/wine/nls/c_932.nls
+/usr/share/wine/nls/c_936.nls
+/usr/share/wine/nls/c_949.nls
+/usr/share/wine/nls/c_950.nls
+/usr/share/wine/nls/l_intl.nls
 /usr/share/wine/wine.inf
 /usr/share/wine/winebus.inf
 /usr/share/wine/winehid.inf
@@ -2637,6 +2711,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/msvcrt/assert.h
 /usr/include/wine/msvcrt/conio.h
 /usr/include/wine/msvcrt/corecrt.h
+/usr/include/wine/msvcrt/corecrt_stdio_config.h
+/usr/include/wine/msvcrt/corecrt_wstdio.h
 /usr/include/wine/msvcrt/crtdbg.h
 /usr/include/wine/msvcrt/crtdefs.h
 /usr/include/wine/msvcrt/ctype.h
@@ -2692,6 +2768,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/activdbg.idl
 /usr/include/wine/windows/activscp.h
 /usr/include/wine/windows/activscp.idl
+/usr/include/wine/windows/adserr.h
 /usr/include/wine/windows/adshlp.h
 /usr/include/wine/windows/advpub.h
 /usr/include/wine/windows/af_irda.h
@@ -2750,6 +2827,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/bluetoothapis.h
 /usr/include/wine/windows/bthsdpdef.h
 /usr/include/wine/windows/cderr.h
+/usr/include/wine/windows/cdosys.h
+/usr/include/wine/windows/cdosys.idl
 /usr/include/wine/windows/cfgmgr32.h
 /usr/include/wine/windows/cguid.h
 /usr/include/wine/windows/chprst.idl
@@ -3359,6 +3438,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/rstloc.idl
 /usr/include/wine/windows/rstnot.idl
 /usr/include/wine/windows/rtutils.h
+/usr/include/wine/windows/rtworkq.h
+/usr/include/wine/windows/rtworkq.idl
 /usr/include/wine/windows/sal.h
 /usr/include/wine/windows/sapi.h
 /usr/include/wine/windows/sapi.idl
@@ -4419,6 +4500,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/rsaenh.dll.so
 /usr/lib32/wine/rstrtmgr.dll.so
 /usr/lib32/wine/rtutils.dll.so
+/usr/lib32/wine/rtworkq.dll.so
 /usr/lib32/wine/rundll32.exe.so
 /usr/lib32/wine/samlib.dll.so
 /usr/lib32/wine/sane.ds.so
@@ -4508,6 +4590,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/vcruntime140_1.dll.so
 /usr/lib32/wine/vdmdbg.dll.so
 /usr/lib32/wine/version.dll.so
+/usr/lib32/wine/vga.dll.so
 /usr/lib32/wine/view.exe.so
 /usr/lib32/wine/virtdisk.dll.so
 /usr/lib32/wine/vssapi.dll.so
