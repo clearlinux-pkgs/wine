@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.2
-Release  : 53
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.2.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.2.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.2.tar.xz.sign
+Version  : 5.3
+Release  : 54
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.3.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.3.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.3.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -160,7 +160,6 @@ Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
 Provides: wine-devel = %{version}-%{release}
 Requires: wine = %{version}-%{release}
-Requires: wine = %{version}-%{release}
 
 %description dev
 dev components for the wine package.
@@ -223,8 +222,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.2
-cd %{_builddir}/wine-5.2
+%setup -q -n wine-5.3
+cd %{_builddir}/wine-5.3
 %patch1 -p1
 
 %build
@@ -247,8 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581997642
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1582956509
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -263,12 +261,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1581997642
+export SOURCE_DATE_EPOCH=1582956509
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.2/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.2/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.3/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.3/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -288,6 +286,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/acledit.dll
 /usr/lib32/wine/fakedlls/aclui.dll
 /usr/lib32/wine/fakedlls/activeds.dll
+/usr/lib32/wine/fakedlls/activeds.tlb
 /usr/lib32/wine/fakedlls/actxprxy.dll
 /usr/lib32/wine/fakedlls/adsldp.dll
 /usr/lib32/wine/fakedlls/adsldpc.dll
@@ -941,6 +940,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/propsys.dll
 /usr/lib32/wine/fakedlls/psapi.dll
 /usr/lib32/wine/fakedlls/pstorec.dll
+/usr/lib32/wine/fakedlls/qasf.dll
 /usr/lib32/wine/fakedlls/qcap.dll
 /usr/lib32/wine/fakedlls/qedit.dll
 /usr/lib32/wine/fakedlls/qmgr.dll
@@ -1321,6 +1321,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/acledit.dll
 /usr/lib64/wine/aclui.dll
 /usr/lib64/wine/activeds.dll
+/usr/lib64/wine/activeds.tlb
 /usr/lib64/wine/actxprxy.dll
 /usr/lib64/wine/adsldp.dll
 /usr/lib64/wine/adsldpc.dll
@@ -2365,6 +2366,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/propsys.dll
 /usr/lib64/wine/psapi.dll
 /usr/lib64/wine/pstorec.dll
+/usr/lib64/wine/qasf.dll
 /usr/lib64/wine/qedit.dll
 /usr/lib64/wine/qmgr.dll
 /usr/lib64/wine/qmgrprxy.dll
@@ -2697,6 +2699,11 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/share/wine/nls/c_949.nls
 /usr/share/wine/nls/c_950.nls
 /usr/share/wine/nls/l_intl.nls
+/usr/share/wine/nls/normidna.nls
+/usr/share/wine/nls/normnfc.nls
+/usr/share/wine/nls/normnfd.nls
+/usr/share/wine/nls/normnfkc.nls
+/usr/share/wine/nls/normnfkd.nls
 /usr/share/wine/wine.inf
 /usr/share/wine/winebus.inf
 /usr/share/wine/winehid.inf
@@ -2711,8 +2718,14 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/msvcrt/assert.h
 /usr/include/wine/msvcrt/conio.h
 /usr/include/wine/msvcrt/corecrt.h
+/usr/include/wine/msvcrt/corecrt_startup.h
 /usr/include/wine/msvcrt/corecrt_stdio_config.h
+/usr/include/wine/msvcrt/corecrt_wctype.h
+/usr/include/wine/msvcrt/corecrt_wio.h
 /usr/include/wine/msvcrt/corecrt_wstdio.h
+/usr/include/wine/msvcrt/corecrt_wstdlib.h
+/usr/include/wine/msvcrt/corecrt_wstring.h
+/usr/include/wine/msvcrt/corecrt_wtime.h
 /usr/include/wine/msvcrt/crtdbg.h
 /usr/include/wine/msvcrt/crtdefs.h
 /usr/include/wine/msvcrt/ctype.h
@@ -3021,6 +3034,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/dmerror.h
 /usr/include/wine/windows/dmksctrl.h
 /usr/include/wine/windows/dmo.h
+/usr/include/wine/windows/dmodshow.h
+/usr/include/wine/windows/dmodshow.idl
 /usr/include/wine/windows/dmoreg.h
 /usr/include/wine/windows/dmort.h
 /usr/include/wine/windows/dmplugin.h
@@ -3828,6 +3843,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/acledit.dll.so
 /usr/lib32/wine/aclui.dll.so
 /usr/lib32/wine/activeds.dll.so
+/usr/lib32/wine/activeds.tlb.so
 /usr/lib32/wine/actxprxy.dll.so
 /usr/lib32/wine/adsldp.dll.so
 /usr/lib32/wine/adsldpc.dll.so
@@ -4475,6 +4491,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/propsys.dll.so
 /usr/lib32/wine/psapi.dll.so
 /usr/lib32/wine/pstorec.dll.so
+/usr/lib32/wine/qasf.dll.so
 /usr/lib32/wine/qcap.dll.so
 /usr/lib32/wine/qedit.dll.so
 /usr/lib32/wine/qmgr.dll.so
