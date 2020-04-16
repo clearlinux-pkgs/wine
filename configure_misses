@@ -121,15 +121,9 @@ Configure miss: sys/attr.h
 Configure miss: sys/cdio.h usability
 Configure miss: sys/cdio.h presence
 Configure miss: sys/cdio.h
-Configure miss: sys/elf32.h usability
-Configure miss: sys/elf32.h presence
-Configure miss: sys/elf32.h
 Configure miss: sys/event.h usability
 Configure miss: sys/event.h presence
 Configure miss: sys/event.h
-Configure miss: sys/exec_elf.h usability
-Configure miss: sys/exec_elf.h presence
-Configure miss: sys/exec_elf.h
 Configure miss: sys/limits.h usability
 Configure miss: sys/limits.h presence
 Configure miss: sys/link.h usability
@@ -182,6 +176,7 @@ Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
 Configure miss: hal/libhal.h
+Configure miss: res_getservers
 Configure miss: pthread_getthreadid_np
 Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
@@ -194,10 +189,12 @@ Configure miss: FAudio.h presence
 Configure miss: FAudio.h
 Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
+Configure miss: FAudioLinkedVersion
 Configure miss: capi20.h
 Configure miss: -lnetapi
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
+Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
@@ -357,15 +354,9 @@ Configure miss: sys/attr.h
 Configure miss: sys/cdio.h usability
 Configure miss: sys/cdio.h presence
 Configure miss: sys/cdio.h
-Configure miss: sys/elf32.h usability
-Configure miss: sys/elf32.h presence
-Configure miss: sys/elf32.h
 Configure miss: sys/event.h usability
 Configure miss: sys/event.h presence
 Configure miss: sys/event.h
-Configure miss: sys/exec_elf.h usability
-Configure miss: sys/exec_elf.h presence
-Configure miss: sys/exec_elf.h
 Configure miss: sys/limits.h usability
 Configure miss: sys/limits.h presence
 Configure miss: sys/link.h usability
@@ -436,6 +427,7 @@ Configure miss: hal/libhal.h
 Configure miss: -lsane
 Configure miss: gp_camera_new in -lgphoto2
 Configure miss: gp_port_info_list_new in -lgphoto2_port
+Configure miss: res_getservers
 Configure miss: pthread_getthreadid_np
 Configure miss: gst/gst.h usability
 Configure miss: gst/gst.h presence
@@ -447,6 +439,7 @@ Configure miss: FAudio.h presence
 Configure miss: FAudio.h
 Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
+Configure miss: FAudioLinkedVersion
 Configure miss: capi20.h
 Configure miss: -lcups
 Configure miss: krb5/krb5.h usability
@@ -457,6 +450,7 @@ Configure miss: -lodbc
 Configure miss: -lnetapi
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
+Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
