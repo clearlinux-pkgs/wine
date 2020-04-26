@@ -176,6 +176,9 @@ Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
 Configure miss: hal/libhal.h
+Configure miss: libusb.h usability
+Configure miss: libusb.h presence
+Configure miss: libusb.h
 Configure miss: res_getservers
 Configure miss: pthread_getthreadid_np
 Configure miss: gst/gst.h usability
@@ -425,6 +428,9 @@ Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
 Configure miss: hal/libhal.h
 Configure miss: -lsane
+Configure miss: libusb.h usability
+Configure miss: libusb.h presence
+Configure miss: libusb.h
 Configure miss: gp_camera_new in -lgphoto2
 Configure miss: gp_port_info_list_new in -lgphoto2_port
 Configure miss: res_getservers

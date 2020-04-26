@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.6
-Release  : 56
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.6.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.6.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.6.tar.xz.sign
+Version  : 5.7
+Release  : 57
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.7.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.7.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.7.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -224,8 +224,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.6
-cd %{_builddir}/wine-5.6
+%setup -q -n wine-5.7
+cd %{_builddir}/wine-5.7
 %patch1 -p1
 
 %build
@@ -248,7 +248,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587070634
+export SOURCE_DATE_EPOCH=1587866904
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1587070634
+export SOURCE_DATE_EPOCH=1587866904
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.6/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.6/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.6/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.7/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.7/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.7/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -947,6 +947,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/pstorec.dll
 /usr/lib32/wine/fakedlls/qasf.dll
 /usr/lib32/wine/fakedlls/qcap.dll
+/usr/lib32/wine/fakedlls/qdvd.dll
 /usr/lib32/wine/fakedlls/qedit.dll
 /usr/lib32/wine/fakedlls/qmgr.dll
 /usr/lib32/wine/fakedlls/qmgrprxy.dll
@@ -1301,7 +1302,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/libwbemuuid.a
 /usr/lib32/wine/libwebservices.def
 /usr/lib32/wine/libwer.def
-/usr/lib32/wine/libwindowscodecs.def
+/usr/lib32/wine/libwindowscodecs.a
 /usr/lib32/wine/libwindowscodecsext.def
 /usr/lib32/wine/libwined3d.def
 /usr/lib32/wine/libwinevulkan.def
@@ -2188,8 +2189,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libwebservices.def
 /usr/lib64/wine/libwer.cross.a
 /usr/lib64/wine/libwer.def
+/usr/lib64/wine/libwindowscodecs.a
 /usr/lib64/wine/libwindowscodecs.cross.a
-/usr/lib64/wine/libwindowscodecs.def
 /usr/lib64/wine/libwindowscodecs.delay.a
 /usr/lib64/wine/libwindowscodecsext.cross.a
 /usr/lib64/wine/libwindowscodecsext.def
@@ -2378,6 +2379,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/psapi.dll
 /usr/lib64/wine/pstorec.dll
 /usr/lib64/wine/qasf.dll
+/usr/lib64/wine/qdvd.dll
 /usr/lib64/wine/qedit.dll
 /usr/lib64/wine/qmgr.dll
 /usr/lib64/wine/qmgrprxy.dll
@@ -2722,6 +2724,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/share/wine/wine.inf
 /usr/share/wine/winebus.inf
 /usr/share/wine/winehid.inf
+/usr/share/wine/wineusb.inf
 
 %files dev
 %defattr(-,root,root,-)
@@ -4515,6 +4518,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/pstorec.dll.so
 /usr/lib32/wine/qasf.dll.so
 /usr/lib32/wine/qcap.dll.so
+/usr/lib32/wine/qdvd.dll.so
 /usr/lib32/wine/qedit.dll.so
 /usr/lib32/wine/qmgr.dll.so
 /usr/lib32/wine/qmgrprxy.dll.so
