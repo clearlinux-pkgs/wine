@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.7
-Release  : 57
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.7.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.7.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.7.tar.xz.sign
+Version  : 5.8
+Release  : 58
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.8.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.8.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.8.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -161,7 +161,6 @@ Requires: wine-bin = %{version}-%{release}
 Requires: wine-data = %{version}-%{release}
 Provides: wine-devel = %{version}-%{release}
 Requires: wine = %{version}-%{release}
-Requires: wine = %{version}-%{release}
 
 %description dev
 dev components for the wine package.
@@ -224,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.7
-cd %{_builddir}/wine-5.7
+%setup -q -n wine-5.8
+cd %{_builddir}/wine-5.8
 %patch1 -p1
 
 %build
@@ -248,15 +247,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587866904
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1589225122
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
+export FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
+export FCFLAGS=$FFLAGS
 unset LDFLAGS
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %reconfigure --disable-static --with-wine64=%{_builddir}/build64 \
 --libdir=/usr/lib32 \
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1587866904
+export SOURCE_DATE_EPOCH=1589225122
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.7/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.7/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.7/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.8/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.8/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.8/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -786,6 +786,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/kernel32.dll
 /usr/lib32/wine/fakedlls/kernelbase.dll
 /usr/lib32/wine/fakedlls/ksecdd.sys
+/usr/lib32/wine/fakedlls/ksproxy.ax
 /usr/lib32/wine/fakedlls/ksuser.dll
 /usr/lib32/wine/fakedlls/ktmw32.dll
 /usr/lib32/wine/fakedlls/l3codeca.acm
@@ -989,6 +990,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/scsiport.sys
 /usr/lib32/wine/fakedlls/sdbinst.exe
 /usr/lib32/wine/fakedlls/secedit.exe
+/usr/lib32/wine/fakedlls/sechost.dll
 /usr/lib32/wine/fakedlls/secur32.dll
 /usr/lib32/wine/fakedlls/security.dll
 /usr/lib32/wine/fakedlls/sensapi.dll
@@ -1271,6 +1273,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/librsaenh.def
 /usr/lib32/wine/librtutils.def
 /usr/lib32/wine/librtworkq.def
+/usr/lib32/wine/libsechost.def
 /usr/lib32/wine/libsecur32.def
 /usr/lib32/wine/libsensapi.def
 /usr/lib32/wine/libsetupapi.def
@@ -1869,6 +1872,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/jsproxy.dll
 /usr/lib64/wine/kernelbase.dll
 /usr/lib64/wine/ksecdd.sys
+/usr/lib64/wine/ksproxy.ax
 /usr/lib64/wine/ksuser.dll
 /usr/lib64/wine/ktmw32.dll
 /usr/lib64/wine/libaclui.def
@@ -2040,6 +2044,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libmprapi.def
 /usr/lib64/wine/libmsacm32.cross.a
 /usr/lib64/wine/libmsacm32.def
+/usr/lib64/wine/libmsasn1.cross.a
 /usr/lib64/wine/libmsasn1.def
 /usr/lib64/wine/libmscms.def
 /usr/lib64/wine/libmsdmo.cross.a
@@ -2117,11 +2122,13 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libriched20.def
 /usr/lib64/wine/librpcrt4.cross.a
 /usr/lib64/wine/librpcrt4.def
+/usr/lib64/wine/librpcrt4.delay.a
 /usr/lib64/wine/librsaenh.cross.a
 /usr/lib64/wine/librsaenh.def
 /usr/lib64/wine/librtutils.def
 /usr/lib64/wine/librtworkq.cross.a
 /usr/lib64/wine/librtworkq.def
+/usr/lib64/wine/libsechost.def
 /usr/lib64/wine/libsecur32.cross.a
 /usr/lib64/wine/libsecur32.def
 /usr/lib64/wine/libsecur32.delay.a
@@ -2420,6 +2427,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/scsiport.sys
 /usr/lib64/wine/sdbinst.exe
 /usr/lib64/wine/secedit.exe
+/usr/lib64/wine/sechost.dll
 /usr/lib64/wine/security.dll
 /usr/lib64/wine/sensapi.dll
 /usr/lib64/wine/serialui.dll
@@ -2758,6 +2766,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/msvcrt/fenv.h
 /usr/include/wine/msvcrt/float.h
 /usr/include/wine/msvcrt/fpieee.h
+/usr/include/wine/msvcrt/intrin.h
 /usr/include/wine/msvcrt/inttypes.h
 /usr/include/wine/msvcrt/io.h
 /usr/include/wine/msvcrt/limits.h
@@ -3086,6 +3095,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/dshow.h
 /usr/include/wine/windows/dsound.h
 /usr/include/wine/windows/dsrole.h
+/usr/include/wine/windows/dvdif.h
+/usr/include/wine/windows/dvdif.idl
 /usr/include/wine/windows/dvdmedia.h
 /usr/include/wine/windows/dvoice.h
 /usr/include/wine/windows/dwmapi.h
@@ -4357,6 +4368,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/kernel32.dll.so
 /usr/lib32/wine/kernelbase.dll.so
 /usr/lib32/wine/ksecdd.sys.so
+/usr/lib32/wine/ksproxy.ax.so
 /usr/lib32/wine/ksuser.dll.so
 /usr/lib32/wine/ktmw32.dll.so
 /usr/lib32/wine/l3codeca.acm.so
@@ -4560,6 +4572,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/scsiport.sys.so
 /usr/lib32/wine/sdbinst.exe.so
 /usr/lib32/wine/secedit.exe.so
+/usr/lib32/wine/sechost.dll.so
 /usr/lib32/wine/secur32.dll.so
 /usr/lib32/wine/security.dll.so
 /usr/lib32/wine/sensapi.dll.so

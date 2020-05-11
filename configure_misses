@@ -150,6 +150,7 @@ Configure miss: sys/timeout.h
 Configure miss: sys/vnode.h usability
 Configure miss: sys/vnode.h presence
 Configure miss: sys/vnode.h
+Configure miss: sys/sysctl.h
 Configure miss: net/if_types.h
 Configure miss: netinet/if_inarp.h
 Configure miss: netinet/in_pcb.h
@@ -171,7 +172,6 @@ Configure miss: whether the cross-compiler supports -target x86_64-w64-mingw32 -
 Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
 Configure miss: whether the cross-compiler supports -Wpragma-pack
 Configure miss: whether the cross-compiler supports -Wincompatible-library-redeclaration
-Configure miss: whether the cross-compiler supports -Wl,-delayload,autoconftest.dll
 Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence
