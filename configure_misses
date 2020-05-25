@@ -170,8 +170,8 @@ Configure miss: x86_64-pc-mingw32-gcc
 Configure miss: amd64-pc-mingw32-gcc
 Configure miss: whether the cross-compiler supports -target x86_64-w64-mingw32 -fuse-ld=lld
 Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
+Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the cross-compiler supports -Wpragma-pack
-Configure miss: whether the cross-compiler supports -Wincompatible-library-redeclaration
 Configure miss: inotify_add_watch in -linotify
 Configure miss: hal/libhal.h usability
 Configure miss: hal/libhal.h presence

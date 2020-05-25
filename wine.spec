@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.8
-Release  : 58
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.8.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.8.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.8.tar.xz.sign
+Version  : 5.9
+Release  : 59
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.9.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.9.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.9.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -223,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.8
-cd %{_builddir}/wine-5.8
+%setup -q -n wine-5.9
+cd %{_builddir}/wine-5.9
 %patch1 -p1
 
 %build
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589225122
+export SOURCE_DATE_EPOCH=1590378601
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1589225122
+export SOURCE_DATE_EPOCH=1590378601
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.8/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.8/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.8/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.9/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.9/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.9/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -1279,6 +1279,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/libsetupapi.def
 /usr/lib32/wine/libsfc.def
 /usr/lib32/wine/libsfc_os.def
+/usr/lib32/wine/libshcore.def
 /usr/lib32/wine/libshdocvw.def
 /usr/lib32/wine/libshell32.def
 /usr/lib32/wine/libshfolder.def
@@ -2140,6 +2141,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libsfc.def
 /usr/lib64/wine/libsfc_os.cross.a
 /usr/lib64/wine/libsfc_os.def
+/usr/lib64/wine/libshcore.cross.a
+/usr/lib64/wine/libshcore.def
 /usr/lib64/wine/libshdocvw.def
 /usr/lib64/wine/libshell32.cross.a
 /usr/lib64/wine/libshell32.def
@@ -2825,6 +2828,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/appcompatapi.h
 /usr/include/wine/windows/appmgmt.h
 /usr/include/wine/windows/appmodel.h
+/usr/include/wine/windows/asferr.h
 /usr/include/wine/windows/asptlb.h
 /usr/include/wine/windows/asptlb.idl
 /usr/include/wine/windows/asynot.idl
@@ -2848,6 +2852,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/avrt.h
 /usr/include/wine/windows/axcore.idl
 /usr/include/wine/windows/axextend.idl
+/usr/include/wine/windows/axextendenums.h
 /usr/include/wine/windows/basetsd.h
 /usr/include/wine/windows/basetyps.h
 /usr/include/wine/windows/bcrypt.h
@@ -3082,6 +3087,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/downloadmgr.h
 /usr/include/wine/windows/downloadmgr.idl
 /usr/include/wine/windows/dpaddr.h
+/usr/include/wine/windows/dpfilter.h
 /usr/include/wine/windows/dplay.h
 /usr/include/wine/windows/dplay8.h
 /usr/include/wine/windows/dplobby.h
@@ -3150,6 +3156,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/exdisp.h
 /usr/include/wine/windows/exdisp.idl
 /usr/include/wine/windows/exdispid.h
+/usr/include/wine/windows/exposeenums2managed.h
 /usr/include/wine/windows/fci.h
 /usr/include/wine/windows/fdi.h
 /usr/include/wine/windows/fileapi.h
@@ -3408,6 +3415,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/ole2ver.h
 /usr/include/wine/windows/oleacc.h
 /usr/include/wine/windows/oleacc.idl
+/usr/include/wine/windows/oleacc.tlb
 /usr/include/wine/windows/oleauto.h
 /usr/include/wine/windows/olectl.h
 /usr/include/wine/windows/oledb.h
@@ -3543,6 +3551,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/srrestoreptapi.h
 /usr/include/wine/windows/sspi.h
 /usr/include/wine/windows/stdole2.idl
+/usr/include/wine/windows/stdole2.tlb
 /usr/include/wine/windows/stgprop.h
 /usr/include/wine/windows/sti.h
 /usr/include/wine/windows/storage.h
@@ -3594,6 +3603,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/uiautomationcoreapi.h
 /usr/include/wine/windows/uiribbon.h
 /usr/include/wine/windows/uiribbon.idl
+/usr/include/wine/windows/unexposeenums2managed.h
 /usr/include/wine/windows/unknwn.h
 /usr/include/wine/windows/unknwn.idl
 /usr/include/wine/windows/urlhist.h
@@ -3638,6 +3648,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/wia_xp.idl
 /usr/include/wine/windows/wiadef.h
 /usr/include/wine/windows/wimgapi.h
+/usr/include/wine/windows/winapifamily.h
 /usr/include/wine/windows/winbase.h
 /usr/include/wine/windows/wincodec.h
 /usr/include/wine/windows/wincodec.idl
@@ -3842,6 +3853,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/msxml3.dll.so
 /usr/lib64/wine/netapi32.dll.so
 /usr/lib64/wine/ntdll.dll.so
+/usr/lib64/wine/ntdll.so
 /usr/lib64/wine/odbc32.dll.so
 /usr/lib64/wine/openal32.dll.so
 /usr/lib64/wine/opencl.dll.so
@@ -4492,6 +4504,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/npmshtml.dll.so
 /usr/lib32/wine/npptools.dll.so
 /usr/lib32/wine/ntdll.dll.so
+/usr/lib32/wine/ntdll.so
 /usr/lib32/wine/ntdsapi.dll.so
 /usr/lib32/wine/ntoskrnl.exe.so
 /usr/lib32/wine/ntprint.dll.so
