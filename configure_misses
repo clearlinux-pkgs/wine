@@ -97,9 +97,6 @@ Configure miss: mach/machine.h
 Configure miss: machine/cpu.h usability
 Configure miss: machine/cpu.h presence
 Configure miss: machine/cpu.h
-Configure miss: machine/limits.h usability
-Configure miss: machine/limits.h presence
-Configure miss: machine/limits.h
 Configure miss: machine/sysarch.h usability
 Configure miss: machine/sysarch.h presence
 Configure miss: machine/sysarch.h
@@ -124,8 +121,6 @@ Configure miss: sys/cdio.h
 Configure miss: sys/event.h usability
 Configure miss: sys/event.h presence
 Configure miss: sys/event.h
-Configure miss: sys/limits.h usability
-Configure miss: sys/limits.h presence
 Configure miss: sys/link.h usability
 Configure miss: sys/link.h presence
 Configure miss: sys/link.h
@@ -333,9 +328,6 @@ Configure miss: mach/machine.h
 Configure miss: machine/cpu.h usability
 Configure miss: machine/cpu.h presence
 Configure miss: machine/cpu.h
-Configure miss: machine/limits.h usability
-Configure miss: machine/limits.h presence
-Configure miss: machine/limits.h
 Configure miss: machine/sysarch.h usability
 Configure miss: machine/sysarch.h presence
 Configure miss: machine/sysarch.h
@@ -360,8 +352,6 @@ Configure miss: sys/cdio.h
 Configure miss: sys/event.h usability
 Configure miss: sys/event.h presence
 Configure miss: sys/event.h
-Configure miss: sys/limits.h usability
-Configure miss: sys/limits.h presence
 Configure miss: sys/link.h usability
 Configure miss: sys/link.h presence
 Configure miss: sys/link.h
