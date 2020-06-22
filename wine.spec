@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.10
-Release  : 60
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.10.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.10.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.10.tar.xz.sign
+Version  : 5.11
+Release  : 61
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.11.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.11.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.11.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -223,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.10
-cd %{_builddir}/wine-5.10
+%setup -q -n wine-5.11
+cd %{_builddir}/wine-5.11
 %patch1 -p1
 
 %build
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591398654
+export SOURCE_DATE_EPOCH=1592870195
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1591398654
+export SOURCE_DATE_EPOCH=1592870195
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.10/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.10/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.10/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.11/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.11/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.11/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -638,6 +638,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/difxapi.dll
 /usr/lib32/wine/fakedlls/dinput.dll
 /usr/lib32/wine/fakedlls/dinput8.dll
+/usr/lib32/wine/fakedlls/directmanipulation.dll
 /usr/lib32/wine/fakedlls/dism.exe
 /usr/lib32/wine/fakedlls/dispex.dll
 /usr/lib32/wine/fakedlls/dmband.dll
@@ -951,6 +952,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/fakedlls/propsys.dll
 /usr/lib32/wine/fakedlls/psapi.dll
 /usr/lib32/wine/fakedlls/pstorec.dll
+/usr/lib32/wine/fakedlls/pwrshplugin.dll
 /usr/lib32/wine/fakedlls/qasf.dll
 /usr/lib32/wine/fakedlls/qcap.dll
 /usr/lib32/wine/fakedlls/qdvd.dll
@@ -1208,6 +1210,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/libdwmapi.def
 /usr/lib32/wine/libdwrite.def
 /usr/lib32/wine/libdxgi.def
+/usr/lib32/wine/libevr.def
 /usr/lib32/wine/libfaultrep.def
 /usr/lib32/wine/libgdi32.def
 /usr/lib32/wine/libgdiplus.def
@@ -1267,6 +1270,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/libopengl32.def
 /usr/lib32/wine/libpdh.def
 /usr/lib32/wine/libpowrprof.def
+/usr/lib32/wine/libprntvpt.def
 /usr/lib32/wine/libpropsys.def
 /usr/lib32/wine/libpsapi.def
 /usr/lib32/wine/libquartz.def
@@ -1677,6 +1681,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/dhcpcsvc.dll
 /usr/lib64/wine/dhtmled.ocx
 /usr/lib64/wine/difxapi.dll
+/usr/lib64/wine/directmanipulation.dll
 /usr/lib64/wine/dism.exe
 /usr/lib64/wine/dispex.dll
 /usr/lib64/wine/dmband.dll
@@ -1991,6 +1996,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libdxgi.cross.a
 /usr/lib64/wine/libdxgi.def
 /usr/lib64/wine/libdxguid.cross.a
+/usr/lib64/wine/libevr.cross.a
+/usr/lib64/wine/libevr.def
 /usr/lib64/wine/libfaultrep.cross.a
 /usr/lib64/wine/libfaultrep.def
 /usr/lib64/wine/libgdi32.cross.a
@@ -2043,6 +2050,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libmfmediaengine.def
 /usr/lib64/wine/libmfplat.cross.a
 /usr/lib64/wine/libmfplat.def
+/usr/lib64/wine/libmfplat.delay.a
 /usr/lib64/wine/libmfreadwrite.cross.a
 /usr/lib64/wine/libmfreadwrite.def
 /usr/lib64/wine/libmfuuid.cross.a
@@ -2086,6 +2094,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libnetapi32.cross.a
 /usr/lib64/wine/libnetapi32.def
 /usr/lib64/wine/libnetapi32.delay.a
+/usr/lib64/wine/libnetio.cross.a
 /usr/lib64/wine/libnetio.def
 /usr/lib64/wine/libnewdev.def
 /usr/lib64/wine/libnewdev.delay.a
@@ -2119,6 +2128,8 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/libpdh.cross.a
 /usr/lib64/wine/libpdh.def
 /usr/lib64/wine/libpowrprof.def
+/usr/lib64/wine/libprntvpt.cross.a
+/usr/lib64/wine/libprntvpt.def
 /usr/lib64/wine/libpropsys.cross.a
 /usr/lib64/wine/libpropsys.def
 /usr/lib64/wine/libpsapi.cross.a
@@ -2400,6 +2411,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/propsys.dll
 /usr/lib64/wine/psapi.dll
 /usr/lib64/wine/pstorec.dll
+/usr/lib64/wine/pwrshplugin.dll
 /usr/lib64/wine/qasf.dll
 /usr/lib64/wine/qdvd.dll
 /usr/lib64/wine/qedit.dll
@@ -3729,6 +3741,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/include/wine/windows/wmsdkidl.h
 /usr/include/wine/windows/wmsdkidl.idl
 /usr/include/wine/windows/wnaspi32.h
+/usr/include/wine/windows/wownt16.h
 /usr/include/wine/windows/wownt32.h
 /usr/include/wine/windows/wpcapi.h
 /usr/include/wine/windows/wpcapi.idl
@@ -4247,6 +4260,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/difxapi.dll.so
 /usr/lib32/wine/dinput.dll.so
 /usr/lib32/wine/dinput8.dll.so
+/usr/lib32/wine/directmanipulation.dll.so
 /usr/lib32/wine/dism.exe.so
 /usr/lib32/wine/dispex.dll.so
 /usr/lib32/wine/dmband.dll.so
@@ -4560,6 +4574,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/propsys.dll.so
 /usr/lib32/wine/psapi.dll.so
 /usr/lib32/wine/pstorec.dll.so
+/usr/lib32/wine/pwrshplugin.dll.so
 /usr/lib32/wine/qasf.dll.so
 /usr/lib32/wine/qcap.dll.so
 /usr/lib32/wine/qdvd.dll.so
