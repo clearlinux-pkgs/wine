@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 5.13
-Release  : 63
+Release  : 64
 URL      : https://dl.winehq.org/wine/source/5.x/wine-5.13.tar.xz
 Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.13.tar.xz
 Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.13.tar.xz.sign
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595033205
+export SOURCE_DATE_EPOCH=1595917200
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,7 +264,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1595033205
+export SOURCE_DATE_EPOCH=1595917200
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-5.13/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
@@ -279,9 +279,6 @@ popd
 # install static dev libs
 find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib32/wine/ \;
 find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
-
-# we can't use excludes since the make_install macro puts these back
-rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}.dll.so
 ## install_append end
 
 %files
@@ -3870,6 +3867,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib64/wine/dinput8.dll.so
 /usr/lib64/wine/dnsapi.dll.so
 /usr/lib64/wine/dwrite.dll.so
+/usr/lib64/wine/dxgi.dll.so
 /usr/lib64/wine/gdi32.dll.so
 /usr/lib64/wine/glu32.dll.so
 /usr/lib64/wine/gphoto2.ds.so
@@ -4211,8 +4209,13 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/ctapi32.dll.so
 /usr/lib32/wine/ctl3d32.dll.so
 /usr/lib32/wine/d2d1.dll.so
+/usr/lib32/wine/d3d10.dll.so
+/usr/lib32/wine/d3d10_1.dll.so
+/usr/lib32/wine/d3d10core.dll.so
+/usr/lib32/wine/d3d11.dll.so
 /usr/lib32/wine/d3d12.dll.so
 /usr/lib32/wine/d3d8.dll.so
+/usr/lib32/wine/d3d9.dll.so
 /usr/lib32/wine/d3dcompiler_33.dll.so
 /usr/lib32/wine/d3dcompiler_34.dll.so
 /usr/lib32/wine/d3dcompiler_35.dll.so
@@ -4308,6 +4311,7 @@ rm -f %{buildroot}/usr/lib{32,64}/wine/{d3d9,d3d10_1,d3d10core,d3d10,d3d11,dxgi}
 /usr/lib32/wine/dx8vb.dll.so
 /usr/lib32/wine/dxdiag.exe.so
 /usr/lib32/wine/dxdiagn.dll.so
+/usr/lib32/wine/dxgi.dll.so
 /usr/lib32/wine/dxva2.dll.so
 /usr/lib32/wine/eject.exe.so
 /usr/lib32/wine/esent.dll.so
