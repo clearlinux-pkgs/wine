@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.13
-Release  : 64
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.13.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.13.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.13.tar.xz.sign
+Version  : 5.14
+Release  : 65
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.14.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.14.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.14.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -223,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.13
-cd %{_builddir}/wine-5.13
+%setup -q -n wine-5.14
+cd %{_builddir}/wine-5.14
 %patch1 -p1
 
 %build
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1595917200
+export SOURCE_DATE_EPOCH=1596475995
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1595917200
+export SOURCE_DATE_EPOCH=1596475995
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.13/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.13/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.13/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.14/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.14/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.14/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -871,6 +871,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/msvcp120.dll
 /usr/lib32/wine/fakedlls/msvcp120_app.dll
 /usr/lib32/wine/fakedlls/msvcp140.dll
+/usr/lib32/wine/fakedlls/msvcp140_1.dll
 /usr/lib32/wine/fakedlls/msvcp60.dll
 /usr/lib32/wine/fakedlls/msvcp70.dll
 /usr/lib32/wine/fakedlls/msvcp71.dll
@@ -1175,6 +1176,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/libcards.def
 /usr/lib32/wine/libcfgmgr32.def
 /usr/lib32/wine/libclusapi.def
+/usr/lib32/wine/libcombase.def
 /usr/lib32/wine/libcomctl32.def
 /usr/lib32/wine/libcomdlg32.def
 /usr/lib32/wine/libcompstui.def
@@ -1923,6 +1925,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libcards.def
 /usr/lib64/wine/libcfgmgr32.def
 /usr/lib64/wine/libclusapi.def
+/usr/lib64/wine/libcombase.cross.a
+/usr/lib64/wine/libcombase.def
 /usr/lib64/wine/libcomctl32.cross.a
 /usr/lib64/wine/libcomctl32.def
 /usr/lib64/wine/libcomctl32.delay.a
@@ -2350,6 +2354,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/msvcp120.dll
 /usr/lib64/wine/msvcp120_app.dll
 /usr/lib64/wine/msvcp140.dll
+/usr/lib64/wine/msvcp140_1.dll
 /usr/lib64/wine/msvcp60.dll
 /usr/lib64/wine/msvcp70.dll
 /usr/lib64/wine/msvcp71.dll
@@ -2689,6 +2694,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/share/wine/fonts/vgasysg.fon
 /usr/share/wine/fonts/vgasysr.fon
 /usr/share/wine/fonts/vgasyst.fon
+/usr/share/wine/fonts/webdings.ttf
 /usr/share/wine/fonts/wingding.ttf
 /usr/share/wine/nls/c_037.nls
 /usr/share/wine/nls/c_10000.nls
@@ -4511,6 +4517,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/msvcp120.dll.so
 /usr/lib32/wine/msvcp120_app.dll.so
 /usr/lib32/wine/msvcp140.dll.so
+/usr/lib32/wine/msvcp140_1.dll.so
 /usr/lib32/wine/msvcp60.dll.so
 /usr/lib32/wine/msvcp70.dll.so
 /usr/lib32/wine/msvcp71.dll.so
