@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.14
-Release  : 65
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.14.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.14.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.14.tar.xz.sign
+Version  : 5.15
+Release  : 66
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.15.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.15.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.15.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -223,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.14
-cd %{_builddir}/wine-5.14
+%setup -q -n wine-5.15
+cd %{_builddir}/wine-5.15
 %patch1 -p1
 
 %build
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1596475995
+export SOURCE_DATE_EPOCH=1597684703
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1596475995
+export SOURCE_DATE_EPOCH=1597684703
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.14/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.14/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.14/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.15/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.15/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.15/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -322,6 +322,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/api-ms-win-core-errorhandling-l1-1-3.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-fibers-l1-1-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-fibers-l1-1-1.dll
+/usr/lib32/wine/fakedlls/api-ms-win-core-file-ansi-l2-1-0.dll
+/usr/lib32/wine/fakedlls/api-ms-win-core-file-fromapp-l1-1-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-file-l1-1-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-file-l1-2-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-file-l1-2-1.dll
@@ -363,6 +365,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/api-ms-win-core-memory-l1-1-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-memory-l1-1-1.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-memory-l1-1-2.dll
+/usr/lib32/wine/fakedlls/api-ms-win-core-memory-l1-1-3.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-memory-l1-1-4.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-misc-l1-1-0.dll
 /usr/lib32/wine/fakedlls/api-ms-win-core-namedpipe-ansi-l1-1-0.dll
@@ -1380,6 +1383,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/api-ms-win-core-errorhandling-l1-1-3.dll
 /usr/lib64/wine/api-ms-win-core-fibers-l1-1-0.dll
 /usr/lib64/wine/api-ms-win-core-fibers-l1-1-1.dll
+/usr/lib64/wine/api-ms-win-core-file-ansi-l2-1-0.dll
+/usr/lib64/wine/api-ms-win-core-file-fromapp-l1-1-0.dll
 /usr/lib64/wine/api-ms-win-core-file-l1-1-0.dll
 /usr/lib64/wine/api-ms-win-core-file-l1-2-0.dll
 /usr/lib64/wine/api-ms-win-core-file-l1-2-1.dll
@@ -1421,6 +1426,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/api-ms-win-core-memory-l1-1-0.dll
 /usr/lib64/wine/api-ms-win-core-memory-l1-1-1.dll
 /usr/lib64/wine/api-ms-win-core-memory-l1-1-2.dll
+/usr/lib64/wine/api-ms-win-core-memory-l1-1-3.dll
 /usr/lib64/wine/api-ms-win-core-memory-l1-1-4.dll
 /usr/lib64/wine/api-ms-win-core-misc-l1-1-0.dll
 /usr/lib64/wine/api-ms-win-core-namedpipe-ansi-l1-1-0.dll
@@ -1995,6 +2001,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libdpnet.def
 /usr/lib64/wine/libdsound.cross.a
 /usr/lib64/wine/libdsound.def
+/usr/lib64/wine/libdwmapi.cross.a
 /usr/lib64/wine/libdwmapi.def
 /usr/lib64/wine/libdwrite.cross.a
 /usr/lib64/wine/libdwrite.def
@@ -2820,6 +2827,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/msvcrt/setjmp.h
 /usr/include/wine/msvcrt/share.h
 /usr/include/wine/msvcrt/signal.h
+/usr/include/wine/msvcrt/stdbool.h
 /usr/include/wine/msvcrt/stddef.h
 /usr/include/wine/msvcrt/stdint.h
 /usr/include/wine/msvcrt/stdio.h
@@ -2936,6 +2944,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/compobj.h
 /usr/include/wine/windows/comsvcs.h
 /usr/include/wine/windows/comsvcs.idl
+/usr/include/wine/windows/consoleapi.h
 /usr/include/wine/windows/control.h
 /usr/include/wine/windows/control.idl
 /usr/include/wine/windows/cor.h
@@ -2990,6 +2999,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/d3d11shader.h
 /usr/include/wine/windows/d3d12.h
 /usr/include/wine/windows/d3d12.idl
+/usr/include/wine/windows/d3d12shader.h
+/usr/include/wine/windows/d3d12shader.idl
 /usr/include/wine/windows/d3d8.h
 /usr/include/wine/windows/d3d8caps.h
 /usr/include/wine/windows/d3d8types.h
@@ -3696,6 +3707,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/wincodecsdk.h
 /usr/include/wine/windows/wincodecsdk.idl
 /usr/include/wine/windows/wincon.h
+/usr/include/wine/windows/wincontypes.h
 /usr/include/wine/windows/wincred.h
 /usr/include/wine/windows/wincrypt.h
 /usr/include/wine/windows/windef.h
@@ -3968,6 +3980,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/api-ms-win-core-errorhandling-l1-1-3.dll.so
 /usr/lib32/wine/api-ms-win-core-fibers-l1-1-0.dll.so
 /usr/lib32/wine/api-ms-win-core-fibers-l1-1-1.dll.so
+/usr/lib32/wine/api-ms-win-core-file-ansi-l2-1-0.dll.so
+/usr/lib32/wine/api-ms-win-core-file-fromapp-l1-1-0.dll.so
 /usr/lib32/wine/api-ms-win-core-file-l1-1-0.dll.so
 /usr/lib32/wine/api-ms-win-core-file-l1-2-0.dll.so
 /usr/lib32/wine/api-ms-win-core-file-l1-2-1.dll.so
@@ -4009,6 +4023,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/api-ms-win-core-memory-l1-1-0.dll.so
 /usr/lib32/wine/api-ms-win-core-memory-l1-1-1.dll.so
 /usr/lib32/wine/api-ms-win-core-memory-l1-1-2.dll.so
+/usr/lib32/wine/api-ms-win-core-memory-l1-1-3.dll.so
 /usr/lib32/wine/api-ms-win-core-memory-l1-1-4.dll.so
 /usr/lib32/wine/api-ms-win-core-misc-l1-1-0.dll.so
 /usr/lib32/wine/api-ms-win-core-namedpipe-ansi-l1-1-0.dll.so

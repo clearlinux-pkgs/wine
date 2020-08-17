@@ -188,6 +188,7 @@ Configure miss: FAudio.h
 Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
 Configure miss: FAudioLinkedVersion
+Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
 Configure miss: capi20.h
 Configure miss: -lnetapi
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
@@ -436,6 +437,7 @@ Configure miss: FAudio.h
 Configure miss: FAudio_CommitOperationSet
 Configure miss: F3DAudioInitialize8
 Configure miss: FAudioLinkedVersion
+Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
 Configure miss: capi20.h
 Configure miss: -lcups
 Configure miss: krb5/krb5.h usability
