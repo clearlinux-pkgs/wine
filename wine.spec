@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.16
-Release  : 67
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.16.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.16.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.16.tar.xz.sign
+Version  : 5.17
+Release  : 68
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -223,8 +223,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.16
-cd %{_builddir}/wine-5.16
+%setup -q -n wine-5.17
+cd %{_builddir}/wine-5.17
 %patch1 -p1
 
 %build
@@ -247,7 +247,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598907618
+export SOURCE_DATE_EPOCH=1600116395
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,12 +264,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1598907618
+export SOURCE_DATE_EPOCH=1600116395
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.16/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.16/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.16/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.17/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.17/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.17/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -1352,6 +1352,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/actxprxy.dll
 /usr/lib64/wine/adsldp.dll
 /usr/lib64/wine/adsldpc.dll
+/usr/lib64/wine/advapi32.dll
 /usr/lib64/wine/advpack.dll
 /usr/lib64/wine/amsi.dll
 /usr/lib64/wine/amstream.dll
@@ -1784,7 +1785,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/ext-ms-win-shell-shell32-l1-2-0.dll
 /usr/lib64/wine/ext-ms-win-uxtheme-themes-l1-1-0.dll
 /usr/lib64/wine/extrac32.exe
-/usr/lib64/wine/fakedlls/advapi32.dll
 /usr/lib64/wine/fakedlls/avicap32.dll
 /usr/lib64/wine/fakedlls/bcrypt.dll
 /usr/lib64/wine/fakedlls/capi2032.dll
@@ -2166,6 +2166,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/librtutils.def
 /usr/lib64/wine/librtworkq.cross.a
 /usr/lib64/wine/librtworkq.def
+/usr/lib64/wine/libsechost.cross.a
 /usr/lib64/wine/libsechost.def
 /usr/lib64/wine/libsecur32.cross.a
 /usr/lib64/wine/libsecur32.def
@@ -2786,7 +2787,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/exception.h
 /usr/include/wine/itss.h
 /usr/include/wine/itss.idl
-/usr/include/wine/library.h
 /usr/include/wine/msvcrt/assert.h
 /usr/include/wine/msvcrt/conio.h
 /usr/include/wine/msvcrt/corecrt.h
@@ -3873,7 +3873,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 %defattr(-,root,root,-)
 /usr/lib64/libwine.so.1
 /usr/lib64/libwine.so.1.0
-/usr/lib64/wine/advapi32.dll.so
 /usr/lib64/wine/avicap32.dll.so
 /usr/lib64/wine/bcrypt.dll.so
 /usr/lib64/wine/capi2032.dll.so
