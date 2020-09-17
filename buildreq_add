@@ -35,9 +35,9 @@ unixODBC-dev
 valgrind
 libpng-dev32
 libXi-dev32
-mpg123-dev32
+##mpg123-dev32
 lcms2-dev32
-v4l-utils-dev32
+##v4l-utils-dev32
 sane-backends-dev
 krb5-dev
 vkd3d-dev

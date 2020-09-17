@@ -6,7 +6,7 @@
 #
 Name     : wine
 Version  : 5.17
-Release  : 68
+Release  : 69
 URL      : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz
 Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz
 Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz.sign
@@ -94,7 +94,7 @@ BuildRequires : mingw-binutils
 BuildRequires : mingw-crt
 BuildRequires : mingw-crt-dev
 BuildRequires : mingw-gcc
-BuildRequires : mpg123-dev32
+BuildRequires : mpg123-dev
 BuildRequires : ncurses-dev32
 BuildRequires : ocl-icd-dev
 BuildRequires : openal-soft-dev
@@ -119,7 +119,6 @@ BuildRequires : sane-backends-dev
 BuildRequires : systemd-dev32
 BuildRequires : tiff-dev
 BuildRequires : unixODBC-dev
-BuildRequires : v4l-utils-dev32
 BuildRequires : valgrind
 BuildRequires : valgrind-dev
 BuildRequires : vkd3d-dev
@@ -247,7 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1600116395
+export SOURCE_DATE_EPOCH=1600368280
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -264,7 +263,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1600116395
+export SOURCE_DATE_EPOCH=1600368280
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-5.17/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
@@ -796,7 +795,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/ksproxy.ax
 /usr/lib32/wine/fakedlls/ksuser.dll
 /usr/lib32/wine/fakedlls/ktmw32.dll
-/usr/lib32/wine/fakedlls/l3codeca.acm
 /usr/lib32/wine/fakedlls/loadperf.dll
 /usr/lib32/wine/fakedlls/localspl.dll
 /usr/lib32/wine/fakedlls/localui.dll
@@ -823,7 +821,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/mmdevapi.dll
 /usr/lib32/wine/fakedlls/mofcomp.exe
 /usr/lib32/wine/fakedlls/mountmgr.sys
-/usr/lib32/wine/fakedlls/mp3dmod.dll
 /usr/lib32/wine/fakedlls/mpr.dll
 /usr/lib32/wine/fakedlls/mprapi.dll
 /usr/lib32/wine/fakedlls/msacm32.dll
@@ -4453,7 +4450,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/ksproxy.ax.so
 /usr/lib32/wine/ksuser.dll.so
 /usr/lib32/wine/ktmw32.dll.so
-/usr/lib32/wine/l3codeca.acm.so
 /usr/lib32/wine/loadperf.dll.so
 /usr/lib32/wine/localspl.dll.so
 /usr/lib32/wine/localui.dll.so
@@ -4480,7 +4476,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/mmdevapi.dll.so
 /usr/lib32/wine/mofcomp.exe.so
 /usr/lib32/wine/mountmgr.sys.so
-/usr/lib32/wine/mp3dmod.dll.so
 /usr/lib32/wine/mpr.dll.so
 /usr/lib32/wine/mprapi.dll.so
 /usr/lib32/wine/msacm32.dll.so

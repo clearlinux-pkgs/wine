@@ -3,7 +3,6 @@ libc.so.6
 libdl.so.2
 liblcms2.so.2
 libm.so.6
-libmpg123.so.0
 libopenal.so.1
 libpthread.so.0
 libpulse.so.0

@@ -1,6 +1,7 @@
 5.17
 cyrus-sasl-dev
 gstreamer-dev
+mpg123-dev
 openal-soft-dev
 openldap-dev
 tiff-dev
