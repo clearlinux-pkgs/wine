@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.17
-Release  : 69
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.17.tar.xz.sign
+Version  : 5.18
+Release  : 70
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.18.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.18.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.18.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -222,8 +222,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.17
-cd %{_builddir}/wine-5.17
+%setup -q -n wine-5.18
+cd %{_builddir}/wine-5.18
 %patch1 -p1
 
 %build
@@ -246,7 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1600368280
+export SOURCE_DATE_EPOCH=1601320062
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -263,12 +263,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1600368280
+export SOURCE_DATE_EPOCH=1601320062
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.17/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.17/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.17/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.18/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.18/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.18/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -1825,7 +1825,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fakedlls/secur32.dll
 /usr/lib64/wine/fakedlls/shell32.dll
 /usr/lib64/wine/fakedlls/ucrtbase.dll
-/usr/lib64/wine/fakedlls/user32.dll
 /usr/lib64/wine/fakedlls/windowscodecs.dll
 /usr/lib64/wine/fakedlls/winealsa.drv
 /usr/lib64/wine/fakedlls/winebrowser.exe
@@ -2038,6 +2037,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libimagehlp.delay.a
 /usr/lib64/wine/libimm32.cross.a
 /usr/lib64/wine/libimm32.def
+/usr/lib64/wine/libimm32.delay.a
 /usr/lib64/wine/libinetcomm.cross.a
 /usr/lib64/wine/libinetcomm.def
 /usr/lib64/wine/libinetcomm.delay.a
@@ -2252,7 +2252,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libwinmm.cross.a
 /usr/lib64/wine/libwinmm.def
 /usr/lib64/wine/libwinmm.delay.a
-/usr/lib64/wine/libwinnls32.cross.a
 /usr/lib64/wine/libwinnls32.def
 /usr/lib64/wine/libwinscard.def
 /usr/lib64/wine/libwinspool.cross.a
@@ -2270,7 +2269,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libwmcodecdspuuid.cross.a
 /usr/lib64/wine/libwmvcore.cross.a
 /usr/lib64/wine/libwmvcore.def
-/usr/lib64/wine/libwnaspi32.cross.a
 /usr/lib64/wine/libwnaspi32.def
 /usr/lib64/wine/libws2_32.cross.a
 /usr/lib64/wine/libws2_32.def
@@ -2524,6 +2522,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/url.dll
 /usr/lib64/wine/urlmon.dll
 /usr/lib64/wine/usbd.sys
+/usr/lib64/wine/user32.dll
 /usr/lib64/wine/userenv.dll
 /usr/lib64/wine/usp10.dll
 /usr/lib64/wine/utildll.dll
@@ -3914,7 +3913,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/secur32.dll.so
 /usr/lib64/wine/shell32.dll.so
 /usr/lib64/wine/ucrtbase.dll.so
-/usr/lib64/wine/user32.dll.so
+/usr/lib64/wine/user32.so
 /usr/lib64/wine/windowscodecs.dll.so
 /usr/lib64/wine/winealsa.drv.so
 /usr/lib64/wine/winebrowser.exe.so
@@ -4712,6 +4711,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/urlmon.dll.so
 /usr/lib32/wine/usbd.sys.so
 /usr/lib32/wine/user32.dll.so
+/usr/lib32/wine/user32.so
 /usr/lib32/wine/userenv.dll.so
 /usr/lib32/wine/usp10.dll.so
 /usr/lib32/wine/utildll.dll.so

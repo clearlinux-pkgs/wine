@@ -192,6 +192,7 @@ Configure miss: FAudioLinkedVersion
 Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
 Configure miss: capi20.h
 Configure miss: -lnetapi
+Configure miss: -lvkd3d-shader
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
@@ -449,6 +450,7 @@ Configure miss: -ltiff
 Configure miss: mpg123_feed in -lmpg123
 Configure miss: -lodbc
 Configure miss: -lnetapi
+Configure miss: -lvkd3d-shader
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
