@@ -199,6 +199,7 @@ Configure miss: whether the compiler supports -Werror=ignored-optimization-argum
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
+Configure miss: flags needed for 64-bit compare-and-swap support
 Configure miss: __res_get_state
 Configure miss: __res_getservers
 Configure miss: _spawnvp
@@ -457,6 +458,7 @@ Configure miss: whether the compiler supports -Werror=ignored-optimization-argum
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: broken string.h that generates warnings with -Wlogical-op
+Configure miss: flags needed for 64-bit compare-and-swap support
 Configure miss: __res_get_state
 Configure miss: __res_getservers
 Configure miss: _spawnvp
