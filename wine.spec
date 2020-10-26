@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.19
-Release  : 71
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.19.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.19.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.19.tar.xz.sign
+Version  : 5.20
+Release  : 72
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.20.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.20.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.20.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -222,8 +222,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.19
-cd %{_builddir}/wine-5.19
+%setup -q -n wine-5.20
+cd %{_builddir}/wine-5.20
 %patch1 -p1
 
 %build
@@ -246,7 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602528993
+export SOURCE_DATE_EPOCH=1603736153
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -263,12 +263,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1602528993
+export SOURCE_DATE_EPOCH=1603736153
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.19/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.19/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.19/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.20/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.20/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.20/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -653,6 +653,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/dmusic32.dll
 /usr/lib32/wine/fakedlls/dnsapi.dll
 /usr/lib32/wine/fakedlls/dplay.dll
+/usr/lib32/wine/fakedlls/dplaysvr.exe
 /usr/lib32/wine/fakedlls/dplayx.dll
 /usr/lib32/wine/fakedlls/dpnaddr.dll
 /usr/lib32/wine/fakedlls/dpnet.dll
@@ -660,6 +661,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/dpnlobby.dll
 /usr/lib32/wine/fakedlls/dpnsvr.exe
 /usr/lib32/wine/fakedlls/dpvoice.dll
+/usr/lib32/wine/fakedlls/dpvsetup.exe
 /usr/lib32/wine/fakedlls/dpwsockx.dll
 /usr/lib32/wine/fakedlls/drmclien.dll
 /usr/lib32/wine/fakedlls/dsdmo.dll
@@ -1705,6 +1707,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/dmusic.dll
 /usr/lib64/wine/dmusic32.dll
 /usr/lib64/wine/dplay.dll
+/usr/lib64/wine/dplaysvr.exe
 /usr/lib64/wine/dplayx.dll
 /usr/lib64/wine/dpnaddr.dll
 /usr/lib64/wine/dpnet.dll
@@ -1712,6 +1715,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/dpnlobby.dll
 /usr/lib64/wine/dpnsvr.exe
 /usr/lib64/wine/dpvoice.dll
+/usr/lib64/wine/dpvsetup.exe
 /usr/lib64/wine/dpwsockx.dll
 /usr/lib64/wine/drmclien.dll
 /usr/lib64/wine/dsdmo.dll
@@ -1829,7 +1833,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fakedlls/winebrowser.exe
 /usr/lib64/wine/fakedlls/winebus.sys
 /usr/lib64/wine/fakedlls/winecfg.exe
-/usr/lib64/wine/fakedlls/wineconsole.exe
 /usr/lib64/wine/fakedlls/wined3d.dll
 /usr/lib64/wine/fakedlls/winedbg.exe
 /usr/lib64/wine/fakedlls/winejoystick.drv
@@ -2559,6 +2562,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/wimgapi.dll
 /usr/lib64/wine/windowscodecsext.dll
 /usr/lib64/wine/wineboot.exe
+/usr/lib64/wine/wineconsole.exe
 /usr/lib64/wine/winedevice.exe
 /usr/lib64/wine/winefile.exe
 /usr/lib64/wine/winehid.sys
@@ -3922,11 +3926,11 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/ucrtbase.dll.so
 /usr/lib64/wine/user32.so
 /usr/lib64/wine/windowscodecs.dll.so
+/usr/lib64/wine/windowscodecs.so
 /usr/lib64/wine/winealsa.drv.so
 /usr/lib64/wine/winebrowser.exe.so
 /usr/lib64/wine/winebus.sys.so
 /usr/lib64/wine/winecfg.exe.so
-/usr/lib64/wine/wineconsole.exe.so
 /usr/lib64/wine/wined3d.dll.so
 /usr/lib64/wine/winedbg.exe.so
 /usr/lib64/wine/winejoystick.drv.so
@@ -4315,6 +4319,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/dmusic32.dll.so
 /usr/lib32/wine/dnsapi.dll.so
 /usr/lib32/wine/dplay.dll.so
+/usr/lib32/wine/dplaysvr.exe.so
 /usr/lib32/wine/dplayx.dll.so
 /usr/lib32/wine/dpnaddr.dll.so
 /usr/lib32/wine/dpnet.dll.so
@@ -4322,6 +4327,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/dpnlobby.dll.so
 /usr/lib32/wine/dpnsvr.exe.so
 /usr/lib32/wine/dpvoice.dll.so
+/usr/lib32/wine/dpvsetup.exe.so
 /usr/lib32/wine/dpwsockx.dll.so
 /usr/lib32/wine/drmclien.dll.so
 /usr/lib32/wine/dsdmo.dll.so
@@ -4754,6 +4760,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/wiaservc.dll.so
 /usr/lib32/wine/wimgapi.dll.so
 /usr/lib32/wine/windowscodecs.dll.so
+/usr/lib32/wine/windowscodecs.so
 /usr/lib32/wine/windowscodecsext.dll.so
 /usr/lib32/wine/wineboot.exe.so
 /usr/lib32/wine/winebrowser.exe.so
