@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.20
-Release  : 72
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.20.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.20.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.20.tar.xz.sign
+Version  : 5.21
+Release  : 73
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.21.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.21.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.21.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -222,8 +222,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.20
-cd %{_builddir}/wine-5.20
+%setup -q -n wine-5.21
+cd %{_builddir}/wine-5.21
 %patch1 -p1
 
 %build
@@ -246,7 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603736153
+export SOURCE_DATE_EPOCH=1604944370
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -263,12 +263,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1603736153
+export SOURCE_DATE_EPOCH=1604944370
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.20/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.20/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.20/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.21/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.21/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.21/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -577,6 +577,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/d3d11.dll
 /usr/lib32/wine/fakedlls/d3d12.dll
 /usr/lib32/wine/fakedlls/d3d8.dll
+/usr/lib32/wine/fakedlls/d3d8thk.dll
 /usr/lib32/wine/fakedlls/d3d9.dll
 /usr/lib32/wine/fakedlls/d3dcompiler_33.dll
 /usr/lib32/wine/fakedlls/d3dcompiler_34.dll
@@ -592,6 +593,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/d3dcompiler_46.dll
 /usr/lib32/wine/fakedlls/d3dcompiler_47.dll
 /usr/lib32/wine/fakedlls/d3dim.dll
+/usr/lib32/wine/fakedlls/d3dim700.dll
 /usr/lib32/wine/fakedlls/d3drm.dll
 /usr/lib32/wine/fakedlls/d3dx10_33.dll
 /usr/lib32/wine/fakedlls/d3dx10_34.dll
@@ -910,6 +912,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/netprofm.dll
 /usr/lib32/wine/fakedlls/netsh.exe
 /usr/lib32/wine/fakedlls/netstat.exe
+/usr/lib32/wine/fakedlls/netutils.dll
 /usr/lib32/wine/fakedlls/newdev.dll
 /usr/lib32/wine/fakedlls/ngen.exe
 /usr/lib32/wine/fakedlls/ninput.dll
@@ -1023,6 +1026,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/spoolss.dll
 /usr/lib32/wine/fakedlls/spoolsv.exe
 /usr/lib32/wine/fakedlls/srclient.dll
+/usr/lib32/wine/fakedlls/srvcli.dll
 /usr/lib32/wine/fakedlls/sspicli.dll
 /usr/lib32/wine/fakedlls/start.exe
 /usr/lib32/wine/fakedlls/stdole2.tlb
@@ -1634,6 +1638,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/d3d10core.dll
 /usr/lib64/wine/d3d11.dll
 /usr/lib64/wine/d3d8.dll
+/usr/lib64/wine/d3d8thk.dll
 /usr/lib64/wine/d3d9.dll
 /usr/lib64/wine/d3dcompiler_33.dll
 /usr/lib64/wine/d3dcompiler_34.dll
@@ -1649,6 +1654,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/d3dcompiler_46.dll
 /usr/lib64/wine/d3dcompiler_47.dll
 /usr/lib64/wine/d3dim.dll
+/usr/lib64/wine/d3dim700.dll
 /usr/lib64/wine/d3drm.dll
 /usr/lib64/wine/d3dx10_33.dll
 /usr/lib64/wine/d3dx10_34.dll
@@ -1799,7 +1805,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fakedlls/dnsapi.dll
 /usr/lib64/wine/fakedlls/dwrite.dll
 /usr/lib64/wine/fakedlls/dxgi.dll
-/usr/lib64/wine/fakedlls/gdi32.dll
 /usr/lib64/wine/fakedlls/glu32.dll
 /usr/lib64/wine/fakedlls/gphoto2.ds
 /usr/lib64/wine/fakedlls/iphlpapi.dll
@@ -1857,6 +1862,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fusion.dll
 /usr/lib64/wine/fwpuclnt.dll
 /usr/lib64/wine/gameux.dll
+/usr/lib64/wine/gdi32.dll
 /usr/lib64/wine/gdiplus.dll
 /usr/lib64/wine/gpkcsp.dll
 /usr/lib64/wine/hal.dll
@@ -2387,6 +2393,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/netprofm.dll
 /usr/lib64/wine/netsh.exe
 /usr/lib64/wine/netstat.exe
+/usr/lib64/wine/netutils.dll
 /usr/lib64/wine/newdev.dll
 /usr/lib64/wine/ngen.exe
 /usr/lib64/wine/ninput.dll
@@ -2494,6 +2501,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/spoolss.dll
 /usr/lib64/wine/spoolsv.exe
 /usr/lib64/wine/srclient.dll
+/usr/lib64/wine/srvcli.dll
 /usr/lib64/wine/sspicli.dll
 /usr/lib64/wine/start.exe
 /usr/lib64/wine/stdole2.tlb
@@ -2919,6 +2927,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/bits2_5.idl
 /usr/include/wine/windows/bits3_0.h
 /usr/include/wine/windows/bits3_0.idl
+/usr/include/wine/windows/bits5_0.h
+/usr/include/wine/windows/bits5_0.idl
 /usr/include/wine/windows/bitsmsg.h
 /usr/include/wine/windows/bluetoothapis.h
 /usr/include/wine/windows/bthsdpdef.h
@@ -3893,7 +3903,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/dnsapi.dll.so
 /usr/lib64/wine/dwrite.dll.so
 /usr/lib64/wine/dxgi.dll.so
-/usr/lib64/wine/gdi32.dll.so
+/usr/lib64/wine/gdi32.so
 /usr/lib64/wine/glu32.dll.so
 /usr/lib64/wine/gphoto2.ds.so
 /usr/lib64/wine/iphlpapi.dll.so
@@ -4243,6 +4253,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/d3d11.dll.so
 /usr/lib32/wine/d3d12.dll.so
 /usr/lib32/wine/d3d8.dll.so
+/usr/lib32/wine/d3d8thk.dll.so
 /usr/lib32/wine/d3d9.dll.so
 /usr/lib32/wine/d3dcompiler_33.dll.so
 /usr/lib32/wine/d3dcompiler_34.dll.so
@@ -4258,6 +4269,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/d3dcompiler_46.dll.so
 /usr/lib32/wine/d3dcompiler_47.dll.so
 /usr/lib32/wine/d3dim.dll.so
+/usr/lib32/wine/d3dim700.dll.so
 /usr/lib32/wine/d3drm.dll.so
 /usr/lib32/wine/d3dx10_33.dll.so
 /usr/lib32/wine/d3dx10_34.dll.so
@@ -4416,6 +4428,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fwpuclnt.dll.so
 /usr/lib32/wine/gameux.dll.so
 /usr/lib32/wine/gdi32.dll.so
+/usr/lib32/wine/gdi32.so
 /usr/lib32/wine/gdiplus.dll.so
 /usr/lib32/wine/glu32.dll.so
 /usr/lib32/wine/gphoto2.ds.so
@@ -4576,6 +4589,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/netprofm.dll.so
 /usr/lib32/wine/netsh.exe.so
 /usr/lib32/wine/netstat.exe.so
+/usr/lib32/wine/netutils.dll.so
 /usr/lib32/wine/newdev.dll.so
 /usr/lib32/wine/ngen.exe.so
 /usr/lib32/wine/ninput.dll.so
@@ -4691,6 +4705,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/spoolss.dll.so
 /usr/lib32/wine/spoolsv.exe.so
 /usr/lib32/wine/srclient.dll.so
+/usr/lib32/wine/srvcli.dll.so
 /usr/lib32/wine/sspicli.dll.so
 /usr/lib32/wine/start.exe.so
 /usr/lib32/wine/stdole2.tlb.so
