@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.21
-Release  : 73
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.21.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.21.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.21.tar.xz.sign
+Version  : 5.22
+Release  : 74
+URL      : https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz
+Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz
+Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -222,8 +222,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.21
-cd %{_builddir}/wine-5.21
+%setup -q -n wine-5.22
+cd %{_builddir}/wine-5.22
 %patch1 -p1
 
 %build
@@ -246,7 +246,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604944370
+export SOURCE_DATE_EPOCH=1605922740
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -263,12 +263,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1604944370
+export SOURCE_DATE_EPOCH=1605922740
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.21/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.21/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.21/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-5.22/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-5.22/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
+cp %{_builddir}/wine-5.22/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -1625,6 +1625,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/connect.dll
 /usr/lib64/wine/control.exe
 /usr/lib64/wine/credui.dll
+/usr/lib64/wine/crtdll.dll
+/usr/lib64/wine/crypt32.dll
 /usr/lib64/wine/cryptdlg.dll
 /usr/lib64/wine/cryptdll.dll
 /usr/lib64/wine/cryptext.dll
@@ -1796,8 +1798,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/extrac32.exe
 /usr/lib64/wine/fakedlls/avicap32.dll
 /usr/lib64/wine/fakedlls/capi2032.dll
-/usr/lib64/wine/fakedlls/crtdll.dll
-/usr/lib64/wine/fakedlls/crypt32.dll
 /usr/lib64/wine/fakedlls/ctapi32.dll
 /usr/lib64/wine/fakedlls/d3d12.dll
 /usr/lib64/wine/fakedlls/dinput.dll
@@ -1805,24 +1805,13 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fakedlls/dnsapi.dll
 /usr/lib64/wine/fakedlls/dwrite.dll
 /usr/lib64/wine/fakedlls/dxgi.dll
-/usr/lib64/wine/fakedlls/glu32.dll
 /usr/lib64/wine/fakedlls/gphoto2.ds
 /usr/lib64/wine/fakedlls/iphlpapi.dll
 /usr/lib64/wine/fakedlls/kerberos.dll
 /usr/lib64/wine/fakedlls/l3codeca.acm
 /usr/lib64/wine/fakedlls/mountmgr.sys
 /usr/lib64/wine/fakedlls/mp3dmod.dll
-/usr/lib64/wine/fakedlls/mscms.dll
 /usr/lib64/wine/fakedlls/msgsm32.acm
-/usr/lib64/wine/fakedlls/msvcr100.dll
-/usr/lib64/wine/fakedlls/msvcr110.dll
-/usr/lib64/wine/fakedlls/msvcr120.dll
-/usr/lib64/wine/fakedlls/msvcr70.dll
-/usr/lib64/wine/fakedlls/msvcr71.dll
-/usr/lib64/wine/fakedlls/msvcr80.dll
-/usr/lib64/wine/fakedlls/msvcr90.dll
-/usr/lib64/wine/fakedlls/msvcrt.dll
-/usr/lib64/wine/fakedlls/msvcrtd.dll
 /usr/lib64/wine/fakedlls/msxml3.dll
 /usr/lib64/wine/fakedlls/netapi32.dll
 /usr/lib64/wine/fakedlls/openal32.dll
@@ -1832,7 +1821,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fakedlls/sane.ds
 /usr/lib64/wine/fakedlls/secur32.dll
 /usr/lib64/wine/fakedlls/shell32.dll
-/usr/lib64/wine/fakedlls/ucrtbase.dll
 /usr/lib64/wine/fakedlls/windowscodecs.dll
 /usr/lib64/wine/fakedlls/winealsa.drv
 /usr/lib64/wine/fakedlls/winebrowser.exe
@@ -1864,6 +1852,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/gameux.dll
 /usr/lib64/wine/gdi32.dll
 /usr/lib64/wine/gdiplus.dll
+/usr/lib64/wine/glu32.dll
 /usr/lib64/wine/gpkcsp.dll
 /usr/lib64/wine/hal.dll
 /usr/lib64/wine/hh.exe
@@ -1912,6 +1901,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libadsiid.cross.a
 /usr/lib64/wine/libadvapi32.cross.a
 /usr/lib64/wine/libadvapi32.def
+/usr/lib64/wine/libadvapi32.delay.a
 /usr/lib64/wine/libadvpack.cross.a
 /usr/lib64/wine/libadvpack.def
 /usr/lib64/wine/libadvpack.delay.a
@@ -1954,6 +1944,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libcryptdll.def
 /usr/lib64/wine/libcryptnet.cross.a
 /usr/lib64/wine/libcryptnet.def
+/usr/lib64/wine/libcryptnet.delay.a
 /usr/lib64/wine/libcryptui.cross.a
 /usr/lib64/wine/libcryptui.def
 /usr/lib64/wine/libcryptui.delay.a
@@ -2327,6 +2318,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/msadp32.acm
 /usr/lib64/wine/msasn1.dll
 /usr/lib64/wine/mscat32.dll
+/usr/lib64/wine/mscms.dll
 /usr/lib64/wine/mscoree.dll
 /usr/lib64/wine/mscorwks.dll
 /usr/lib64/wine/msctf.dll
@@ -2373,9 +2365,18 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/msvcp71.dll
 /usr/lib64/wine/msvcp80.dll
 /usr/lib64/wine/msvcp90.dll
+/usr/lib64/wine/msvcr100.dll
+/usr/lib64/wine/msvcr110.dll
+/usr/lib64/wine/msvcr120.dll
 /usr/lib64/wine/msvcr120_app.dll
+/usr/lib64/wine/msvcr70.dll
+/usr/lib64/wine/msvcr71.dll
+/usr/lib64/wine/msvcr80.dll
+/usr/lib64/wine/msvcr90.dll
+/usr/lib64/wine/msvcrt.dll
 /usr/lib64/wine/msvcrt20.dll
 /usr/lib64/wine/msvcrt40.dll
+/usr/lib64/wine/msvcrtd.dll
 /usr/lib64/wine/msvfw32.dll
 /usr/lib64/wine/msvidc32.dll
 /usr/lib64/wine/mswsock.dll
@@ -2525,6 +2526,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/traffic.dll
 /usr/lib64/wine/twain_32.dll
 /usr/lib64/wine/tzres.dll
+/usr/lib64/wine/ucrtbase.dll
 /usr/lib64/wine/uianimation.dll
 /usr/lib64/wine/uiautomationcore.dll
 /usr/lib64/wine/uiribbon.dll
@@ -2789,9 +2791,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/share/wine/nls/normnfkd.nls
 /usr/share/wine/nls/sortdefault.nls
 /usr/share/wine/wine.inf
-/usr/share/wine/winebus.inf
-/usr/share/wine/winehid.inf
-/usr/share/wine/wineusb.inf
 
 %files dev
 %defattr(-,root,root,-)
@@ -2942,6 +2941,9 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/cierror.h
 /usr/include/wine/windows/clusapi.h
 /usr/include/wine/windows/cmdbas.idl
+/usr/include/wine/windows/cmdpre.idl
+/usr/include/wine/windows/cmdprp.idl
+/usr/include/wine/windows/cmdstrm.idl
 /usr/include/wine/windows/cmdtxt.idl
 /usr/include/wine/windows/cmnquery.h
 /usr/include/wine/windows/cmnquery.idl
@@ -2977,6 +2979,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/ctxtcall.idl
 /usr/include/wine/windows/custcntl.h
 /usr/include/wine/windows/cvconst.h
+/usr/include/wine/windows/cvttyp.idl
 /usr/include/wine/windows/d2d1.h
 /usr/include/wine/windows/d2d1.idl
 /usr/include/wine/windows/d2d1_1.h
@@ -3249,6 +3252,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/gdiplusmetaheader.h
 /usr/include/wine/windows/gdipluspixelformats.h
 /usr/include/wine/windows/gdiplustypes.h
+/usr/include/wine/windows/getdts.idl
 /usr/include/wine/windows/guiddef.h
 /usr/include/wine/windows/hidusage.h
 /usr/include/wine/windows/highlevelmonitorconfigurationapi.h
@@ -3562,9 +3566,11 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/rpcproxy.h
 /usr/include/wine/windows/rpcsal.h
 /usr/include/wine/windows/rstbas.idl
+/usr/include/wine/windows/rstchg.idl
 /usr/include/wine/windows/rstinf.idl
 /usr/include/wine/windows/rstloc.idl
 /usr/include/wine/windows/rstnot.idl
+/usr/include/wine/windows/rstupd.idl
 /usr/include/wine/windows/rtutils.h
 /usr/include/wine/windows/rtworkq.h
 /usr/include/wine/windows/rtworkq.idl
@@ -3894,8 +3900,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/avicap32.dll.so
 /usr/lib64/wine/bcrypt.so
 /usr/lib64/wine/capi2032.dll.so
-/usr/lib64/wine/crtdll.dll.so
-/usr/lib64/wine/crypt32.dll.so
+/usr/lib64/wine/crtdll.so
+/usr/lib64/wine/crypt32.so
 /usr/lib64/wine/ctapi32.dll.so
 /usr/lib64/wine/d3d12.dll.so
 /usr/lib64/wine/dinput.dll.so
@@ -3904,24 +3910,23 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/dwrite.dll.so
 /usr/lib64/wine/dxgi.dll.so
 /usr/lib64/wine/gdi32.so
-/usr/lib64/wine/glu32.dll.so
 /usr/lib64/wine/gphoto2.ds.so
 /usr/lib64/wine/iphlpapi.dll.so
 /usr/lib64/wine/kerberos.dll.so
 /usr/lib64/wine/l3codeca.acm.so
 /usr/lib64/wine/mountmgr.sys.so
 /usr/lib64/wine/mp3dmod.dll.so
-/usr/lib64/wine/mscms.dll.so
+/usr/lib64/wine/mscms.so
 /usr/lib64/wine/msgsm32.acm.so
-/usr/lib64/wine/msvcr100.dll.so
-/usr/lib64/wine/msvcr110.dll.so
-/usr/lib64/wine/msvcr120.dll.so
-/usr/lib64/wine/msvcr70.dll.so
-/usr/lib64/wine/msvcr71.dll.so
-/usr/lib64/wine/msvcr80.dll.so
-/usr/lib64/wine/msvcr90.dll.so
-/usr/lib64/wine/msvcrt.dll.so
-/usr/lib64/wine/msvcrtd.dll.so
+/usr/lib64/wine/msvcr100.so
+/usr/lib64/wine/msvcr110.so
+/usr/lib64/wine/msvcr120.so
+/usr/lib64/wine/msvcr70.so
+/usr/lib64/wine/msvcr71.so
+/usr/lib64/wine/msvcr80.so
+/usr/lib64/wine/msvcr90.so
+/usr/lib64/wine/msvcrt.so
+/usr/lib64/wine/msvcrtd.so
 /usr/lib64/wine/msxml3.dll.so
 /usr/lib64/wine/netapi32.dll.so
 /usr/lib64/wine/ntdll.so
@@ -3933,7 +3938,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/sane.ds.so
 /usr/lib64/wine/secur32.dll.so
 /usr/lib64/wine/shell32.dll.so
-/usr/lib64/wine/ucrtbase.dll.so
+/usr/lib64/wine/ucrtbase.so
 /usr/lib64/wine/user32.so
 /usr/lib64/wine/windowscodecs.dll.so
 /usr/lib64/wine/windowscodecs.so
@@ -4237,7 +4242,9 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/control.exe.so
 /usr/lib32/wine/credui.dll.so
 /usr/lib32/wine/crtdll.dll.so
+/usr/lib32/wine/crtdll.so
 /usr/lib32/wine/crypt32.dll.so
+/usr/lib32/wine/crypt32.so
 /usr/lib32/wine/cryptdlg.dll.so
 /usr/lib32/wine/cryptdll.dll.so
 /usr/lib32/wine/cryptext.dll.so
@@ -4511,6 +4518,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/msasn1.dll.so
 /usr/lib32/wine/mscat32.dll.so
 /usr/lib32/wine/mscms.dll.so
+/usr/lib32/wine/mscms.so
 /usr/lib32/wine/mscoree.dll.so
 /usr/lib32/wine/mscorwks.dll.so
 /usr/lib32/wine/msctf.dll.so
@@ -4559,17 +4567,26 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/msvcp80.dll.so
 /usr/lib32/wine/msvcp90.dll.so
 /usr/lib32/wine/msvcr100.dll.so
+/usr/lib32/wine/msvcr100.so
 /usr/lib32/wine/msvcr110.dll.so
+/usr/lib32/wine/msvcr110.so
 /usr/lib32/wine/msvcr120.dll.so
+/usr/lib32/wine/msvcr120.so
 /usr/lib32/wine/msvcr120_app.dll.so
 /usr/lib32/wine/msvcr70.dll.so
+/usr/lib32/wine/msvcr70.so
 /usr/lib32/wine/msvcr71.dll.so
+/usr/lib32/wine/msvcr71.so
 /usr/lib32/wine/msvcr80.dll.so
+/usr/lib32/wine/msvcr80.so
 /usr/lib32/wine/msvcr90.dll.so
+/usr/lib32/wine/msvcr90.so
 /usr/lib32/wine/msvcrt.dll.so
+/usr/lib32/wine/msvcrt.so
 /usr/lib32/wine/msvcrt20.dll.so
 /usr/lib32/wine/msvcrt40.dll.so
 /usr/lib32/wine/msvcrtd.dll.so
+/usr/lib32/wine/msvcrtd.so
 /usr/lib32/wine/msvfw32.dll.so
 /usr/lib32/wine/msvidc32.dll.so
 /usr/lib32/wine/mswsock.dll.so
@@ -4730,6 +4747,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/twain_32.dll.so
 /usr/lib32/wine/tzres.dll.so
 /usr/lib32/wine/ucrtbase.dll.so
+/usr/lib32/wine/ucrtbase.so
 /usr/lib32/wine/uianimation.dll.so
 /usr/lib32/wine/uiautomationcore.dll.so
 /usr/lib32/wine/uiribbon.dll.so

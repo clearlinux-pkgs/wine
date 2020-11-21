@@ -145,6 +145,7 @@ Configure miss: sys/timeout.h
 Configure miss: sys/vnode.h usability
 Configure miss: sys/vnode.h presence
 Configure miss: sys/vnode.h
+Configure miss: sys/conf.h
 Configure miss: sys/sysctl.h
 Configure miss: net/if_types.h
 Configure miss: netinet/if_inarp.h
@@ -380,6 +381,7 @@ Configure miss: sys/timeout.h
 Configure miss: sys/vnode.h usability
 Configure miss: sys/vnode.h presence
 Configure miss: sys/vnode.h
+Configure miss: sys/conf.h
 Configure miss: net/if_types.h
 Configure miss: netinet/if_inarp.h
 Configure miss: netinet/in_pcb.h
