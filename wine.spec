@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 5.22
-Release  : 74
-URL      : https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz
-Source0  : https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz
-Source1  : https://dl.winehq.org/wine/source/5.x/wine-5.22.tar.xz.sign
+Version  : 6.0
+Release  : 75
+URL      : https://dl.winehq.org/wine/source/6.0/wine-6.0.tar.xz
+Source0  : https://dl.winehq.org/wine/source/6.0/wine-6.0.tar.xz
+Source1  : https://dl.winehq.org/wine/source/6.0/wine-6.0.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -165,18 +165,6 @@ Requires: wine = %{version}-%{release}
 dev components for the wine package.
 
 
-%package dev32
-Summary: dev32 components for the wine package.
-Group: Default
-Requires: wine-lib32 = %{version}-%{release}
-Requires: wine-bin = %{version}-%{release}
-Requires: wine-data = %{version}-%{release}
-Requires: wine-dev = %{version}-%{release}
-
-%description dev32
-dev32 components for the wine package.
-
-
 %package extras-staticdev
 Summary: extras-staticdev components for the wine package.
 Group: Default
@@ -222,8 +210,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-5.22
-cd %{_builddir}/wine-5.22
+%setup -q -n wine-6.0
+cd %{_builddir}/wine-6.0
 %patch1 -p1
 
 %build
@@ -246,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605922740
+export SOURCE_DATE_EPOCH=1610661200
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -263,12 +251,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1605922740
+export SOURCE_DATE_EPOCH=1610661200
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-5.22/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-5.22/LICENSE %{buildroot}/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
-cp %{_builddir}/wine-5.22/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-6.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-6.0/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -633,6 +620,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/fakedlls/dbgeng.dll
 /usr/lib32/wine/fakedlls/dbghelp.dll
 /usr/lib32/wine/fakedlls/dciman32.dll
+/usr/lib32/wine/fakedlls/dcomp.dll
 /usr/lib32/wine/fakedlls/ddraw.dll
 /usr/lib32/wine/fakedlls/ddrawex.dll
 /usr/lib32/wine/fakedlls/devenum.dll
@@ -1696,6 +1684,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/dbgeng.dll
 /usr/lib64/wine/dbghelp.dll
 /usr/lib64/wine/dciman32.dll
+/usr/lib64/wine/dcomp.dll
 /usr/lib64/wine/ddraw.dll
 /usr/lib64/wine/ddrawex.dll
 /usr/lib64/wine/devenum.dll
@@ -1817,11 +1806,9 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/fakedlls/openal32.dll
 /usr/lib64/wine/fakedlls/opencl.dll
 /usr/lib64/wine/fakedlls/opengl32.dll
-/usr/lib64/wine/fakedlls/qcap.dll
 /usr/lib64/wine/fakedlls/sane.ds
 /usr/lib64/wine/fakedlls/secur32.dll
 /usr/lib64/wine/fakedlls/shell32.dll
-/usr/lib64/wine/fakedlls/windowscodecs.dll
 /usr/lib64/wine/fakedlls/winealsa.drv
 /usr/lib64/wine/fakedlls/winebrowser.exe
 /usr/lib64/wine/fakedlls/winebus.sys
@@ -2439,6 +2426,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/pstorec.dll
 /usr/lib64/wine/pwrshplugin.dll
 /usr/lib64/wine/qasf.dll
+/usr/lib64/wine/qcap.dll
 /usr/lib64/wine/qdvd.dll
 /usr/lib64/wine/qedit.dll
 /usr/lib64/wine/qmgr.dll
@@ -2570,6 +2558,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/whoami.exe
 /usr/lib64/wine/wiaservc.dll
 /usr/lib64/wine/wimgapi.dll
+/usr/lib64/wine/windowscodecs.dll
 /usr/lib64/wine/windowscodecsext.dll
 /usr/lib64/wine/wineboot.exe
 /usr/lib64/wine/wineconsole.exe
@@ -2799,8 +2788,10 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/itss.h
 /usr/include/wine/itss.idl
 /usr/include/wine/msvcrt/assert.h
+/usr/include/wine/msvcrt/complex.h
 /usr/include/wine/msvcrt/conio.h
 /usr/include/wine/msvcrt/corecrt.h
+/usr/include/wine/msvcrt/corecrt_io.h
 /usr/include/wine/msvcrt/corecrt_startup.h
 /usr/include/wine/msvcrt/corecrt_stdio_config.h
 /usr/include/wine/msvcrt/corecrt_wctype.h
@@ -3739,6 +3730,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windows.foundation.h
 /usr/include/wine/windows/windows.foundation.idl
 /usr/include/wine/windows/windows.h
+/usr/include/wine/windows/windowscontracts.h
+/usr/include/wine/windows/windowscontracts.idl
 /usr/include/wine/windows/windowsx.h
 /usr/include/wine/windows/winerror.h
 /usr/include/wine/windows/winevt.h
@@ -3838,11 +3831,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/xmllite.h
 /usr/include/wine/windows/xmllite.idl
 /usr/include/wine/windows/zmouse.h
-/usr/lib64/libwine.so
-
-%files dev32
-%defattr(-,root,root,-)
-/usr/lib32/libwine.so
 
 %files extras-staticdev
 %defattr(-,root,root,-)
@@ -3934,13 +3922,12 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/openal32.dll.so
 /usr/lib64/wine/opencl.dll.so
 /usr/lib64/wine/opengl32.dll.so
-/usr/lib64/wine/qcap.dll.so
+/usr/lib64/wine/qcap.so
 /usr/lib64/wine/sane.ds.so
 /usr/lib64/wine/secur32.dll.so
 /usr/lib64/wine/shell32.dll.so
 /usr/lib64/wine/ucrtbase.so
 /usr/lib64/wine/user32.so
-/usr/lib64/wine/windowscodecs.dll.so
 /usr/lib64/wine/windowscodecs.so
 /usr/lib64/wine/winealsa.drv.so
 /usr/lib64/wine/winebrowser.exe.so
@@ -4316,6 +4303,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/dbgeng.dll.so
 /usr/lib32/wine/dbghelp.dll.so
 /usr/lib32/wine/dciman32.dll.so
+/usr/lib32/wine/dcomp.dll.so
 /usr/lib32/wine/ddraw.dll.so
 /usr/lib32/wine/ddrawex.dll.so
 /usr/lib32/wine/devenum.dll.so
@@ -4656,6 +4644,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/pwrshplugin.dll.so
 /usr/lib32/wine/qasf.dll.so
 /usr/lib32/wine/qcap.dll.so
+/usr/lib32/wine/qcap.so
 /usr/lib32/wine/qdvd.dll.so
 /usr/lib32/wine/qedit.dll.so
 /usr/lib32/wine/qmgr.dll.so
@@ -4869,7 +4858,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
-/usr/share/package-licenses/wine/0ea0378c84f5be6be63d117405d9fdd33bea99f9
 /usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
 
 %files man
