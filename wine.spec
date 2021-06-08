@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 6.0
-Release  : 75
-URL      : https://dl.winehq.org/wine/source/6.0/wine-6.0.tar.xz
-Source0  : https://dl.winehq.org/wine/source/6.0/wine-6.0.tar.xz
-Source1  : https://dl.winehq.org/wine/source/6.0/wine-6.0.tar.xz.sign
+Version  : 6.0.1
+Release  : 76
+URL      : https://dl.winehq.org/wine/source/6.0/wine-6.0.1.tar.xz
+Source0  : https://dl.winehq.org/wine/source/6.0/wine-6.0.1.tar.xz
+Source1  : https://dl.winehq.org/wine/source/6.0/wine-6.0.1.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -210,8 +210,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-6.0
-cd %{_builddir}/wine-6.0
+%setup -q -n wine-6.0.1
+cd %{_builddir}/wine-6.0.1
 %patch1 -p1
 
 %build
@@ -234,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1610661200
+export SOURCE_DATE_EPOCH=1623173019
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
@@ -251,11 +251,12 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fn
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1610661200
+export SOURCE_DATE_EPOCH=1623173019
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-6.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-6.0/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-6.0.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-6.0.1/LICENSE %{buildroot}/usr/share/package-licenses/wine/abc50ed5f6b410141a576e7d925ca7d87f0c7afc
+cp %{_builddir}/wine-6.0.1/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -2737,6 +2738,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/share/wine/nls/c_20127.nls
 /usr/share/wine/nls/c_20866.nls
 /usr/share/wine/nls/c_20932.nls
+/usr/share/wine/nls/c_20949.nls
 /usr/share/wine/nls/c_21866.nls
 /usr/share/wine/nls/c_28591.nls
 /usr/share/wine/nls/c_28592.nls
@@ -4859,6 +4861,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 /usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+/usr/share/package-licenses/wine/abc50ed5f6b410141a576e7d925ca7d87f0c7afc
 
 %files man
 %defattr(0644,root,root,0755)

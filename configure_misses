@@ -1,285 +1,286 @@
-Configure miss: g++ option to enable C++11 features
-Configure miss: x86_64-generic-linux-gnu-cpp
-Configure miss: x86_64-generic-linux-gnu-ld
-Configure miss: i386_set_ldt in -li386
-Configure miss: ApplicationServices/ApplicationServices.h
-Configure miss: AudioToolbox/AudioConverter.h
-Configure miss: AudioUnit/AudioUnit.h
-Configure miss: AudioUnit/AudioComponent.h
-Configure miss: Carbon/Carbon.h
-Configure miss: CommonCrypto/CommonCryptor.h
-Configure miss: CoreAudio/CoreAudio.h
-Configure miss: DiskArbitration/DiskArbitration.h
-Configure miss: IOKit/IOKitLib.h
-Configure miss: IOKit/hid/IOHIDLib.h
-Configure miss: OpenAL/al.h
-Configure miss: OpenCL/opencl.h
-Configure miss: QuickTime/ImageCompression.h
-Configure miss: Security/Security.h
-Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
-Configure miss: SystemConfiguration/SCNetworkConfiguration.h
-Configure miss: alias.h
-Configure miss: asm/user.h
-Configure miss: gsm.h
-Configure miss: gsm/gsm.h
-Configure miss: inet/mib2.h
-Configure miss: kstat.h
-Configure miss: libproc.h
-Configure miss: linux/ucdrom.h
-Configure miss: lwp.h
-Configure miss: mach-o/loader.h
-Configure miss: mach/mach.h
-Configure miss: machine/cpu.h
-Configure miss: machine/sysarch.h
-Configure miss: netinet/tcp_fsm.h
-Configure miss: pcap/pcap.h
-Configure miss: port.h
-Configure miss: stropts.h
-Configure miss: sys/attr.h
-Configure miss: sys/cdio.h
-Configure miss: sys/event.h
-Configure miss: sys/link.h
-Configure miss: sys/modem.h
-Configure miss: sys/protosw.h
-Configure miss: sys/scsiio.h
-Configure miss: sys/strtio.h
-Configure miss: sys/tihdr.h
-Configure miss: sys/timeout.h
-Configure miss: sys/vnode.h
-Configure miss: sys/conf.h
-Configure miss: sys/sysctl.h
-Configure miss: net/if_types.h
-Configure miss: netinet/if_inarp.h
-Configure miss: netinet/in_pcb.h
-Configure miss: netinet/ip_var.h
-Configure miss: netinet/tcp_timer.h
-Configure miss: netinet/udp_var.h
-Configure miss: netinet/icmp_var.h
-Configure miss: netinet/tcp_var.h
-Configure miss: linux/irda.h
-Configure miss: sys/thr.h
-Configure miss: pthread_np.h
-Configure miss: libprocstat.h
-Configure miss: x86_64-generic-linux-gnu-otool
-Configure miss: otool
-Configure miss: x86_64-generic-linux-gnu-readelf
-Configure miss: x86_64-pc-mingw32-gcc
-Configure miss: amd64-pc-mingw32-gcc
-Configure miss: whether the cross-compiler supports -target x86_64-w64-mingw32 -fuse-ld=lld
-Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
-Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
-Configure miss: whether the cross-compiler supports -Wpragma-pack
-Configure miss: inotify_add_watch in -linotify
-Configure miss: hal/libhal.h
-Configure miss: libusb.h
-Configure miss: -lv4l2
-Configure miss: res_getservers
-Configure miss: pthread_getthreadid_np
-Configure miss: gst/gst.h
-Configure miss: oss_sysinfo.numaudioengines
-Configure miss: unw_step
-Configure miss: unw_step in libunwind
-Configure miss: FAudio.h
-Configure miss: FAudio_CommitOperationSet
-Configure miss: F3DAudioInitialize8
-Configure miss: FAudioLinkedVersion
-Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
-Configure miss: capi20.h
-Configure miss: -lnetapi
-Configure miss: -lvkd3d-shader
-Configure miss: whether the compiler supports -Werror=unknown-warning-option
-Configure miss: whether the compiler supports -Werror=unused-command-line-argument
-Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
-Configure miss: whether the compiler supports -Wpragma-pack
-Configure miss: broken string.h that generates warnings with -Wpointer-arith
-Configure miss: broken string.h that generates warnings with -Wlogical-op
-Configure miss: flags needed for 64-bit compare-and-swap support
-Configure miss: __res_get_state
-Configure miss: __res_getservers
-Configure miss: _spawnvp
-Configure miss: getattrlist
-Configure miss: mach_continuous_time
-Configure miss: port_create
-Configure miss: proc_pidinfo
-Configure miss: setprogname
-Configure miss: thr_kill2
-Configure miss: ldap_parse_sort_control
-Configure miss: ldap_parse_vlv_control
-Configure miss: request_sense
-Configure miss: struct xinpgen
-Configure miss: struct msghdr.msg_accrights
-Configure miss: scsireq_t.cmd
-Configure miss: struct mtget.mt_blksiz
-Configure miss: struct stat.st_mtimespec
-Configure miss: struct stat.st_ctimespec
-Configure miss: struct stat.st_atimespec
-Configure miss: struct stat.st_birthtime
-Configure miss: struct stat.st_birthtim
-Configure miss: struct stat.st_birthtimespec
-Configure miss: struct stat.__st_birthtime
-Configure miss: struct stat.__st_birthtim
-Configure miss: struct icmpstat.icps_inhist
-Configure miss: struct icmpstat.icps_outhist
-Configure miss: struct ipstat.ips_total
-Configure miss: struct ip_stats.ips_total
-Configure miss: struct tcpstat.tcps_connattempt
-Configure miss: struct tcp_stats.tcps_connattempt
-Configure miss: struct udpstat.udps_ipackets
-Configure miss: whether we need to define __x86_64__
-Configure miss: g++ option to enable C++11 features
-Configure miss: x86_64-generic-linux-gnu-cpp
-Configure miss: x86_64-generic-linux-gnu-ld
-Configure miss: i386_set_ldt in -li386
-Configure miss: ApplicationServices/ApplicationServices.h
-Configure miss: AudioToolbox/AudioConverter.h
-Configure miss: AudioUnit/AudioUnit.h
-Configure miss: AudioUnit/AudioComponent.h
-Configure miss: Carbon/Carbon.h
-Configure miss: CommonCrypto/CommonCryptor.h
-Configure miss: CoreAudio/CoreAudio.h
-Configure miss: DiskArbitration/DiskArbitration.h
-Configure miss: IOKit/IOKitLib.h
-Configure miss: IOKit/hid/IOHIDLib.h
-Configure miss: OpenAL/al.h
-Configure miss: OpenCL/opencl.h
-Configure miss: QuickTime/ImageCompression.h
-Configure miss: Security/Security.h
-Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
-Configure miss: SystemConfiguration/SCNetworkConfiguration.h
-Configure miss: alias.h
-Configure miss: asm/user.h
-Configure miss: gsm.h
-Configure miss: gsm/gsm.h
-Configure miss: inet/mib2.h
-Configure miss: kstat.h
-Configure miss: libproc.h
-Configure miss: linux/ucdrom.h
-Configure miss: lwp.h
-Configure miss: mach-o/loader.h
-Configure miss: mach/mach.h
-Configure miss: machine/cpu.h
-Configure miss: machine/sysarch.h
-Configure miss: netinet/tcp_fsm.h
-Configure miss: pcap/pcap.h
-Configure miss: port.h
-Configure miss: stropts.h
-Configure miss: sys/attr.h
-Configure miss: sys/cdio.h
-Configure miss: sys/event.h
-Configure miss: sys/link.h
-Configure miss: sys/modem.h
-Configure miss: sys/protosw.h
-Configure miss: sys/scsiio.h
-Configure miss: sys/strtio.h
-Configure miss: sys/tihdr.h
-Configure miss: sys/timeout.h
-Configure miss: sys/vnode.h
-Configure miss: sys/conf.h
-Configure miss: net/if_types.h
-Configure miss: netinet/if_inarp.h
-Configure miss: netinet/in_pcb.h
-Configure miss: netinet/ip_var.h
-Configure miss: netinet/tcp_timer.h
-Configure miss: netinet/udp_var.h
-Configure miss: netinet/icmp_var.h
-Configure miss: netinet/tcp_var.h
-Configure miss: linux/irda.h
-Configure miss: sys/thr.h
-Configure miss: pthread_np.h
-Configure miss: libprocstat.h
-Configure miss: x86_64-generic-linux-gnu-otool
-Configure miss: otool
-Configure miss: x86_64-generic-linux-gnu-readelf
-Configure miss: i686-w64-mingw32-gcc
-Configure miss: i586-w64-mingw32-gcc
-Configure miss: i486-w64-mingw32-gcc
-Configure miss: i386-w64-mingw32-gcc
-Configure miss: i686-pc-mingw32-gcc
-Configure miss: i586-pc-mingw32-gcc
-Configure miss: i486-pc-mingw32-gcc
-Configure miss: i386-pc-mingw32-gcc
-Configure miss: i686-mingw32msvc-gcc
-Configure miss: i586-mingw32msvc-gcc
-Configure miss: i486-mingw32msvc-gcc
-Configure miss: i386-mingw32msvc-gcc
-Configure miss: i686-mingw32-gcc
-Configure miss: i586-mingw32-gcc
-Configure miss: i486-mingw32-gcc
-Configure miss: i386-mingw32-gcc
-Configure miss: i686-w64-mingw32-clang
-Configure miss: i586-w64-mingw32-clang
-Configure miss: i486-w64-mingw32-clang
-Configure miss: i386-w64-mingw32-clang
-Configure miss: mingw32-gcc
-Configure miss: clGetPlatformInfo in -lOpenCL
-Configure miss: inotify_add_watch in -linotify
-Configure miss: hal/libhal.h
-Configure miss: -lsane
-Configure miss: libusb.h
-Configure miss: -lv4l2
-Configure miss: gp_camera_new in -lgphoto2
-Configure miss: gp_port_info_list_new in -lgphoto2_port
-Configure miss: res_getservers
-Configure miss: pthread_getthreadid_np
-Configure miss: gst/gst.h
-Configure miss: snd_pcm_hw_params_get_access_mask in -lasound
-Configure miss: oss_sysinfo.numaudioengines
-Configure miss: FAudio.h
-Configure miss: FAudio_CommitOperationSet
-Configure miss: F3DAudioInitialize8
-Configure miss: FAudioLinkedVersion
-Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
-Configure miss: capi20.h
 Configure miss: -lcups
 Configure miss: -lkrb5
-Configure miss: -ltiff
-Configure miss: mpg123_feed in -lmpg123
-Configure miss: -lodbc
 Configure miss: -lnetapi
-Configure miss: -lvkd3d-shader
-Configure miss: whether the compiler supports -Werror=unknown-warning-option
-Configure miss: whether the compiler supports -Werror=unused-command-line-argument
-Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
-Configure miss: whether the compiler supports -Wpragma-pack
-Configure miss: broken string.h that generates warnings with -Wpointer-arith
-Configure miss: broken string.h that generates warnings with -Wlogical-op
-Configure miss: flags needed for 64-bit compare-and-swap support
+Configure miss: -lnetapi
+Configure miss: -lodbc
+Configure miss: -lsane
+Configure miss: -ltiff
+Configure miss: -lv4l2
+Configure miss: -lv4l2
+Configure miss: ApplicationServices/ApplicationServices.h
+Configure miss: ApplicationServices/ApplicationServices.h
+Configure miss: AudioToolbox/AudioConverter.h
+Configure miss: AudioToolbox/AudioConverter.h
+Configure miss: AudioUnit/AudioComponent.h
+Configure miss: AudioUnit/AudioComponent.h
+Configure miss: AudioUnit/AudioUnit.h
+Configure miss: AudioUnit/AudioUnit.h
+Configure miss: Carbon/Carbon.h
+Configure miss: Carbon/Carbon.h
+Configure miss: CommonCrypto/CommonCryptor.h
+Configure miss: CommonCrypto/CommonCryptor.h
+Configure miss: CoreAudio/CoreAudio.h
+Configure miss: CoreAudio/CoreAudio.h
+Configure miss: DiskArbitration/DiskArbitration.h
+Configure miss: DiskArbitration/DiskArbitration.h
+Configure miss: F3DAudioInitialize8
+Configure miss: F3DAudioInitialize8
+Configure miss: FAudio.h
+Configure miss: FAudio.h
+Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
+Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
+Configure miss: FAudioLinkedVersion
+Configure miss: FAudioLinkedVersion
+Configure miss: FAudio_CommitOperationSet
+Configure miss: FAudio_CommitOperationSet
+Configure miss: IOKit/IOKitLib.h
+Configure miss: IOKit/IOKitLib.h
+Configure miss: IOKit/hid/IOHIDLib.h
+Configure miss: IOKit/hid/IOHIDLib.h
+Configure miss: OpenAL/al.h
+Configure miss: OpenAL/al.h
+Configure miss: OpenCL/opencl.h
+Configure miss: OpenCL/opencl.h
+Configure miss: QuickTime/ImageCompression.h
+Configure miss: QuickTime/ImageCompression.h
+Configure miss: Security/Security.h
+Configure miss: Security/Security.h
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
+Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h
+Configure miss: SystemConfiguration/SCNetworkConfiguration.h
+Configure miss: __clear_cache
+Configure miss: __clear_cache
+Configure miss: __res_get_state
 Configure miss: __res_get_state
 Configure miss: __res_getservers
+Configure miss: __res_getservers
 Configure miss: _spawnvp
+Configure miss: _spawnvp
+Configure miss: alias.h
+Configure miss: alias.h
+Configure miss: amd64-pc-mingw32-gcc
+Configure miss: asm/user.h
+Configure miss: asm/user.h
+Configure miss: broken string.h that generates warnings with -Wlogical-op
+Configure miss: broken string.h that generates warnings with -Wlogical-op
+Configure miss: broken string.h that generates warnings with -Wpointer-arith
+Configure miss: broken string.h that generates warnings with -Wpointer-arith
+Configure miss: capi20.h
+Configure miss: capi20.h
+Configure miss: clGetPlatformInfo in -lOpenCL
+Configure miss: flags needed for 64-bit compare-and-swap support
+Configure miss: flags needed for 64-bit compare-and-swap support
+Configure miss: g++ option to enable C++11 features
+Configure miss: g++ option to enable C++11 features
 Configure miss: getattrlist
-Configure miss: mach_continuous_time
-Configure miss: port_create
-Configure miss: proc_pidinfo
-Configure miss: setprogname
-Configure miss: thr_kill2
-Configure miss: ldap_initialize in -lldap_r
+Configure miss: getattrlist
+Configure miss: gp_camera_new in -lgphoto2
+Configure miss: gp_port_info_list_new in -lgphoto2_port
+Configure miss: gsm.h
+Configure miss: gsm.h
+Configure miss: gsm/gsm.h
+Configure miss: gsm/gsm.h
+Configure miss: gst/gst.h
+Configure miss: gst/gst.h
+Configure miss: hal/libhal.h
+Configure miss: hal/libhal.h
+Configure miss: i386-mingw32-gcc
+Configure miss: i386-mingw32msvc-gcc
+Configure miss: i386-pc-mingw32-gcc
+Configure miss: i386-w64-mingw32-clang
+Configure miss: i386-w64-mingw32-gcc
+Configure miss: i386_set_ldt in -li386
+Configure miss: i386_set_ldt in -li386
+Configure miss: i486-mingw32-gcc
+Configure miss: i486-mingw32msvc-gcc
+Configure miss: i486-pc-mingw32-gcc
+Configure miss: i486-w64-mingw32-clang
+Configure miss: i486-w64-mingw32-gcc
+Configure miss: i586-mingw32-gcc
+Configure miss: i586-mingw32msvc-gcc
+Configure miss: i586-pc-mingw32-gcc
+Configure miss: i586-w64-mingw32-clang
+Configure miss: i586-w64-mingw32-gcc
+Configure miss: i686-mingw32-gcc
+Configure miss: i686-mingw32msvc-gcc
+Configure miss: i686-pc-mingw32-gcc
+Configure miss: i686-w64-mingw32-clang
+Configure miss: i686-w64-mingw32-gcc
+Configure miss: inet/mib2.h
+Configure miss: inet/mib2.h
+Configure miss: inotify_add_watch in -linotify
+Configure miss: inotify_add_watch in -linotify
+Configure miss: kstat.h
+Configure miss: kstat.h
 Configure miss: ldap_count_references
 Configure miss: ldap_first_reference
+Configure miss: ldap_initialize in -lldap_r
 Configure miss: ldap_next_reference
 Configure miss: ldap_parse_reference
 Configure miss: ldap_parse_sort_control
+Configure miss: ldap_parse_sort_control
 Configure miss: ldap_parse_sortresponse_control
 Configure miss: ldap_parse_vlv_control
+Configure miss: ldap_parse_vlv_control
 Configure miss: ldap_parse_vlvresponse_control
+Configure miss: libproc.h
+Configure miss: libproc.h
+Configure miss: libprocstat.h
+Configure miss: libprocstat.h
+Configure miss: libusb.h
+Configure miss: libusb.h
+Configure miss: linux/irda.h
+Configure miss: linux/irda.h
+Configure miss: linux/ucdrom.h
+Configure miss: linux/ucdrom.h
+Configure miss: lwp.h
+Configure miss: lwp.h
+Configure miss: mach-o/loader.h
+Configure miss: mach-o/loader.h
+Configure miss: mach/mach.h
+Configure miss: mach/mach.h
+Configure miss: mach_continuous_time
+Configure miss: mach_continuous_time
+Configure miss: machine/cpu.h
+Configure miss: machine/cpu.h
+Configure miss: machine/sysarch.h
+Configure miss: machine/sysarch.h
+Configure miss: mingw32-gcc
+Configure miss: mpg123_feed in -lmpg123
+Configure miss: net/if_types.h
+Configure miss: net/if_types.h
+Configure miss: netinet/icmp_var.h
+Configure miss: netinet/icmp_var.h
+Configure miss: netinet/if_inarp.h
+Configure miss: netinet/if_inarp.h
+Configure miss: netinet/in_pcb.h
+Configure miss: netinet/in_pcb.h
+Configure miss: netinet/ip_var.h
+Configure miss: netinet/ip_var.h
+Configure miss: netinet/tcp_fsm.h
+Configure miss: netinet/tcp_fsm.h
+Configure miss: netinet/tcp_timer.h
+Configure miss: netinet/tcp_timer.h
+Configure miss: netinet/tcp_var.h
+Configure miss: netinet/tcp_var.h
+Configure miss: netinet/udp_var.h
+Configure miss: netinet/udp_var.h
+Configure miss: oss_sysinfo.numaudioengines
+Configure miss: oss_sysinfo.numaudioengines
+Configure miss: otool
+Configure miss: otool
+Configure miss: pcap/pcap.h
+Configure miss: pcap/pcap.h
+Configure miss: port.h
+Configure miss: port.h
+Configure miss: port_create
+Configure miss: port_create
+Configure miss: proc_pidinfo
+Configure miss: proc_pidinfo
+Configure miss: pthread_getthreadid_np
+Configure miss: pthread_getthreadid_np
+Configure miss: pthread_np.h
+Configure miss: pthread_np.h
 Configure miss: request_sense
-Configure miss: struct xinpgen
-Configure miss: struct msghdr.msg_accrights
+Configure miss: request_sense
+Configure miss: res_getservers
+Configure miss: res_getservers
 Configure miss: scsireq_t.cmd
-Configure miss: struct mtget.mt_blksiz
-Configure miss: struct stat.st_mtimespec
-Configure miss: struct stat.st_ctimespec
-Configure miss: struct stat.st_atimespec
-Configure miss: struct stat.st_birthtime
-Configure miss: struct stat.st_birthtim
-Configure miss: struct stat.st_birthtimespec
-Configure miss: struct stat.__st_birthtime
-Configure miss: struct stat.__st_birthtim
+Configure miss: scsireq_t.cmd
+Configure miss: setprogname
+Configure miss: setprogname
+Configure miss: snd_pcm_hw_params_get_access_mask in -lasound
+Configure miss: stropts.h
+Configure miss: stropts.h
+Configure miss: struct icmpstat.icps_inhist
 Configure miss: struct icmpstat.icps_inhist
 Configure miss: struct icmpstat.icps_outhist
-Configure miss: struct ipstat.ips_total
+Configure miss: struct icmpstat.icps_outhist
 Configure miss: struct ip_stats.ips_total
-Configure miss: struct tcpstat.tcps_connattempt
+Configure miss: struct ip_stats.ips_total
+Configure miss: struct ipstat.ips_total
+Configure miss: struct ipstat.ips_total
+Configure miss: struct msghdr.msg_accrights
+Configure miss: struct msghdr.msg_accrights
+Configure miss: struct mtget.mt_blksiz
+Configure miss: struct mtget.mt_blksiz
+Configure miss: struct stat.__st_birthtim
+Configure miss: struct stat.__st_birthtim
+Configure miss: struct stat.__st_birthtime
+Configure miss: struct stat.__st_birthtime
+Configure miss: struct stat.st_atimespec
+Configure miss: struct stat.st_atimespec
+Configure miss: struct stat.st_birthtim
+Configure miss: struct stat.st_birthtim
+Configure miss: struct stat.st_birthtime
+Configure miss: struct stat.st_birthtime
+Configure miss: struct stat.st_birthtimespec
+Configure miss: struct stat.st_birthtimespec
+Configure miss: struct stat.st_ctimespec
+Configure miss: struct stat.st_ctimespec
+Configure miss: struct stat.st_mtimespec
+Configure miss: struct stat.st_mtimespec
 Configure miss: struct tcp_stats.tcps_connattempt
+Configure miss: struct tcp_stats.tcps_connattempt
+Configure miss: struct tcpstat.tcps_connattempt
+Configure miss: struct tcpstat.tcps_connattempt
 Configure miss: struct udpstat.udps_ipackets
+Configure miss: struct udpstat.udps_ipackets
+Configure miss: struct xinpgen
+Configure miss: struct xinpgen
+Configure miss: sys/attr.h
+Configure miss: sys/attr.h
+Configure miss: sys/cdio.h
+Configure miss: sys/cdio.h
+Configure miss: sys/conf.h
+Configure miss: sys/conf.h
+Configure miss: sys/event.h
+Configure miss: sys/event.h
+Configure miss: sys/link.h
+Configure miss: sys/link.h
+Configure miss: sys/modem.h
+Configure miss: sys/modem.h
+Configure miss: sys/protosw.h
+Configure miss: sys/protosw.h
+Configure miss: sys/scsiio.h
+Configure miss: sys/scsiio.h
+Configure miss: sys/strtio.h
+Configure miss: sys/strtio.h
+Configure miss: sys/sysctl.h
+Configure miss: sys/sysctl.h
+Configure miss: sys/thr.h
+Configure miss: sys/thr.h
+Configure miss: sys/tihdr.h
+Configure miss: sys/tihdr.h
+Configure miss: sys/timeout.h
+Configure miss: sys/timeout.h
+Configure miss: sys/vnode.h
+Configure miss: sys/vnode.h
+Configure miss: thr_kill2
+Configure miss: thr_kill2
+Configure miss: unw_step
+Configure miss: unw_step in libunwind
+Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
+Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
+Configure miss: whether the compiler supports -Werror=unknown-warning-option
+Configure miss: whether the compiler supports -Werror=unknown-warning-option
+Configure miss: whether the compiler supports -Werror=unused-command-line-argument
+Configure miss: whether the compiler supports -Werror=unused-command-line-argument
+Configure miss: whether the compiler supports -Wpragma-pack
+Configure miss: whether the compiler supports -Wpragma-pack
+Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
+Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
+Configure miss: whether the cross-compiler supports -Wpragma-pack
+Configure miss: whether the cross-compiler supports -target x86_64-w64-mingw32 -fuse-ld=lld
 Configure miss: whether we need to define __i386__
+Configure miss: whether we need to define __x86_64__
+Configure miss: x86_64-generic-linux-gnu-cpp
+Configure miss: x86_64-generic-linux-gnu-cpp
+Configure miss: x86_64-generic-linux-gnu-ld
+Configure miss: x86_64-generic-linux-gnu-ld
+Configure miss: x86_64-generic-linux-gnu-otool
+Configure miss: x86_64-generic-linux-gnu-otool
+Configure miss: x86_64-generic-linux-gnu-readelf
+Configure miss: x86_64-generic-linux-gnu-readelf
+Configure miss: x86_64-pc-mingw32-gcc

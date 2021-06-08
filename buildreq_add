@@ -48,3 +48,5 @@ mingw-gcc
 mingw-crt-dev
 opencl-headers-dev
 ocl-icd-dev
+mpg123-dev
+openldap-dev
