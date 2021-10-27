@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 6.0.1
-Release  : 76
-URL      : https://dl.winehq.org/wine/source/6.0/wine-6.0.1.tar.xz
-Source0  : https://dl.winehq.org/wine/source/6.0/wine-6.0.1.tar.xz
-Source1  : https://dl.winehq.org/wine/source/6.0/wine-6.0.1.tar.xz.sign
+Version  : 6.0.2
+Release  : 77
+URL      : https://dl.winehq.org/wine/source/6.0/wine-6.0.2.tar.xz
+Source0  : https://dl.winehq.org/wine/source/6.0/wine-6.0.2.tar.xz
+Source1  : https://dl.winehq.org/wine/source/6.0/wine-6.0.2.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 MIT
@@ -210,8 +210,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-6.0.1
-cd %{_builddir}/wine-6.0.1
+%setup -q -n wine-6.0.2
+cd %{_builddir}/wine-6.0.2
 %patch1 -p1
 
 %build
@@ -234,29 +234,29 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623173019
+export SOURCE_DATE_EPOCH=1635298850
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export CXXFLAGS=$CFLAGS
 export FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x1000 -march=westmere -mtune=haswell"
 export FCFLAGS=$FFLAGS
 unset LDFLAGS
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$FFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-lto -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
+export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition -mno-vzeroupper -mprefer-vector-width=256 "
 %reconfigure --disable-static --with-wine64=%{_builddir}/build64 \
 --libdir=/usr/lib32 \
 --disable-win16
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1623173019
+export SOURCE_DATE_EPOCH=1635298850
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
-cp %{_builddir}/wine-6.0.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
-cp %{_builddir}/wine-6.0.1/LICENSE %{buildroot}/usr/share/package-licenses/wine/abc50ed5f6b410141a576e7d925ca7d87f0c7afc
-cp %{_builddir}/wine-6.0.1/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
+cp %{_builddir}/wine-6.0.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
+cp %{_builddir}/wine-6.0.2/LICENSE %{buildroot}/usr/share/package-licenses/wine/abc50ed5f6b410141a576e7d925ca7d87f0c7afc
+cp %{_builddir}/wine-6.0.2/LICENSE.OLD %{buildroot}/usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 %make_install
 ## install_append content
 pushd ../build64
@@ -2754,6 +2754,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/share/wine/nls/c_437.nls
 /usr/share/wine/nls/c_500.nls
 /usr/share/wine/nls/c_708.nls
+/usr/share/wine/nls/c_720.nls
 /usr/share/wine/nls/c_737.nls
 /usr/share/wine/nls/c_775.nls
 /usr/share/wine/nls/c_850.nls

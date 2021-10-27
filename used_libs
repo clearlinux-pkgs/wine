@@ -2,7 +2,6 @@ libOpenCL.so.1
 libX11.so.6
 libasound.so.2
 libc.so.6
-libdl.so.2
 libgcc_s.so.1
 libgphoto2.so.6
 libgphoto2_port.so.12
@@ -12,9 +11,7 @@ libldap_r-2.4.so.2
 libm.so.6
 libmpg123.so.0
 libopenal.so.1
-libpthread.so.0
 libpulse.so.0
-libresolv.so.2
 libudev.so.1
 libvkd3d.so.1
 libxml2.so.2

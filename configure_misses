@@ -49,8 +49,6 @@ Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
 Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
 Configure miss: SystemConfiguration/SCNetworkConfiguration.h
 Configure miss: SystemConfiguration/SCNetworkConfiguration.h
-Configure miss: __clear_cache
-Configure miss: __clear_cache
 Configure miss: __res_get_state
 Configure miss: __res_get_state
 Configure miss: __res_getservers
