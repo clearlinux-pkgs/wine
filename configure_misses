@@ -3,36 +3,16 @@ Configure miss: -lkrb5
 Configure miss: -lnetapi
 Configure miss: -lnetapi
 Configure miss: -lodbc
-Configure miss: -lsane
-Configure miss: -ltiff
 Configure miss: -lv4l2
 Configure miss: -lv4l2
 Configure miss: ApplicationServices/ApplicationServices.h
 Configure miss: ApplicationServices/ApplicationServices.h
-Configure miss: AudioToolbox/AudioConverter.h
-Configure miss: AudioToolbox/AudioConverter.h
-Configure miss: AudioUnit/AudioComponent.h
-Configure miss: AudioUnit/AudioComponent.h
-Configure miss: AudioUnit/AudioUnit.h
-Configure miss: AudioUnit/AudioUnit.h
 Configure miss: Carbon/Carbon.h
 Configure miss: Carbon/Carbon.h
-Configure miss: CommonCrypto/CommonCryptor.h
-Configure miss: CommonCrypto/CommonCryptor.h
 Configure miss: CoreAudio/CoreAudio.h
 Configure miss: CoreAudio/CoreAudio.h
 Configure miss: DiskArbitration/DiskArbitration.h
 Configure miss: DiskArbitration/DiskArbitration.h
-Configure miss: F3DAudioInitialize8
-Configure miss: F3DAudioInitialize8
-Configure miss: FAudio.h
-Configure miss: FAudio.h
-Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
-Configure miss: FAudioCreateReverb9WithCustomAllocatorEXT
-Configure miss: FAudioLinkedVersion
-Configure miss: FAudioLinkedVersion
-Configure miss: FAudio_CommitOperationSet
-Configure miss: FAudio_CommitOperationSet
 Configure miss: IOKit/IOKitLib.h
 Configure miss: IOKit/IOKitLib.h
 Configure miss: IOKit/hid/IOHIDLib.h
@@ -41,22 +21,12 @@ Configure miss: OpenAL/al.h
 Configure miss: OpenAL/al.h
 Configure miss: OpenCL/opencl.h
 Configure miss: OpenCL/opencl.h
-Configure miss: QuickTime/ImageCompression.h
-Configure miss: QuickTime/ImageCompression.h
 Configure miss: Security/Security.h
 Configure miss: Security/Security.h
 Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
 Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
 Configure miss: SystemConfiguration/SCNetworkConfiguration.h
 Configure miss: SystemConfiguration/SCNetworkConfiguration.h
-Configure miss: __res_get_state
-Configure miss: __res_get_state
-Configure miss: __res_getservers
-Configure miss: __res_getservers
-Configure miss: _spawnvp
-Configure miss: _spawnvp
-Configure miss: alias.h
-Configure miss: alias.h
 Configure miss: amd64-pc-mingw32-gcc
 Configure miss: asm/user.h
 Configure miss: asm/user.h
@@ -75,14 +45,8 @@ Configure miss: getattrlist
 Configure miss: getattrlist
 Configure miss: gp_camera_new in -lgphoto2
 Configure miss: gp_port_info_list_new in -lgphoto2_port
-Configure miss: gsm.h
-Configure miss: gsm.h
-Configure miss: gsm/gsm.h
-Configure miss: gsm/gsm.h
 Configure miss: gst/gst.h
 Configure miss: gst/gst.h
-Configure miss: hal/libhal.h
-Configure miss: hal/libhal.h
 Configure miss: i386-mingw32-gcc
 Configure miss: i386-mingw32msvc-gcc
 Configure miss: i386-pc-mingw32-gcc
@@ -105,23 +69,9 @@ Configure miss: i686-mingw32msvc-gcc
 Configure miss: i686-pc-mingw32-gcc
 Configure miss: i686-w64-mingw32-clang
 Configure miss: i686-w64-mingw32-gcc
-Configure miss: inet/mib2.h
-Configure miss: inet/mib2.h
 Configure miss: inotify_add_watch in -linotify
 Configure miss: inotify_add_watch in -linotify
-Configure miss: kstat.h
-Configure miss: kstat.h
-Configure miss: ldap_count_references
-Configure miss: ldap_first_reference
-Configure miss: ldap_initialize in -lldap_r
-Configure miss: ldap_next_reference
-Configure miss: ldap_parse_reference
-Configure miss: ldap_parse_sort_control
-Configure miss: ldap_parse_sort_control
-Configure miss: ldap_parse_sortresponse_control
-Configure miss: ldap_parse_vlv_control
-Configure miss: ldap_parse_vlv_control
-Configure miss: ldap_parse_vlvresponse_control
+Configure miss: ldap_initialize in -lldap
 Configure miss: libproc.h
 Configure miss: libproc.h
 Configure miss: libprocstat.h
@@ -145,21 +95,16 @@ Configure miss: machine/cpu.h
 Configure miss: machine/sysarch.h
 Configure miss: machine/sysarch.h
 Configure miss: mingw32-gcc
-Configure miss: mpg123_feed in -lmpg123
 Configure miss: net/if_types.h
 Configure miss: net/if_types.h
 Configure miss: netinet/icmp_var.h
 Configure miss: netinet/icmp_var.h
-Configure miss: netinet/if_inarp.h
-Configure miss: netinet/if_inarp.h
 Configure miss: netinet/in_pcb.h
 Configure miss: netinet/in_pcb.h
 Configure miss: netinet/ip_var.h
 Configure miss: netinet/ip_var.h
 Configure miss: netinet/tcp_fsm.h
 Configure miss: netinet/tcp_fsm.h
-Configure miss: netinet/tcp_timer.h
-Configure miss: netinet/tcp_timer.h
 Configure miss: netinet/tcp_var.h
 Configure miss: netinet/tcp_var.h
 Configure miss: netinet/udp_var.h
@@ -184,17 +129,12 @@ Configure miss: request_sense
 Configure miss: request_sense
 Configure miss: res_getservers
 Configure miss: res_getservers
+Configure miss: sane_init in -lsane
 Configure miss: scsireq_t.cmd
 Configure miss: scsireq_t.cmd
 Configure miss: setprogname
 Configure miss: setprogname
 Configure miss: snd_pcm_hw_params_get_access_mask in -lasound
-Configure miss: stropts.h
-Configure miss: stropts.h
-Configure miss: struct icmpstat.icps_inhist
-Configure miss: struct icmpstat.icps_inhist
-Configure miss: struct icmpstat.icps_outhist
-Configure miss: struct icmpstat.icps_outhist
 Configure miss: struct ip_stats.ips_total
 Configure miss: struct ip_stats.ips_total
 Configure miss: struct ipstat.ips_total
@@ -239,8 +179,6 @@ Configure miss: sys/link.h
 Configure miss: sys/link.h
 Configure miss: sys/modem.h
 Configure miss: sys/modem.h
-Configure miss: sys/protosw.h
-Configure miss: sys/protosw.h
 Configure miss: sys/scsiio.h
 Configure miss: sys/scsiio.h
 Configure miss: sys/strtio.h
@@ -249,16 +187,13 @@ Configure miss: sys/sysctl.h
 Configure miss: sys/sysctl.h
 Configure miss: sys/thr.h
 Configure miss: sys/thr.h
-Configure miss: sys/tihdr.h
-Configure miss: sys/tihdr.h
-Configure miss: sys/timeout.h
-Configure miss: sys/timeout.h
 Configure miss: sys/vnode.h
 Configure miss: sys/vnode.h
 Configure miss: thr_kill2
 Configure miss: thr_kill2
 Configure miss: unw_step
 Configure miss: unw_step in libunwind
+Configure miss: whether clang works
 Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
@@ -267,9 +202,30 @@ Configure miss: whether the compiler supports -Werror=unused-command-line-argume
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -Wpragma-pack
+Configure miss: whether the cross-compiler supports -Wabsolute-value
+Configure miss: whether the cross-compiler supports -Wdeclaration-after-statement
+Configure miss: whether the cross-compiler supports -Wempty-body
+Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
+Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
+Configure miss: whether the cross-compiler supports -Wignored-qualifiers
+Configure miss: whether the cross-compiler supports -Winit-self
+Configure miss: whether the cross-compiler supports -Wlogical-op
+Configure miss: whether the cross-compiler supports -Wpacked-not-aligned
+Configure miss: whether the cross-compiler supports -Wpointer-arith
 Configure miss: whether the cross-compiler supports -Wpragma-pack
+Configure miss: whether the cross-compiler supports -Wpragma-pack
+Configure miss: whether the cross-compiler supports -Wshift-overflow=2
+Configure miss: whether the cross-compiler supports -Wstrict-prototypes
+Configure miss: whether the cross-compiler supports -Wtype-limits
+Configure miss: whether the cross-compiler supports -Wunused-but-set-parameter
+Configure miss: whether the cross-compiler supports -Wvla
+Configure miss: whether the cross-compiler supports -Wwrite-strings
+Configure miss: whether the cross-compiler supports -fexcess-precision=standard
+Configure miss: whether the cross-compiler supports -fno-omit-frame-pointer
+Configure miss: whether the cross-compiler supports -fno-strict-aliasing
+Configure miss: whether the cross-compiler supports -gdwarf-4
 Configure miss: whether the cross-compiler supports -target x86_64-w64-mingw32 -fuse-ld=lld
 Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__

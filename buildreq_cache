@@ -1,6 +1,4 @@
-6.0.2
+7.0
 cyrus-sasl-dev
 gstreamer-dev
 openal-soft-dev
-tiff-dev
-valgrind-dev
