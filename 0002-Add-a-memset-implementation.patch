@@ -1,0 +1,31 @@
+From 8f6d9290309c3c6e5b8820ff49c43f7620f9fe69 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Wed, 11 Jan 2023 13:23:31 -0800
+Subject: [PATCH] Add a memset implementation
+
+---
+ loader/preloader.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/loader/preloader.c b/loader/preloader.c
+index 72556f09720d..eb4b99b6a4d0 100644
+--- a/loader/preloader.c
++++ b/loader/preloader.c
+@@ -102,6 +102,14 @@
+ #define MAP_NORESERVE 0
+ #endif
+ 
++void *memset (void *__s, int __c, size_t __n) {
++	unsigned char *p = __s;
++	while (--__n) {
++		*p = (unsigned char) __c;
++	}
++	return __s;
++}
++
+ static struct wine_preload_info preload_info[] =
+ {
+ #if defined(__i386__) || defined(__arm__)
+-- 
+2.39.0
+

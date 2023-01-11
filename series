@@ -1,1 +1,2 @@
 0001-Add-libX11-soname-check-fallback-for-SuperX11-libs.patch
+0002-Add-a-memset-implementation.patch

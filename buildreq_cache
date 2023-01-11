@@ -1,4 +1,3 @@
-7.0
-cyrus-sasl-dev
+7.22
 gstreamer-dev
-openal-soft-dev
+valgrind-dev
