@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 7.22
-Release  : 80
-URL      : https://dl.winehq.org/wine/source/7.x/wine-7.22.tar.xz
-Source0  : https://dl.winehq.org/wine/source/7.x/wine-7.22.tar.xz
-Source1  : https://dl.winehq.org/wine/source/7.x/wine-7.22.tar.xz.sign
+Version  : 8.0
+Release  : 81
+URL      : https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -208,8 +208,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-7.22
-cd %{_builddir}/wine-7.22
+%setup -q -n wine-8.0
+cd %{_builddir}/wine-8.0
 %patch1 -p1
 %patch2 -p1
 
@@ -233,7 +233,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673485070
+export SOURCE_DATE_EPOCH=1674586143
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -250,7 +250,7 @@ export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-in
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1673485070
+export SOURCE_DATE_EPOCH=1674586143
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -899,6 +899,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/wmplayer.exe
 /usr/lib32/wine/i386-windows/wmvcore.dll
 /usr/lib32/wine/i386-windows/wnaspi32.dll
+/usr/lib32/wine/i386-windows/wofutil.dll
 /usr/lib32/wine/i386-windows/wordpad.exe
 /usr/lib32/wine/i386-windows/wpc.dll
 /usr/lib32/wine/i386-windows/write.exe
@@ -2049,6 +2050,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/wmplayer.exe
 /usr/lib64/wine/x86_64-windows/wmvcore.dll
 /usr/lib64/wine/x86_64-windows/wnaspi32.dll
+/usr/lib64/wine/x86_64-windows/wofutil.dll
 /usr/lib64/wine/x86_64-windows/wordpad.exe
 /usr/lib64/wine/x86_64-windows/wow64.dll
 /usr/lib64/wine/x86_64-windows/wow64cpu.dll
@@ -2295,6 +2297,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/msvcrt/conio.h
 /usr/include/wine/msvcrt/corecrt.h
 /usr/include/wine/msvcrt/corecrt_io.h
+/usr/include/wine/msvcrt/corecrt_malloc.h
 /usr/include/wine/msvcrt/corecrt_startup.h
 /usr/include/wine/msvcrt/corecrt_stdio_config.h
 /usr/include/wine/msvcrt/corecrt_wctype.h
@@ -2332,6 +2335,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/msvcrt/setjmp.h
 /usr/include/wine/msvcrt/share.h
 /usr/include/wine/msvcrt/signal.h
+/usr/include/wine/msvcrt/stdarg.h
 /usr/include/wine/msvcrt/stdbool.h
 /usr/include/wine/msvcrt/stddef.h
 /usr/include/wine/msvcrt/stdint.h
@@ -2347,6 +2351,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/msvcrt/time.h
 /usr/include/wine/msvcrt/uchar.h
 /usr/include/wine/msvcrt/unistd.h
+/usr/include/wine/msvcrt/vadefs.h
 /usr/include/wine/msvcrt/wchar.h
 /usr/include/wine/msvcrt/wctype.h
 /usr/include/wine/svcctl.h
@@ -3152,6 +3157,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/shlwapi.h
 /usr/include/wine/windows/shobjidl.h
 /usr/include/wine/windows/shobjidl.idl
+/usr/include/wine/windows/shobjidl_core.h
+/usr/include/wine/windows/shobjidl_core.idl
 /usr/include/wine/windows/shtypes.h
 /usr/include/wine/windows/shtypes.idl
 /usr/include/wine/windows/sipbase.h
@@ -3263,6 +3270,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/wbemprov.h
 /usr/include/wine/windows/wbemprov.idl
 /usr/include/wine/windows/wct.h
+/usr/include/wine/windows/wdbgexts.h
 /usr/include/wine/windows/weakreference.h
 /usr/include/wine/windows/weakreference.idl
 /usr/include/wine/windows/webservices.h
@@ -3400,6 +3408,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/wmsecure.h
 /usr/include/wine/windows/wmsecure.idl
 /usr/include/wine/windows/wnaspi32.h
+/usr/include/wine/windows/wofapi.h
 /usr/include/wine/windows/wownt16.h
 /usr/include/wine/windows/wownt32.h
 /usr/include/wine/windows/wpcapi.h
@@ -3495,6 +3504,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-unix/kerberos.so
 /usr/lib64/wine/x86_64-unix/libwine.so.1
 /usr/lib64/wine/x86_64-unix/libwine.so.1.0
+/usr/lib64/wine/x86_64-unix/localspl.so
 /usr/lib64/wine/x86_64-unix/mountmgr.so
 /usr/lib64/wine/x86_64-unix/msv1_0.so
 /usr/lib64/wine/x86_64-unix/netapi32.so
@@ -3778,6 +3788,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/libwine.so.1.0
 /usr/lib32/wine/i386-unix/loadperf.dll.so
 /usr/lib32/wine/i386-unix/localspl.dll.so
+/usr/lib32/wine/i386-unix/localspl.so
 /usr/lib32/wine/i386-unix/localui.dll.so
 /usr/lib32/wine/i386-unix/lodctr.exe.so
 /usr/lib32/wine/i386-unix/mapi32.dll.so
@@ -4146,6 +4157,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/wmplayer.exe.so
 /usr/lib32/wine/i386-unix/wmvcore.dll.so
 /usr/lib32/wine/i386-unix/wnaspi32.dll.so
+/usr/lib32/wine/i386-unix/wofutil.dll.so
 /usr/lib32/wine/i386-unix/wordpad.exe.so
 /usr/lib32/wine/i386-unix/wpc.dll.so
 /usr/lib32/wine/i386-unix/write.exe.so

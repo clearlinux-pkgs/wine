@@ -5,29 +5,8 @@ Configure miss: -lnetapi
 Configure miss: -lodbc
 Configure miss: -lv4l2
 Configure miss: -lv4l2
-Configure miss: ApplicationServices/ApplicationServices.h
-Configure miss: ApplicationServices/ApplicationServices.h
-Configure miss: Carbon/Carbon.h
-Configure miss: Carbon/Carbon.h
-Configure miss: CoreAudio/CoreAudio.h
-Configure miss: CoreAudio/CoreAudio.h
-Configure miss: DiskArbitration/DiskArbitration.h
-Configure miss: DiskArbitration/DiskArbitration.h
-Configure miss: IOKit/IOKitLib.h
-Configure miss: IOKit/IOKitLib.h
-Configure miss: IOKit/hid/IOHIDLib.h
-Configure miss: IOKit/hid/IOHIDLib.h
-Configure miss: OpenAL/al.h
-Configure miss: OpenAL/al.h
 Configure miss: OpenCL/opencl.h
 Configure miss: OpenCL/opencl.h
-Configure miss: Security/Security.h
-Configure miss: Security/Security.h
-Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
-Configure miss: SystemConfiguration/SCDynamicStoreCopyDHCPInfo.h
-Configure miss: SystemConfiguration/SCNetworkConfiguration.h
-Configure miss: SystemConfiguration/SCNetworkConfiguration.h
-Configure miss: amd64-pc-mingw32-gcc
 Configure miss: asm/user.h
 Configure miss: asm/user.h
 Configure miss: broken string.h that generates warnings with -Wlogical-op
@@ -47,37 +26,26 @@ Configure miss: gp_camera_new in -lgphoto2
 Configure miss: gp_port_info_list_new in -lgphoto2_port
 Configure miss: gst/gst.h
 Configure miss: gst/gst.h
-Configure miss: i386-mingw32-gcc
-Configure miss: i386-mingw32msvc-gcc
-Configure miss: i386-pc-mingw32-gcc
 Configure miss: i386-w64-mingw32-clang
 Configure miss: i386-w64-mingw32-gcc
 Configure miss: i386_set_ldt in -li386
 Configure miss: i386_set_ldt in -li386
-Configure miss: i486-mingw32-gcc
-Configure miss: i486-mingw32msvc-gcc
-Configure miss: i486-pc-mingw32-gcc
 Configure miss: i486-w64-mingw32-clang
 Configure miss: i486-w64-mingw32-gcc
-Configure miss: i586-mingw32-gcc
-Configure miss: i586-mingw32msvc-gcc
-Configure miss: i586-pc-mingw32-gcc
 Configure miss: i586-w64-mingw32-clang
 Configure miss: i586-w64-mingw32-gcc
-Configure miss: i686-mingw32-gcc
-Configure miss: i686-mingw32msvc-gcc
-Configure miss: i686-pc-mingw32-gcc
 Configure miss: i686-w64-mingw32-clang
 Configure miss: i686-w64-mingw32-gcc
 Configure miss: inotify_add_watch in -linotify
 Configure miss: inotify_add_watch in -linotify
-Configure miss: ldap_initialize in -lldap
 Configure miss: libproc.h
 Configure miss: libproc.h
 Configure miss: libprocstat.h
 Configure miss: libprocstat.h
 Configure miss: libusb.h
 Configure miss: libusb.h
+Configure miss: linux/ipx.h
+Configure miss: linux/ipx.h
 Configure miss: linux/irda.h
 Configure miss: linux/irda.h
 Configure miss: linux/ucdrom.h
@@ -94,7 +62,6 @@ Configure miss: machine/cpu.h
 Configure miss: machine/cpu.h
 Configure miss: machine/sysarch.h
 Configure miss: machine/sysarch.h
-Configure miss: mingw32-gcc
 Configure miss: net/if_types.h
 Configure miss: net/if_types.h
 Configure miss: netinet/icmp_var.h
@@ -109,6 +76,8 @@ Configure miss: netinet/tcp_var.h
 Configure miss: netinet/tcp_var.h
 Configure miss: netinet/udp_var.h
 Configure miss: netinet/udp_var.h
+Configure miss: netinet6/ip6_var.h
+Configure miss: netinet6/ip6_var.h
 Configure miss: oss_sysinfo.numaudioengines
 Configure miss: oss_sysinfo.numaudioengines
 Configure miss: otool
@@ -135,6 +104,12 @@ Configure miss: scsireq_t.cmd
 Configure miss: setprogname
 Configure miss: setprogname
 Configure miss: snd_pcm_hw_params_get_access_mask in -lasound
+Configure miss: struct icmp6stat.icp6s_error
+Configure miss: struct icmp6stat.icp6s_error
+Configure miss: struct icmpstat.icps_error
+Configure miss: struct icmpstat.icps_error
+Configure miss: struct ip6stat.ip6s_total
+Configure miss: struct ip6stat.ip6s_total
 Configure miss: struct ip_stats.ips_total
 Configure miss: struct ip_stats.ips_total
 Configure miss: struct ipstat.ips_total
@@ -175,6 +150,8 @@ Configure miss: sys/conf.h
 Configure miss: sys/conf.h
 Configure miss: sys/event.h
 Configure miss: sys/event.h
+Configure miss: sys/extattr.h
+Configure miss: sys/extattr.h
 Configure miss: sys/link.h
 Configure miss: sys/link.h
 Configure miss: sys/modem.h
@@ -194,6 +171,8 @@ Configure miss: thr_kill2
 Configure miss: unw_step
 Configure miss: unw_step in libunwind
 Configure miss: whether clang works
+Configure miss: whether getxattr takes additional arguments
+Configure miss: whether getxattr takes additional arguments
 Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the compiler supports -Werror=ignored-optimization-argument
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
@@ -202,33 +181,12 @@ Configure miss: whether the compiler supports -Werror=unused-command-line-argume
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -Wpragma-pack
-Configure miss: whether the cross-compiler supports -Wabsolute-value
-Configure miss: whether the cross-compiler supports -Wdeclaration-after-statement
-Configure miss: whether the cross-compiler supports -Wempty-body
-Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
-Configure miss: whether the cross-compiler supports -Werror=ignored-optimization-argument
-Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
-Configure miss: whether the cross-compiler supports -Werror=unknown-warning-option
-Configure miss: whether the cross-compiler supports -Wignored-qualifiers
-Configure miss: whether the cross-compiler supports -Winit-self
-Configure miss: whether the cross-compiler supports -Wlogical-op
-Configure miss: whether the cross-compiler supports -Wpacked-not-aligned
-Configure miss: whether the cross-compiler supports -Wpointer-arith
-Configure miss: whether the cross-compiler supports -Wpragma-pack
-Configure miss: whether the cross-compiler supports -Wpragma-pack
-Configure miss: whether the cross-compiler supports -Wshift-overflow=2
-Configure miss: whether the cross-compiler supports -Wstrict-prototypes
-Configure miss: whether the cross-compiler supports -Wtype-limits
-Configure miss: whether the cross-compiler supports -Wunused-but-set-parameter
-Configure miss: whether the cross-compiler supports -Wvla
-Configure miss: whether the cross-compiler supports -Wwrite-strings
-Configure miss: whether the cross-compiler supports -fexcess-precision=standard
-Configure miss: whether the cross-compiler supports -fno-omit-frame-pointer
-Configure miss: whether the cross-compiler supports -fno-strict-aliasing
-Configure miss: whether the cross-compiler supports -gdwarf-4
-Configure miss: whether the cross-compiler supports -target x86_64-w64-mingw32 -fuse-ld=lld
 Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimization-argument
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Wpragma-pack
+Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld
@@ -237,4 +195,4 @@ Configure miss: x86_64-generic-linux-gnu-otool
 Configure miss: x86_64-generic-linux-gnu-otool
 Configure miss: x86_64-generic-linux-gnu-readelf
 Configure miss: x86_64-generic-linux-gnu-readelf
-Configure miss: x86_64-pc-mingw32-gcc
+Configure miss: x86_64-w64-mingw32-gcc option to enable C99 features
