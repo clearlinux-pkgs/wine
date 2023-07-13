@@ -1,3 +1,9 @@
 8.0.1
+Vulkan-Loader-dev
+dbus-dev
 gstreamer-dev
+libXcursor-dev
+pkgconfig(gl)
+pulseaudio-dev
+systemd-dev
 valgrind-dev

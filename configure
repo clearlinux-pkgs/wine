@@ -1,3 +1,4 @@
---with-wine64=%{_builddir}/build64
+#--with-wine64=%{_builddir}/build64
 --libdir=/usr/lib32
 --disable-win16
+--enable-win64

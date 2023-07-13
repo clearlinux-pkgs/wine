@@ -1,15 +1,6 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
-32ice
-32xext
-32gl
-32glu
-32x11
 ncurses
 ncursesw
-32vulkan
-32gnutls
-32libxslt
 libcdio
-32libpulse
 gstreamer-1.0
