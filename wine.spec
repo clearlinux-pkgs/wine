@@ -7,7 +7,7 @@
 #
 Name     : wine
 Version  : 8.0.1
-Release  : 83
+Release  : 84
 URL      : https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz
 Source0  : https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz
 Source1  : https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz.sign
@@ -210,9 +210,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689267841
+export SOURCE_DATE_EPOCH=1689380421
 export GCC_IGNORE_WERROR=1
-export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
+export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 export CXXFLAGS=$CFLAGS
 export FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 export FCFLAGS=$FFLAGS
@@ -254,7 +254,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689267841
+export SOURCE_DATE_EPOCH=1689380421
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -280,6 +280,7 @@ popd
 # install static dev libs
 find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib32/wine/ \;
 find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
+ln -s wine64 %{buildroot}/usr/bin/wine
 ## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
@@ -2204,6 +2205,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/bin/regedit
 /usr/bin/regsvr32
 /usr/bin/widl
+/usr/bin/wine
 /usr/bin/wine64
 /usr/bin/wine64-preloader
 /usr/bin/wineboot
