@@ -10,7 +10,6 @@ Version  : 8.12
 Release  : 86
 URL      : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
 Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
