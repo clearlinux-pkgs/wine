@@ -7,7 +7,7 @@
 #
 Name     : wine
 Version  : 8.12
-Release  : 86
+Release  : 87
 URL      : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
 Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
 Summary  : No detailed summary available
