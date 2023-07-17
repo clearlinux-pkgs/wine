@@ -23,3 +23,9 @@ openldap-dev
 freetype-dev
 libunwind-dev
 SDL-dev
+SDL2-dev
+gcc-dev32
+gcc-libgcc32
+gcc-libstdc++32
+glibc-dev32
+glibc-libc32

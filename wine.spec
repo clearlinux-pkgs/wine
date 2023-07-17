@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.0.1
-Release  : 84
-URL      : https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz.sign
+Version  : 8.12
+Release  : 85
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -60,6 +60,7 @@ Requires: v4l-utils-lib
 Requires: v4l-utils-lib32
 Requires: wine-lib32
 BuildRequires : SDL-dev
+BuildRequires : SDL2-dev
 BuildRequires : Vulkan-Loader-dev
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
@@ -69,6 +70,11 @@ BuildRequires : cups-dev
 BuildRequires : dbus-dev
 BuildRequires : flex
 BuildRequires : freetype-dev
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
+BuildRequires : gcc-libstdc++32
+BuildRequires : glibc-dev32
+BuildRequires : glibc-libc32
 BuildRequires : gstreamer-dev
 BuildRequires : krb5-dev
 BuildRequires : libXcursor-dev
@@ -182,12 +188,12 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.0.1
-cd %{_builddir}/wine-8.0.1
+%setup -q -n wine-8.12
+cd %{_builddir}/wine-8.12
 %patch -P 1 -p1
 %patch -P 2 -p1
 pushd ..
-cp -a wine-8.0.1 buildavx2
+cp -a wine-8.12 buildavx2
 popd
 
 %build
@@ -210,9 +216,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689380421
+export SOURCE_DATE_EPOCH=1689615253
 export GCC_IGNORE_WERROR=1
-export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
+export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
 export FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 export FCFLAGS=$FFLAGS
@@ -223,6 +229,7 @@ export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interp
 export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
 %reconfigure --disable-static --libdir=/usr/lib32 \
 --disable-win16 \
+--enable-archs=i386,x86_64 \
 --enable-win64
 make  %{?_smp_mflags}
 unset PKG_CONFIG_PATH
@@ -249,12 +256,13 @@ export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 %reconfigure --disable-static --libdir=/usr/lib32 \
 --disable-win16 \
+--enable-archs=i386,x86_64 \
 --enable-win64
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689380421
+export SOURCE_DATE_EPOCH=1689615253
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -264,10 +272,11 @@ cp %{_builddir}/wine-%{version}/libs/jpeg/LICENSE %{buildroot}/usr/share/package
 cp %{_builddir}/wine-%{version}/libs/jxr/LICENSE %{buildroot}/usr/share/package-licenses/wine/ead74113fdeb540a8799845a89f4691e2602c17a || :
 cp %{_builddir}/wine-%{version}/libs/lcms2/COPYING %{buildroot}/usr/share/package-licenses/wine/9baf05cabbfd71f06534e5597170a2b7c817e6ad || :
 cp %{_builddir}/wine-%{version}/libs/ldap/LICENSE %{buildroot}/usr/share/package-licenses/wine/bc06cbdf781c87d2df2fe385214f936d010dd2a2 || :
+cp %{_builddir}/wine-%{version}/libs/musl/COPYRIGHT %{buildroot}/usr/share/package-licenses/wine/4808116261778b2137bb955568032cd684fb199b || :
 cp %{_builddir}/wine-%{version}/libs/tiff/COPYRIGHT %{buildroot}/usr/share/package-licenses/wine/a2f64f2a85f5fd34bda8eb713c3aad008adbb589 || :
-cp %{_builddir}/wine-%{version}/libs/vkd3d/COPYING %{buildroot}/usr/share/package-licenses/wine/a4e7ae8a6406fc3281e206c589ccdb890d33fec9 || :
 cp %{_builddir}/wine-%{version}/libs/xml2/COPYING %{buildroot}/usr/share/package-licenses/wine/3c21506a45e8d0171fc92fd4ff6903c13adde660 || :
 cp %{_builddir}/wine-%{version}/libs/xslt/COPYING %{buildroot}/usr/share/package-licenses/wine/0005480dce93b70f7d62fa311f49e3c6c1a6dcfa || :
+cp %{_builddir}/wine-%{version}/libs/zydis/LICENSE %{buildroot}/usr/share/package-licenses/wine/7c317af0eb0da75f9f9b8fb8cb4b575a9f90bada || :
 pushd ../buildavx2/
 %make_install_v3
 popd
@@ -302,6 +311,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/libavrt.a
 /usr/lib32/wine/libbcrypt.a
 /usr/lib32/wine/libbcrypt.delay.a
+/usr/lib32/wine/libbluetoothapis.a
 /usr/lib32/wine/libcabinet.a
 /usr/lib32/wine/libcabinet.delay.a
 /usr/lib32/wine/libcards.a
@@ -543,6 +553,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/libwsnmp32.a
 /usr/lib32/wine/libwsock32.a
 /usr/lib32/wine/libwtsapi32.a
+/usr/lib32/wine/libxaudio2_8.a
 /usr/lib32/wine/libxinput.a
 /usr/lib32/wine/libxmllite.a
 /usr/lib32/wine/libxmllite.delay.a
@@ -619,6 +630,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/d3d10core.dll
 /usr/lib32/wine/x86_64-windows/d3d11.dll
 /usr/lib32/wine/x86_64-windows/d3d12.dll
+/usr/lib32/wine/x86_64-windows/d3d12core.dll
 /usr/lib32/wine/x86_64-windows/d3d8.dll
 /usr/lib32/wine/x86_64-windows/d3d8thk.dll
 /usr/lib32/wine/x86_64-windows/d3d9.dll
@@ -754,6 +766,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/glu32.dll
 /usr/lib32/wine/x86_64-windows/gphoto2.ds
 /usr/lib32/wine/x86_64-windows/gpkcsp.dll
+/usr/lib32/wine/x86_64-windows/graphicscapture.dll
 /usr/lib32/wine/x86_64-windows/hal.dll
 /usr/lib32/wine/x86_64-windows/hh.exe
 /usr/lib32/wine/x86_64-windows/hhctrl.ocx
@@ -763,6 +776,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/hlink.dll
 /usr/lib32/wine/x86_64-windows/hnetcfg.dll
 /usr/lib32/wine/x86_64-windows/hostname.exe
+/usr/lib32/wine/x86_64-windows/hrtfapo.dll
 /usr/lib32/wine/x86_64-windows/http.sys
 /usr/lib32/wine/x86_64-windows/httpapi.dll
 /usr/lib32/wine/x86_64-windows/ia2comproxy.dll
@@ -786,6 +800,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/ipconfig.exe
 /usr/lib32/wine/x86_64-windows/iphlpapi.dll
 /usr/lib32/wine/x86_64-windows/iprop.dll
+/usr/lib32/wine/x86_64-windows/ir50_32.dll
 /usr/lib32/wine/x86_64-windows/irprops.cpl
 /usr/lib32/wine/x86_64-windows/itircl.dll
 /usr/lib32/wine/x86_64-windows/itss.dll
@@ -836,6 +851,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/msado15.dll
 /usr/lib32/wine/x86_64-windows/msadp32.acm
 /usr/lib32/wine/x86_64-windows/msasn1.dll
+/usr/lib32/wine/x86_64-windows/msauddecmft.dll
 /usr/lib32/wine/x86_64-windows/mscat32.dll
 /usr/lib32/wine/x86_64-windows/mscms.dll
 /usr/lib32/wine/x86_64-windows/mscoree.dll
@@ -865,6 +881,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/msisip.dll
 /usr/lib32/wine/x86_64-windows/msisys.ocx
 /usr/lib32/wine/x86_64-windows/msls31.dll
+/usr/lib32/wine/x86_64-windows/msmpeg2vdec.dll
 /usr/lib32/wine/x86_64-windows/msnet32.dll
 /usr/lib32/wine/x86_64-windows/mspatcha.dll
 /usr/lib32/wine/x86_64-windows/msports.dll
@@ -960,6 +977,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/pidgen.dll
 /usr/lib32/wine/x86_64-windows/ping.exe
 /usr/lib32/wine/x86_64-windows/plugplay.exe
+/usr/lib32/wine/x86_64-windows/pnputil.exe
 /usr/lib32/wine/x86_64-windows/powershell.exe
 /usr/lib32/wine/x86_64-windows/powrprof.dll
 /usr/lib32/wine/x86_64-windows/presentationfontcache.exe
@@ -1006,6 +1024,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/sas.dll
 /usr/lib32/wine/x86_64-windows/sc.exe
 /usr/lib32/wine/x86_64-windows/scarddlg.dll
+/usr/lib32/wine/x86_64-windows/scardsvr.dll
 /usr/lib32/wine/x86_64-windows/sccbase.dll
 /usr/lib32/wine/x86_64-windows/schannel.dll
 /usr/lib32/wine/x86_64-windows/schedsvc.dll
@@ -1066,6 +1085,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/threadpoolwinrt.dll
 /usr/lib32/wine/x86_64-windows/traffic.dll
 /usr/lib32/wine/x86_64-windows/twain_32.dll
+/usr/lib32/wine/x86_64-windows/twinapi.appcore.dll
 /usr/lib32/wine/x86_64-windows/tzres.dll
 /usr/lib32/wine/x86_64-windows/ucrtbase.dll
 /usr/lib32/wine/x86_64-windows/uianimation.dll
@@ -1113,7 +1133,9 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/wiaservc.dll
 /usr/lib32/wine/x86_64-windows/wimgapi.dll
 /usr/lib32/wine/x86_64-windows/win32u.dll
+/usr/lib32/wine/x86_64-windows/windows.devices.bluetooth.dll
 /usr/lib32/wine/x86_64-windows/windows.devices.enumeration.dll
+/usr/lib32/wine/x86_64-windows/windows.devices.geolocation.geolocator.dll
 /usr/lib32/wine/x86_64-windows/windows.gaming.input.dll
 /usr/lib32/wine/x86_64-windows/windows.gaming.ui.gamebar.dll
 /usr/lib32/wine/x86_64-windows/windows.globalization.dll
@@ -1121,6 +1143,10 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/windows.media.dll
 /usr/lib32/wine/x86_64-windows/windows.media.speech.dll
 /usr/lib32/wine/x86_64-windows/windows.networking.dll
+/usr/lib32/wine/x86_64-windows/windows.networking.hostname.dll
+/usr/lib32/wine/x86_64-windows/windows.perception.stub.dll
+/usr/lib32/wine/x86_64-windows/windows.system.profile.systemmanufacturers.dll
+/usr/lib32/wine/x86_64-windows/windows.ui.dll
 /usr/lib32/wine/x86_64-windows/windowscodecs.dll
 /usr/lib32/wine/x86_64-windows/windowscodecsext.dll
 /usr/lib32/wine/x86_64-windows/winealsa.drv
@@ -1152,7 +1178,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/winmm.dll
 /usr/lib32/wine/x86_64-windows/winnls32.dll
 /usr/lib32/wine/x86_64-windows/winprint.dll
-/usr/lib32/wine/x86_64-windows/winscard.dll
 /usr/lib32/wine/x86_64-windows/winspool.drv
 /usr/lib32/wine/x86_64-windows/winsta.dll
 /usr/lib32/wine/x86_64-windows/wintab32.dll
@@ -1252,6 +1277,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/libavrt.a
 /usr/lib64/wine/libbcrypt.a
 /usr/lib64/wine/libbcrypt.delay.a
+/usr/lib64/wine/libbluetoothapis.a
 /usr/lib64/wine/libcabinet.a
 /usr/lib64/wine/libcabinet.delay.a
 /usr/lib64/wine/libcards.a
@@ -1493,6 +1519,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/libwsnmp32.a
 /usr/lib64/wine/libwsock32.a
 /usr/lib64/wine/libwtsapi32.a
+/usr/lib64/wine/libxaudio2_8.a
 /usr/lib64/wine/libxinput.a
 /usr/lib64/wine/libxmllite.a
 /usr/lib64/wine/libxmllite.delay.a
@@ -1569,6 +1596,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/d3d10core.dll
 /usr/lib64/wine/x86_64-windows/d3d11.dll
 /usr/lib64/wine/x86_64-windows/d3d12.dll
+/usr/lib64/wine/x86_64-windows/d3d12core.dll
 /usr/lib64/wine/x86_64-windows/d3d8.dll
 /usr/lib64/wine/x86_64-windows/d3d8thk.dll
 /usr/lib64/wine/x86_64-windows/d3d9.dll
@@ -1704,6 +1732,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/glu32.dll
 /usr/lib64/wine/x86_64-windows/gphoto2.ds
 /usr/lib64/wine/x86_64-windows/gpkcsp.dll
+/usr/lib64/wine/x86_64-windows/graphicscapture.dll
 /usr/lib64/wine/x86_64-windows/hal.dll
 /usr/lib64/wine/x86_64-windows/hh.exe
 /usr/lib64/wine/x86_64-windows/hhctrl.ocx
@@ -1713,6 +1742,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/hlink.dll
 /usr/lib64/wine/x86_64-windows/hnetcfg.dll
 /usr/lib64/wine/x86_64-windows/hostname.exe
+/usr/lib64/wine/x86_64-windows/hrtfapo.dll
 /usr/lib64/wine/x86_64-windows/http.sys
 /usr/lib64/wine/x86_64-windows/httpapi.dll
 /usr/lib64/wine/x86_64-windows/ia2comproxy.dll
@@ -1736,6 +1766,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/ipconfig.exe
 /usr/lib64/wine/x86_64-windows/iphlpapi.dll
 /usr/lib64/wine/x86_64-windows/iprop.dll
+/usr/lib64/wine/x86_64-windows/ir50_32.dll
 /usr/lib64/wine/x86_64-windows/irprops.cpl
 /usr/lib64/wine/x86_64-windows/itircl.dll
 /usr/lib64/wine/x86_64-windows/itss.dll
@@ -1786,6 +1817,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/msado15.dll
 /usr/lib64/wine/x86_64-windows/msadp32.acm
 /usr/lib64/wine/x86_64-windows/msasn1.dll
+/usr/lib64/wine/x86_64-windows/msauddecmft.dll
 /usr/lib64/wine/x86_64-windows/mscat32.dll
 /usr/lib64/wine/x86_64-windows/mscms.dll
 /usr/lib64/wine/x86_64-windows/mscoree.dll
@@ -1815,6 +1847,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/msisip.dll
 /usr/lib64/wine/x86_64-windows/msisys.ocx
 /usr/lib64/wine/x86_64-windows/msls31.dll
+/usr/lib64/wine/x86_64-windows/msmpeg2vdec.dll
 /usr/lib64/wine/x86_64-windows/msnet32.dll
 /usr/lib64/wine/x86_64-windows/mspatcha.dll
 /usr/lib64/wine/x86_64-windows/msports.dll
@@ -1910,6 +1943,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/pidgen.dll
 /usr/lib64/wine/x86_64-windows/ping.exe
 /usr/lib64/wine/x86_64-windows/plugplay.exe
+/usr/lib64/wine/x86_64-windows/pnputil.exe
 /usr/lib64/wine/x86_64-windows/powershell.exe
 /usr/lib64/wine/x86_64-windows/powrprof.dll
 /usr/lib64/wine/x86_64-windows/presentationfontcache.exe
@@ -1956,6 +1990,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/sas.dll
 /usr/lib64/wine/x86_64-windows/sc.exe
 /usr/lib64/wine/x86_64-windows/scarddlg.dll
+/usr/lib64/wine/x86_64-windows/scardsvr.dll
 /usr/lib64/wine/x86_64-windows/sccbase.dll
 /usr/lib64/wine/x86_64-windows/schannel.dll
 /usr/lib64/wine/x86_64-windows/schedsvc.dll
@@ -2016,6 +2051,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/threadpoolwinrt.dll
 /usr/lib64/wine/x86_64-windows/traffic.dll
 /usr/lib64/wine/x86_64-windows/twain_32.dll
+/usr/lib64/wine/x86_64-windows/twinapi.appcore.dll
 /usr/lib64/wine/x86_64-windows/tzres.dll
 /usr/lib64/wine/x86_64-windows/ucrtbase.dll
 /usr/lib64/wine/x86_64-windows/uianimation.dll
@@ -2063,7 +2099,9 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/wiaservc.dll
 /usr/lib64/wine/x86_64-windows/wimgapi.dll
 /usr/lib64/wine/x86_64-windows/win32u.dll
+/usr/lib64/wine/x86_64-windows/windows.devices.bluetooth.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.enumeration.dll
+/usr/lib64/wine/x86_64-windows/windows.devices.geolocation.geolocator.dll
 /usr/lib64/wine/x86_64-windows/windows.gaming.input.dll
 /usr/lib64/wine/x86_64-windows/windows.gaming.ui.gamebar.dll
 /usr/lib64/wine/x86_64-windows/windows.globalization.dll
@@ -2071,6 +2109,10 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/windows.media.dll
 /usr/lib64/wine/x86_64-windows/windows.media.speech.dll
 /usr/lib64/wine/x86_64-windows/windows.networking.dll
+/usr/lib64/wine/x86_64-windows/windows.networking.hostname.dll
+/usr/lib64/wine/x86_64-windows/windows.perception.stub.dll
+/usr/lib64/wine/x86_64-windows/windows.system.profile.systemmanufacturers.dll
+/usr/lib64/wine/x86_64-windows/windows.ui.dll
 /usr/lib64/wine/x86_64-windows/windowscodecs.dll
 /usr/lib64/wine/x86_64-windows/windowscodecsext.dll
 /usr/lib64/wine/x86_64-windows/winealsa.drv
@@ -2102,7 +2144,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/winmm.dll
 /usr/lib64/wine/x86_64-windows/winnls32.dll
 /usr/lib64/wine/x86_64-windows/winprint.dll
-/usr/lib64/wine/x86_64-windows/winscard.dll
 /usr/lib64/wine/x86_64-windows/winspool.drv
 /usr/lib64/wine/x86_64-windows/winsta.dll
 /usr/lib64/wine/x86_64-windows/wintab32.dll
@@ -2463,6 +2504,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/appcompatapi.h
 /usr/include/wine/windows/appmgmt.h
 /usr/include/wine/windows/appmodel.h
+/usr/include/wine/windows/appnotify.h
 /usr/include/wine/windows/asferr.h
 /usr/include/wine/windows/asptlb.h
 /usr/include/wine/windows/asptlb.idl
@@ -2673,6 +2715,12 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/dciman.h
 /usr/include/wine/windows/dcommon.h
 /usr/include/wine/windows/dcommon.idl
+/usr/include/wine/windows/dcomp.h
+/usr/include/wine/windows/dcomp.idl
+/usr/include/wine/windows/dcompanimation.h
+/usr/include/wine/windows/dcompanimation.idl
+/usr/include/wine/windows/dcomptypes.h
+/usr/include/wine/windows/dcomptypes.idl
 /usr/include/wine/windows/dde.h
 /usr/include/wine/windows/dde.rh
 /usr/include/wine/windows/ddeml.h
@@ -2686,7 +2734,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/ddk/hidport.h
 /usr/include/wine/windows/ddk/hidsdi.h
 /usr/include/wine/windows/ddk/hidtypes.h
-/usr/include/wine/windows/ddk/imm.h
 /usr/include/wine/windows/ddk/mountmgr.h
 /usr/include/wine/windows/ddk/ndis.h
 /usr/include/wine/windows/ddk/ntddcdvd.h
@@ -2701,6 +2748,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/ddk/usbioctl.h
 /usr/include/wine/windows/ddk/usbiodef.h
 /usr/include/wine/windows/ddk/wdm.h
+/usr/include/wine/windows/ddk/winddi.h
 /usr/include/wine/windows/ddk/winddiui.h
 /usr/include/wine/windows/ddk/winsplp.h
 /usr/include/wine/windows/ddk/wsk.h
@@ -2865,6 +2913,8 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/hlguids.h
 /usr/include/wine/windows/hlink.h
 /usr/include/wine/windows/hlink.idl
+/usr/include/wine/windows/hrtfapoapi.h
+/usr/include/wine/windows/hrtfapoapi.idl
 /usr/include/wine/windows/hstring.h
 /usr/include/wine/windows/hstring.idl
 /usr/include/wine/windows/htiface.h
@@ -2897,6 +2947,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/imagehlp.h
 /usr/include/wine/windows/ime.h
 /usr/include/wine/windows/imm.h
+/usr/include/wine/windows/immdev.h
 /usr/include/wine/windows/imnact.h
 /usr/include/wine/windows/imnact.idl
 /usr/include/wine/windows/imnxport.h
@@ -2922,6 +2973,9 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/iprtrmib.h
 /usr/include/wine/windows/iptypes.h
 /usr/include/wine/windows/isguids.h
+/usr/include/wine/windows/ivectorchangedeventargs.h
+/usr/include/wine/windows/ivectorchangedeventargs.idl
+/usr/include/wine/windows/kbd.h
 /usr/include/wine/windows/knownfolders.h
 /usr/include/wine/windows/ks.h
 /usr/include/wine/windows/ksguid.h
@@ -3163,6 +3217,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/ras.h
 /usr/include/wine/windows/rasdlg.h
 /usr/include/wine/windows/raserror.h
+/usr/include/wine/windows/realtimeapiset.h
 /usr/include/wine/windows/reason.h
 /usr/include/wine/windows/regstr.h
 /usr/include/wine/windows/relogger.h
@@ -3178,6 +3233,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/rmxftmpl.x
 /usr/include/wine/windows/roapi.h
 /usr/include/wine/windows/roerrorapi.h
+/usr/include/wine/windows/rometadataresolution.h
 /usr/include/wine/windows/roparameterizediid.h
 /usr/include/wine/windows/roparameterizediid.idl
 /usr/include/wine/windows/row.idl
@@ -3313,6 +3369,8 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/uiautomationcoreapi.h
 /usr/include/wine/windows/uiribbon.h
 /usr/include/wine/windows/uiribbon.idl
+/usr/include/wine/windows/uiviewsettingsinterop.h
+/usr/include/wine/windows/uiviewsettingsinterop.idl
 /usr/include/wine/windows/unexposeenums2managed.h
 /usr/include/wine/windows/unknwn.h
 /usr/include/wine/windows/unknwn.idl
@@ -3377,12 +3435,18 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/windef.h
 /usr/include/wine/windows/windns.h
 /usr/include/wine/windows/windot11.h
+/usr/include/wine/windows/windows.devices.bluetooth.h
+/usr/include/wine/windows/windows.devices.bluetooth.idl
 /usr/include/wine/windows/windows.devices.enumeration.h
 /usr/include/wine/windows/windows.devices.enumeration.idl
+/usr/include/wine/windows/windows.devices.geolocation.h
+/usr/include/wine/windows/windows.devices.geolocation.idl
 /usr/include/wine/windows/windows.devices.haptics.h
 /usr/include/wine/windows/windows.devices.haptics.idl
 /usr/include/wine/windows/windows.devices.power.h
 /usr/include/wine/windows/windows.devices.power.idl
+/usr/include/wine/windows/windows.devices.radios.h
+/usr/include/wine/windows/windows.devices.radios.idl
 /usr/include/wine/windows/windows.foundation.collections.h
 /usr/include/wine/windows/windows.foundation.collections.idl
 /usr/include/wine/windows/windows.foundation.h
@@ -3401,6 +3465,18 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/windows.gaming.ui.idl
 /usr/include/wine/windows/windows.globalization.h
 /usr/include/wine/windows/windows.globalization.idl
+/usr/include/wine/windows/windows.graphics.capture.h
+/usr/include/wine/windows/windows.graphics.capture.idl
+/usr/include/wine/windows/windows.graphics.capture.interop.h
+/usr/include/wine/windows/windows.graphics.capture.interop.idl
+/usr/include/wine/windows/windows.graphics.directx.direct3d11.h
+/usr/include/wine/windows/windows.graphics.directx.direct3d11.idl
+/usr/include/wine/windows/windows.graphics.directx.h
+/usr/include/wine/windows/windows.graphics.directx.idl
+/usr/include/wine/windows/windows.graphics.effects.h
+/usr/include/wine/windows/windows.graphics.effects.idl
+/usr/include/wine/windows/windows.graphics.holographic.h
+/usr/include/wine/windows/windows.graphics.holographic.idl
 /usr/include/wine/windows/windows.h
 /usr/include/wine/windows/windows.media.closedcaptioning.h
 /usr/include/wine/windows/windows.media.closedcaptioning.idl
@@ -3412,6 +3488,16 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/windows.media.speechrecognition.idl
 /usr/include/wine/windows/windows.media.speechsynthesis.h
 /usr/include/wine/windows/windows.media.speechsynthesis.idl
+/usr/include/wine/windows/windows.networking.connectivity.h
+/usr/include/wine/windows/windows.networking.connectivity.idl
+/usr/include/wine/windows/windows.networking.h
+/usr/include/wine/windows/windows.networking.idl
+/usr/include/wine/windows/windows.perception.spatial.h
+/usr/include/wine/windows/windows.perception.spatial.idl
+/usr/include/wine/windows/windows.perception.spatial.surfaces.h
+/usr/include/wine/windows/windows.perception.spatial.surfaces.idl
+/usr/include/wine/windows/windows.security.credentials.h
+/usr/include/wine/windows/windows.security.credentials.idl
 /usr/include/wine/windows/windows.security.cryptography.h
 /usr/include/wine/windows/windows.security.cryptography.idl
 /usr/include/wine/windows/windows.storage.streams.h
@@ -3420,12 +3506,22 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/windows.system.idl
 /usr/include/wine/windows/windows.system.power.h
 /usr/include/wine/windows/windows.system.power.idl
+/usr/include/wine/windows/windows.system.profile.systemmanufacturers.h
+/usr/include/wine/windows/windows.system.profile.systemmanufacturers.idl
 /usr/include/wine/windows/windows.system.threading.h
 /usr/include/wine/windows/windows.system.threading.idl
 /usr/include/wine/windows/windows.system.userprofile.h
 /usr/include/wine/windows/windows.system.userprofile.idl
+/usr/include/wine/windows/windows.ui.composition.h
+/usr/include/wine/windows/windows.ui.composition.idl
+/usr/include/wine/windows/windows.ui.composition.interop.h
+/usr/include/wine/windows/windows.ui.composition.interop.idl
+/usr/include/wine/windows/windows.ui.core.h
+/usr/include/wine/windows/windows.ui.core.idl
 /usr/include/wine/windows/windows.ui.h
 /usr/include/wine/windows/windows.ui.idl
+/usr/include/wine/windows/windows.ui.viewmanagement.h
+/usr/include/wine/windows/windows.ui.viewmanagement.idl
 /usr/include/wine/windows/windowscontracts.h
 /usr/include/wine/windows/windowscontracts.idl
 /usr/include/wine/windows/windowsx.h
@@ -3582,8 +3678,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-unix/dwrite.so
 /usr/lib64/wine/x86_64-unix/gphoto2.so
 /usr/lib64/wine/x86_64-unix/kerberos.so
-/usr/lib64/wine/x86_64-unix/libwine.so.1
-/usr/lib64/wine/x86_64-unix/libwine.so.1.0
 /usr/lib64/wine/x86_64-unix/localspl.so
 /usr/lib64/wine/x86_64-unix/mountmgr.so
 /usr/lib64/wine/x86_64-unix/msv1_0.so
@@ -3599,6 +3693,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-unix/win32u.so
 /usr/lib64/wine/x86_64-unix/winealsa.so
 /usr/lib64/wine/x86_64-unix/winebus.so
+/usr/lib64/wine/x86_64-unix/wineps.so
 /usr/lib64/wine/x86_64-unix/winepulse.so
 /usr/lib64/wine/x86_64-unix/winevulkan.so
 /usr/lib64/wine/x86_64-unix/winex11.so
@@ -3615,7 +3710,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /V3/usr/lib32/wine/x86_64-unix/dwrite.so
 /V3/usr/lib32/wine/x86_64-unix/gphoto2.so
 /V3/usr/lib32/wine/x86_64-unix/kerberos.so
-/V3/usr/lib32/wine/x86_64-unix/libwine.so.1.0
 /V3/usr/lib32/wine/x86_64-unix/localspl.so
 /V3/usr/lib32/wine/x86_64-unix/mountmgr.so
 /V3/usr/lib32/wine/x86_64-unix/msv1_0.so
@@ -3631,6 +3725,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /V3/usr/lib32/wine/x86_64-unix/win32u.so
 /V3/usr/lib32/wine/x86_64-unix/winealsa.so
 /V3/usr/lib32/wine/x86_64-unix/winebus.so
+/V3/usr/lib32/wine/x86_64-unix/wineps.so
 /V3/usr/lib32/wine/x86_64-unix/winepulse.so
 /V3/usr/lib32/wine/x86_64-unix/winevulkan.so
 /V3/usr/lib32/wine/x86_64-unix/winex11.so
@@ -3644,8 +3739,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-unix/dwrite.so
 /usr/lib32/wine/x86_64-unix/gphoto2.so
 /usr/lib32/wine/x86_64-unix/kerberos.so
-/usr/lib32/wine/x86_64-unix/libwine.so.1
-/usr/lib32/wine/x86_64-unix/libwine.so.1.0
 /usr/lib32/wine/x86_64-unix/localspl.so
 /usr/lib32/wine/x86_64-unix/mountmgr.so
 /usr/lib32/wine/x86_64-unix/msv1_0.so
@@ -3661,6 +3754,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-unix/win32u.so
 /usr/lib32/wine/x86_64-unix/winealsa.so
 /usr/lib32/wine/x86_64-unix/winebus.so
+/usr/lib32/wine/x86_64-unix/wineps.so
 /usr/lib32/wine/x86_64-unix/winepulse.so
 /usr/lib32/wine/x86_64-unix/winevulkan.so
 /usr/lib32/wine/x86_64-unix/winex11.so
@@ -3673,10 +3767,11 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/share/package-licenses/wine/02915a3f045528cc246cf0b22399bca9b3a75099
 /usr/share/package-licenses/wine/0811e569f3c097c2b2af0f0f35562b232b05d1d4
 /usr/share/package-licenses/wine/3c21506a45e8d0171fc92fd4ff6903c13adde660
+/usr/share/package-licenses/wine/4808116261778b2137bb955568032cd684fb199b
+/usr/share/package-licenses/wine/7c317af0eb0da75f9f9b8fb8cb4b575a9f90bada
 /usr/share/package-licenses/wine/8f38b3e21abeebe41f1860f88a08219f1777e96e
 /usr/share/package-licenses/wine/9baf05cabbfd71f06534e5597170a2b7c817e6ad
 /usr/share/package-licenses/wine/a2f64f2a85f5fd34bda8eb713c3aad008adbb589
-/usr/share/package-licenses/wine/a4e7ae8a6406fc3281e206c589ccdb890d33fec9
 /usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81
 /usr/share/package-licenses/wine/bc06cbdf781c87d2df2fe385214f936d010dd2a2
 /usr/share/package-licenses/wine/ead74113fdeb540a8799845a89f4691e2602c17a
