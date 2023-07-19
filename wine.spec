@@ -7,9 +7,10 @@
 #
 Name     : wine
 Version  : 8.12
-Release  : 87
+Release  : 88
 URL      : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
 Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -19,45 +20,24 @@ Requires: wine-lib = %{version}-%{release}
 Requires: wine-license = %{version}-%{release}
 Requires: wine-man = %{version}-%{release}
 Requires: SDL2-lib
-Requires: SDL2-lib32
 Requires: Vulkan-Loader-lib
-Requires: Vulkan-Loader-lib32
 Requires: cups-lib
 Requires: dbus-lib
-Requires: dbus-lib32
-Requires: elfutils-lib32
-Requires: expat-lib32
 Requires: fontconfig-lib
-Requires: fontconfig-lib32
 Requires: freetype-lib
-Requires: freetype-lib32
 Requires: glu-lib
-Requires: glu-lib32
 Requires: gnutls-lib
-Requires: gnutls-lib32
 Requires: libX11-lib
-Requires: libX11-lib32
 Requires: libXcursor-lib
-Requires: libXcursor-lib32
-Requires: libdrm-lib32
 Requires: libjpeg-turbo-lib
-Requires: libjpeg-turbo-lib32
 Requires: libpng-lib
-Requires: libpng-lib32
 Requires: libxslt-lib
-Requires: libxslt-lib32
 Requires: mesa-lib
-Requires: mesa-lib32
-Requires: mpg123-lib32
 Requires: ncurses-lib
-Requires: ncurses-lib32
 Requires: samba-lib
 Requires: tiff-lib
-Requires: tiff-lib32
 Requires: unixODBC-lib
 Requires: v4l-utils-lib
-Requires: v4l-utils-lib32
-Requires: wine-lib32
 BuildRequires : SDL-dev
 BuildRequires : SDL2-dev
 BuildRequires : Vulkan-Loader-dev
@@ -215,7 +195,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689615253
+export SOURCE_DATE_EPOCH=1689725362
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -261,7 +241,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689615253
+export SOURCE_DATE_EPOCH=1689725362
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
