@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.12
-Release  : 88
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.12.tar.xz.sign
+Version  : 8.13
+Release  : 89
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -167,12 +167,12 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.12
-cd %{_builddir}/wine-8.12
+%setup -q -n wine-8.13
+cd %{_builddir}/wine-8.13
 %patch -P 1 -p1
 %patch -P 2 -p1
 pushd ..
-cp -a wine-8.12 buildavx2
+cp -a wine-8.13 buildavx2
 popd
 
 %build
@@ -195,7 +195,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689725362
+export SOURCE_DATE_EPOCH=1689978711
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -241,7 +241,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689725362
+export SOURCE_DATE_EPOCH=1689978711
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -565,6 +565,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/avifil32.dll
 /usr/lib32/wine/x86_64-windows/avrt.dll
 /usr/lib32/wine/x86_64-windows/bcrypt.dll
+/usr/lib32/wine/x86_64-windows/bcryptprimitives.dll
 /usr/lib32/wine/x86_64-windows/bluetoothapis.dll
 /usr/lib32/wine/x86_64-windows/browseui.dll
 /usr/lib32/wine/x86_64-windows/bthprops.cpl
@@ -742,6 +743,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/gamingtcui.dll
 /usr/lib32/wine/x86_64-windows/gdi32.dll
 /usr/lib32/wine/x86_64-windows/gdiplus.dll
+/usr/lib32/wine/x86_64-windows/geolocation.dll
 /usr/lib32/wine/x86_64-windows/glu32.dll
 /usr/lib32/wine/x86_64-windows/gphoto2.ds
 /usr/lib32/wine/x86_64-windows/gpkcsp.dll
@@ -789,6 +791,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/kerberos.dll
 /usr/lib32/wine/x86_64-windows/kernel32.dll
 /usr/lib32/wine/x86_64-windows/kernelbase.dll
+/usr/lib32/wine/x86_64-windows/klist.exe
 /usr/lib32/wine/x86_64-windows/ksecdd.sys
 /usr/lib32/wine/x86_64-windows/ksproxy.ax
 /usr/lib32/wine/x86_64-windows/ksuser.dll
@@ -1114,7 +1117,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib32/wine/x86_64-windows/win32u.dll
 /usr/lib32/wine/x86_64-windows/windows.devices.bluetooth.dll
 /usr/lib32/wine/x86_64-windows/windows.devices.enumeration.dll
-/usr/lib32/wine/x86_64-windows/windows.devices.geolocation.geolocator.dll
 /usr/lib32/wine/x86_64-windows/windows.gaming.input.dll
 /usr/lib32/wine/x86_64-windows/windows.gaming.ui.gamebar.dll
 /usr/lib32/wine/x86_64-windows/windows.globalization.dll
@@ -1531,6 +1533,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/avifil32.dll
 /usr/lib64/wine/x86_64-windows/avrt.dll
 /usr/lib64/wine/x86_64-windows/bcrypt.dll
+/usr/lib64/wine/x86_64-windows/bcryptprimitives.dll
 /usr/lib64/wine/x86_64-windows/bluetoothapis.dll
 /usr/lib64/wine/x86_64-windows/browseui.dll
 /usr/lib64/wine/x86_64-windows/bthprops.cpl
@@ -1708,6 +1711,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/gamingtcui.dll
 /usr/lib64/wine/x86_64-windows/gdi32.dll
 /usr/lib64/wine/x86_64-windows/gdiplus.dll
+/usr/lib64/wine/x86_64-windows/geolocation.dll
 /usr/lib64/wine/x86_64-windows/glu32.dll
 /usr/lib64/wine/x86_64-windows/gphoto2.ds
 /usr/lib64/wine/x86_64-windows/gpkcsp.dll
@@ -1755,6 +1759,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/kerberos.dll
 /usr/lib64/wine/x86_64-windows/kernel32.dll
 /usr/lib64/wine/x86_64-windows/kernelbase.dll
+/usr/lib64/wine/x86_64-windows/klist.exe
 /usr/lib64/wine/x86_64-windows/ksecdd.sys
 /usr/lib64/wine/x86_64-windows/ksproxy.ax
 /usr/lib64/wine/x86_64-windows/ksuser.dll
@@ -2080,7 +2085,6 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/lib64/wine/x86_64-windows/win32u.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.bluetooth.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.enumeration.dll
-/usr/lib64/wine/x86_64-windows/windows.devices.geolocation.geolocator.dll
 /usr/lib64/wine/x86_64-windows/windows.gaming.input.dll
 /usr/lib64/wine/x86_64-windows/windows.gaming.ui.gamebar.dll
 /usr/lib64/wine/x86_64-windows/windows.globalization.dll
@@ -2944,6 +2948,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/inspectable.idl
 /usr/include/wine/windows/interactioncontext.h
 /usr/include/wine/windows/intshcut.h
+/usr/include/wine/windows/ioringapi.h
 /usr/include/wine/windows/ip2string.h
 /usr/include/wine/windows/ipexport.h
 /usr/include/wine/windows/iphlpapi.h
@@ -3118,6 +3123,7 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/ntdef.h
 /usr/include/wine/windows/ntdsapi.h
 /usr/include/wine/windows/ntgdi.h
+/usr/include/wine/windows/ntioring_x.h
 /usr/include/wine/windows/ntlsa.h
 /usr/include/wine/windows/ntquery.h
 /usr/include/wine/windows/ntsecapi.h
@@ -3414,6 +3420,8 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/windef.h
 /usr/include/wine/windows/windns.h
 /usr/include/wine/windows/windot11.h
+/usr/include/wine/windows/windows.applicationmodel.h
+/usr/include/wine/windows/windows.applicationmodel.idl
 /usr/include/wine/windows/windows.devices.bluetooth.h
 /usr/include/wine/windows/windows.devices.bluetooth.idl
 /usr/include/wine/windows/windows.devices.enumeration.h
@@ -3479,6 +3487,8 @@ ln -s wine64 %{buildroot}/usr/bin/wine
 /usr/include/wine/windows/windows.security.credentials.idl
 /usr/include/wine/windows/windows.security.cryptography.h
 /usr/include/wine/windows/windows.security.cryptography.idl
+/usr/include/wine/windows/windows.storage.h
+/usr/include/wine/windows/windows.storage.idl
 /usr/include/wine/windows/windows.storage.streams.h
 /usr/include/wine/windows/windows.storage.streams.idl
 /usr/include/wine/windows/windows.system.h
