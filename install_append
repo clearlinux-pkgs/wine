@@ -5,4 +5,3 @@ popd
 # install static dev libs
 find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib32/wine/ \;
 find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
-ln -s wine64 %{buildroot}/usr/bin/wine
