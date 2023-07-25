@@ -7,7 +7,7 @@
 #
 Name     : wine
 Version  : 8.13
-Release  : 91
+Release  : 92
 URL      : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
 Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
 Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz.sign
@@ -38,7 +38,6 @@ Requires: gnutls-lib32
 Requires: libX11-lib
 Requires: libX11-lib32
 Requires: libXcursor-lib
-Requires: libXcursor-lib32
 Requires: libdrm-lib32
 Requires: libjpeg-turbo-lib
 Requires: libjpeg-turbo-lib32
@@ -237,7 +236,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1690327342
+export SOURCE_DATE_EPOCH=1690328637
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -254,7 +253,7 @@ export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-in
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1690327342
+export SOURCE_DATE_EPOCH=1690328637
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
