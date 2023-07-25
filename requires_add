@@ -32,7 +32,6 @@ unixODBC-lib
 libpng-lib 
 libpng-lib32
 SDL2-lib 
-SDL2-lib32
 tiff-lib 
 tiff-lib32
 v4l-utils-lib 
@@ -42,6 +41,5 @@ Vulkan-Loader-lib32
 libX11-lib 
 libX11-lib32
 libXcursor-lib 
-libXcursor-lib32
 libxslt-lib 
 libxslt-lib32
