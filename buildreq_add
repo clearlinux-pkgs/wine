@@ -50,3 +50,5 @@ opencl-headers-dev
 ocl-icd-dev
 mpg123-dev
 openldap-dev
+SDL2-dev32
+libXcursor-dev32
