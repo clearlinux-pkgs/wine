@@ -13,3 +13,4 @@ ncursesw
 libcdio
 32libpulse
 gstreamer-1.0
+wayland-client
