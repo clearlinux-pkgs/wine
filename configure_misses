@@ -7,6 +7,8 @@ Configure miss: -lv4l2
 Configure miss: -lv4l2
 Configure miss: OpenCL/opencl.h
 Configure miss: OpenCL/opencl.h
+Configure miss: SCardEstablishContext in -lpcsclite
+Configure miss: SCardEstablishContext in -lpcsclite
 Configure miss: asm/user.h
 Configure miss: asm/user.h
 Configure miss: broken string.h that generates warnings with -Wlogical-op
@@ -181,12 +183,14 @@ Configure miss: whether the compiler supports -Werror=unused-command-line-argume
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -Wpragma-pack
+Configure miss: whether the compiler supports -static-pie
 Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimization-argument
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wpragma-pack
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
+Configure miss: wl_display_connect in -lwayland-client
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld

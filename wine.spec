@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.13
-Release  : 95
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.13.tar.xz.sign
+Version  : 8.14
+Release  : 96
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.14.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.14.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.14.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -57,14 +57,13 @@ Requires: unixODBC-lib
 Requires: v4l-utils-lib
 Requires: v4l-utils-lib32
 Requires: wine-lib32
+BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
-BuildRequires : Vulkan-Loader-dev
 BuildRequires : acl-dev
 BuildRequires : alsa-lib-dev
 BuildRequires : attr-dev
 BuildRequires : bison
 BuildRequires : cups-dev
-BuildRequires : dbus-dev
 BuildRequires : dbus-dev32
 BuildRequires : flex
 BuildRequires : fontconfig-dev32
@@ -79,7 +78,6 @@ BuildRequires : krb5-dev
 BuildRequires : lcms2-dev32
 BuildRequires : libX11-dev32
 BuildRequires : libXcomposite-dev32
-BuildRequires : libXcursor-dev
 BuildRequires : libXcursor-dev32
 BuildRequires : libXext-dev32
 BuildRequires : libXfixes-dev32
@@ -110,16 +108,13 @@ BuildRequires : pkgconfig(32libxslt)
 BuildRequires : pkgconfig(32vulkan)
 BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(32xext)
-BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(gstreamer-1.0)
 BuildRequires : pkgconfig(libcdio)
 BuildRequires : pkgconfig(ncurses)
 BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(wayland-client)
-BuildRequires : pulseaudio-dev
 BuildRequires : pulseaudio-dev32
 BuildRequires : sane-backends-dev
-BuildRequires : systemd-dev
 BuildRequires : systemd-dev32
 BuildRequires : unixODBC-dev
 BuildRequires : valgrind
@@ -214,8 +209,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.13
-cd %{_builddir}/wine-8.13
+%setup -q -n wine-8.14
+cd %{_builddir}/wine-8.14
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -239,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1691107514
+export SOURCE_DATE_EPOCH=1692633707
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -256,7 +251,7 @@ export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-in
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1691107514
+export SOURCE_DATE_EPOCH=1692633707
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -507,6 +502,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/hrtfapo.dll
 /usr/lib32/wine/i386-windows/http.sys
 /usr/lib32/wine/i386-windows/httpapi.dll
+/usr/lib32/wine/i386-windows/hvsimanagementapi.dll
 /usr/lib32/wine/i386-windows/ia2comproxy.dll
 /usr/lib32/wine/i386-windows/icacls.exe
 /usr/lib32/wine/i386-windows/iccvid.dll
@@ -550,6 +546,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/localui.dll
 /usr/lib32/wine/i386-windows/lodctr.exe
 /usr/lib32/wine/i386-windows/lz32.dll
+/usr/lib32/wine/i386-windows/magnification.dll
 /usr/lib32/wine/i386-windows/mapi32.dll
 /usr/lib32/wine/i386-windows/mapistub.dll
 /usr/lib32/wine/i386-windows/mciavi32.dll
@@ -631,6 +628,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/msvcp140_1.dll
 /usr/lib32/wine/i386-windows/msvcp140_2.dll
 /usr/lib32/wine/i386-windows/msvcp140_atomic_wait.dll
+/usr/lib32/wine/i386-windows/msvcp140_codecvt_ids.dll
 /usr/lib32/wine/i386-windows/msvcp60.dll
 /usr/lib32/wine/i386-windows/msvcp70.dll
 /usr/lib32/wine/i386-windows/msvcp71.dll
@@ -862,6 +860,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/win32u.dll
 /usr/lib32/wine/i386-windows/windows.devices.bluetooth.dll
 /usr/lib32/wine/i386-windows/windows.devices.enumeration.dll
+/usr/lib32/wine/i386-windows/windows.devices.usb.dll
 /usr/lib32/wine/i386-windows/windows.gaming.input.dll
 /usr/lib32/wine/i386-windows/windows.gaming.ui.gamebar.dll
 /usr/lib32/wine/i386-windows/windows.globalization.dll
@@ -1675,6 +1674,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/hrtfapo.dll
 /usr/lib64/wine/x86_64-windows/http.sys
 /usr/lib64/wine/x86_64-windows/httpapi.dll
+/usr/lib64/wine/x86_64-windows/hvsimanagementapi.dll
 /usr/lib64/wine/x86_64-windows/ia2comproxy.dll
 /usr/lib64/wine/x86_64-windows/icacls.exe
 /usr/lib64/wine/x86_64-windows/iccvid.dll
@@ -1718,6 +1718,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/localui.dll
 /usr/lib64/wine/x86_64-windows/lodctr.exe
 /usr/lib64/wine/x86_64-windows/lz32.dll
+/usr/lib64/wine/x86_64-windows/magnification.dll
 /usr/lib64/wine/x86_64-windows/mapi32.dll
 /usr/lib64/wine/x86_64-windows/mapistub.dll
 /usr/lib64/wine/x86_64-windows/mciavi32.dll
@@ -1799,6 +1800,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/msvcp140_1.dll
 /usr/lib64/wine/x86_64-windows/msvcp140_2.dll
 /usr/lib64/wine/x86_64-windows/msvcp140_atomic_wait.dll
+/usr/lib64/wine/x86_64-windows/msvcp140_codecvt_ids.dll
 /usr/lib64/wine/x86_64-windows/msvcp60.dll
 /usr/lib64/wine/x86_64-windows/msvcp70.dll
 /usr/lib64/wine/x86_64-windows/msvcp71.dll
@@ -2032,6 +2034,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/win32u.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.bluetooth.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.enumeration.dll
+/usr/lib64/wine/x86_64-windows/windows.devices.usb.dll
 /usr/lib64/wine/x86_64-windows/windows.gaming.input.dll
 /usr/lib64/wine/x86_64-windows/windows.gaming.ui.gamebar.dll
 /usr/lib64/wine/x86_64-windows/windows.globalization.dll
@@ -2410,6 +2413,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/activaut.idl
 /usr/include/wine/windows/activdbg.h
 /usr/include/wine/windows/activdbg.idl
+/usr/include/wine/windows/activeds.h
 /usr/include/wine/windows/activscp.h
 /usr/include/wine/windows/activscp.idl
 /usr/include/wine/windows/adserr.h
@@ -3231,6 +3235,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/spatialaudioclient.h
 /usr/include/wine/windows/spatialaudioclient.idl
 /usr/include/wine/windows/specstrings.h
+/usr/include/wine/windows/specstrings_strict.h
 /usr/include/wine/windows/sperror.h
 /usr/include/wine/windows/sql.h
 /usr/include/wine/windows/sqlext.h
@@ -3374,6 +3379,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windows.devices.power.idl
 /usr/include/wine/windows/windows.devices.radios.h
 /usr/include/wine/windows/windows.devices.radios.idl
+/usr/include/wine/windows/windows.devices.usb.h
+/usr/include/wine/windows/windows.devices.usb.idl
 /usr/include/wine/windows/windows.foundation.collections.h
 /usr/include/wine/windows/windows.foundation.collections.idl
 /usr/include/wine/windows/windows.foundation.h
@@ -3427,8 +3434,14 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windows.security.credentials.idl
 /usr/include/wine/windows/windows.security.cryptography.h
 /usr/include/wine/windows/windows.security.cryptography.idl
+/usr/include/wine/windows/windows.security.isolation.h
+/usr/include/wine/windows/windows.security.isolation.idl
+/usr/include/wine/windows/windows.storage.fileproperties.h
+/usr/include/wine/windows/windows.storage.fileproperties.idl
 /usr/include/wine/windows/windows.storage.h
 /usr/include/wine/windows/windows.storage.idl
+/usr/include/wine/windows/windows.storage.search.h
+/usr/include/wine/windows/windows.storage.search.idl
 /usr/include/wine/windows/windows.storage.streams.h
 /usr/include/wine/windows/windows.storage.streams.idl
 /usr/include/wine/windows/windows.system.h
@@ -3451,6 +3464,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windows.ui.idl
 /usr/include/wine/windows/windows.ui.viewmanagement.h
 /usr/include/wine/windows/windows.ui.viewmanagement.idl
+/usr/include/wine/windows/windows.ui.xaml.hosting.desktopwindowxamlsource.h
+/usr/include/wine/windows/windows.ui.xaml.hosting.desktopwindowxamlsource.idl
 /usr/include/wine/windows/windowscontracts.h
 /usr/include/wine/windows/windowscontracts.idl
 /usr/include/wine/windows/windowsx.h
@@ -3546,6 +3561,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/xact2wb.h
 /usr/include/wine/windows/xact3.h
 /usr/include/wine/windows/xact3wb.h
+/usr/include/wine/windows/xamlom.h
+/usr/include/wine/windows/xamlom.idl
 /usr/include/wine/windows/xapo.h
 /usr/include/wine/windows/xapo.idl
 /usr/include/wine/windows/xapofx.h
@@ -3859,6 +3876,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/hrtfapo.dll.so
 /usr/lib32/wine/i386-unix/http.sys.so
 /usr/lib32/wine/i386-unix/httpapi.dll.so
+/usr/lib32/wine/i386-unix/hvsimanagementapi.dll.so
 /usr/lib32/wine/i386-unix/ia2comproxy.dll.so
 /usr/lib32/wine/i386-unix/icacls.exe.so
 /usr/lib32/wine/i386-unix/iccvid.dll.so
@@ -3901,6 +3919,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/localspl.so
 /usr/lib32/wine/i386-unix/localui.dll.so
 /usr/lib32/wine/i386-unix/lodctr.exe.so
+/usr/lib32/wine/i386-unix/magnification.dll.so
 /usr/lib32/wine/i386-unix/mapi32.dll.so
 /usr/lib32/wine/i386-unix/mapistub.dll.so
 /usr/lib32/wine/i386-unix/mciavi32.dll.so
@@ -3981,6 +4000,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/msvcp140_1.dll.so
 /usr/lib32/wine/i386-unix/msvcp140_2.dll.so
 /usr/lib32/wine/i386-unix/msvcp140_atomic_wait.dll.so
+/usr/lib32/wine/i386-unix/msvcp140_codecvt_ids.dll.so
 /usr/lib32/wine/i386-unix/msvcp60.dll.so
 /usr/lib32/wine/i386-unix/msvcp70.dll.so
 /usr/lib32/wine/i386-unix/msvcp71.dll.so
@@ -4212,6 +4232,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/win32u.so
 /usr/lib32/wine/i386-unix/windows.devices.bluetooth.dll.so
 /usr/lib32/wine/i386-unix/windows.devices.enumeration.dll.so
+/usr/lib32/wine/i386-unix/windows.devices.usb.dll.so
 /usr/lib32/wine/i386-unix/windows.gaming.input.dll.so
 /usr/lib32/wine/i386-unix/windows.gaming.ui.gamebar.dll.so
 /usr/lib32/wine/i386-unix/windows.globalization.dll.so
