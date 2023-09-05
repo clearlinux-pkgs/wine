@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.14
-Release  : 96
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.14.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.14.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.14.tar.xz.sign
+Version  : 8.15
+Release  : 97
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.15.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.15.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.15.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -209,8 +209,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.14
-cd %{_builddir}/wine-8.14
+%setup -q -n wine-8.15
+cd %{_builddir}/wine-8.15
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -234,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692633707
+export SOURCE_DATE_EPOCH=1693955479
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -251,7 +251,7 @@ export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-in
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1692633707
+export SOURCE_DATE_EPOCH=1693955479
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -458,6 +458,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/dwmapi.dll
 /usr/lib32/wine/i386-windows/dwrite.dll
 /usr/lib32/wine/i386-windows/dx8vb.dll
+/usr/lib32/wine/i386-windows/dxcore.dll
 /usr/lib32/wine/i386-windows/dxdiag.exe
 /usr/lib32/wine/i386-windows/dxdiagn.dll
 /usr/lib32/wine/i386-windows/dxgi.dll
@@ -912,6 +913,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/wlanapi.dll
 /usr/lib32/wine/i386-windows/wlanui.dll
 /usr/lib32/wine/i386-windows/wldap32.dll
+/usr/lib32/wine/i386-windows/wldp.dll
 /usr/lib32/wine/i386-windows/wmasf.dll
 /usr/lib32/wine/i386-windows/wmi.dll
 /usr/lib32/wine/i386-windows/wmic.exe
@@ -1629,6 +1631,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/dwmapi.dll
 /usr/lib64/wine/x86_64-windows/dwrite.dll
 /usr/lib64/wine/x86_64-windows/dx8vb.dll
+/usr/lib64/wine/x86_64-windows/dxcore.dll
 /usr/lib64/wine/x86_64-windows/dxdiag.exe
 /usr/lib64/wine/x86_64-windows/dxdiagn.dll
 /usr/lib64/wine/x86_64-windows/dxgi.dll
@@ -2088,6 +2091,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/wlanapi.dll
 /usr/lib64/wine/x86_64-windows/wlanui.dll
 /usr/lib64/wine/x86_64-windows/wldap32.dll
+/usr/lib64/wine/x86_64-windows/wldp.dll
 /usr/lib64/wine/x86_64-windows/wmasf.dll
 /usr/lib64/wine/x86_64-windows/wmi.dll
 /usr/lib64/wine/x86_64-windows/wmic.exe
@@ -2760,6 +2764,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/dwrite_2.idl
 /usr/include/wine/windows/dwrite_3.h
 /usr/include/wine/windows/dwrite_3.idl
+/usr/include/wine/windows/dxcore.h
+/usr/include/wine/windows/dxcore_interface.h
 /usr/include/wine/windows/dxdiag.h
 /usr/include/wine/windows/dxerr8.h
 /usr/include/wine/windows/dxerr9.h
@@ -3365,6 +3371,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windef.h
 /usr/include/wine/windows/windns.h
 /usr/include/wine/windows/windot11.h
+/usr/include/wine/windows/windows.applicationmodel.core.h
+/usr/include/wine/windows/windows.applicationmodel.core.idl
 /usr/include/wine/windows/windows.applicationmodel.h
 /usr/include/wine/windows/windows.applicationmodel.idl
 /usr/include/wine/windows/windows.devices.bluetooth.h
@@ -3412,12 +3420,20 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windows.graphics.holographic.h
 /usr/include/wine/windows/windows.graphics.holographic.idl
 /usr/include/wine/windows/windows.h
+/usr/include/wine/windows/windows.management.deployment.h
+/usr/include/wine/windows/windows.management.deployment.idl
+/usr/include/wine/windows/windows.media.capture.h
+/usr/include/wine/windows/windows.media.capture.idl
 /usr/include/wine/windows/windows.media.closedcaptioning.h
 /usr/include/wine/windows/windows.media.closedcaptioning.idl
 /usr/include/wine/windows/windows.media.devices.h
 /usr/include/wine/windows/windows.media.devices.idl
+/usr/include/wine/windows/windows.media.effects.h
+/usr/include/wine/windows/windows.media.effects.idl
 /usr/include/wine/windows/windows.media.h
 /usr/include/wine/windows/windows.media.idl
+/usr/include/wine/windows/windows.media.render.h
+/usr/include/wine/windows/windows.media.render.idl
 /usr/include/wine/windows/windows.media.speechrecognition.h
 /usr/include/wine/windows/windows.media.speechrecognition.idl
 /usr/include/wine/windows/windows.media.speechsynthesis.h
@@ -3505,6 +3521,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/winuser.rh
 /usr/include/wine/windows/winver.h
 /usr/include/wine/windows/wlanapi.h
+/usr/include/wine/windows/wldp.h
 /usr/include/wine/windows/wmcodecdsp.h
 /usr/include/wine/windows/wmcodecdsp.idl
 /usr/include/wine/windows/wmdrmsdk.h
@@ -3832,6 +3849,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/dwrite.dll.so
 /usr/lib32/wine/i386-unix/dwrite.so
 /usr/lib32/wine/i386-unix/dx8vb.dll.so
+/usr/lib32/wine/i386-unix/dxcore.dll.so
 /usr/lib32/wine/i386-unix/dxdiag.exe.so
 /usr/lib32/wine/i386-unix/dxdiagn.dll.so
 /usr/lib32/wine/i386-unix/dxgi.dll.so
@@ -4290,6 +4308,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/wlanapi.dll.so
 /usr/lib32/wine/i386-unix/wlanui.dll.so
 /usr/lib32/wine/i386-unix/wldap32.dll.so
+/usr/lib32/wine/i386-unix/wldp.dll.so
 /usr/lib32/wine/i386-unix/wmasf.dll.so
 /usr/lib32/wine/i386-unix/wmic.exe.so
 /usr/lib32/wine/i386-unix/wmiutils.dll.so
