@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.15
-Release  : 97
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.15.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.15.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.15.tar.xz.sign
+Version  : 8.16
+Release  : 98
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.16.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.16.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.16.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -209,8 +209,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.15
-cd %{_builddir}/wine-8.15
+%setup -q -n wine-8.16
+cd %{_builddir}/wine-8.16
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -234,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693955479
+export SOURCE_DATE_EPOCH=1695159990
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 export CXXFLAGS=$CFLAGS
@@ -251,7 +251,7 @@ export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-in
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1693955479
+export SOURCE_DATE_EPOCH=1695159990
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -293,6 +293,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/apisetschema.dll
 /usr/lib32/wine/i386-windows/apphelp.dll
 /usr/lib32/wine/i386-windows/appwiz.cpl
+/usr/lib32/wine/i386-windows/appxdeploymentclient.dll
 /usr/lib32/wine/i386-windows/arp.exe
 /usr/lib32/wine/i386-windows/aspnet_regiis.exe
 /usr/lib32/wine/i386-windows/atl.dll
@@ -787,6 +788,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/sppc.dll
 /usr/lib32/wine/i386-windows/srclient.dll
 /usr/lib32/wine/i386-windows/srvcli.dll
+/usr/lib32/wine/i386-windows/srvsvc.dll
 /usr/lib32/wine/i386-windows/sspicli.dll
 /usr/lib32/wine/i386-windows/start.exe
 /usr/lib32/wine/i386-windows/stdole2.tlb
@@ -859,6 +861,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/wiaservc.dll
 /usr/lib32/wine/i386-windows/wimgapi.dll
 /usr/lib32/wine/i386-windows/win32u.dll
+/usr/lib32/wine/i386-windows/windows.applicationmodel.dll
 /usr/lib32/wine/i386-windows/windows.devices.bluetooth.dll
 /usr/lib32/wine/i386-windows/windows.devices.enumeration.dll
 /usr/lib32/wine/i386-windows/windows.devices.usb.dll
@@ -1466,6 +1469,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/apisetschema.dll
 /usr/lib64/wine/x86_64-windows/apphelp.dll
 /usr/lib64/wine/x86_64-windows/appwiz.cpl
+/usr/lib64/wine/x86_64-windows/appxdeploymentclient.dll
 /usr/lib64/wine/x86_64-windows/arp.exe
 /usr/lib64/wine/x86_64-windows/aspnet_regiis.exe
 /usr/lib64/wine/x86_64-windows/atl.dll
@@ -1963,6 +1967,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/sppc.dll
 /usr/lib64/wine/x86_64-windows/srclient.dll
 /usr/lib64/wine/x86_64-windows/srvcli.dll
+/usr/lib64/wine/x86_64-windows/srvsvc.dll
 /usr/lib64/wine/x86_64-windows/sspicli.dll
 /usr/lib64/wine/x86_64-windows/start.exe
 /usr/lib64/wine/x86_64-windows/stdole2.tlb
@@ -2035,6 +2040,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/wiaservc.dll
 /usr/lib64/wine/x86_64-windows/wimgapi.dll
 /usr/lib64/wine/x86_64-windows/win32u.dll
+/usr/lib64/wine/x86_64-windows/windows.applicationmodel.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.bluetooth.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.enumeration.dll
 /usr/lib64/wine/x86_64-windows/windows.devices.usb.dll
@@ -3678,6 +3684,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/amstream.dll.so
 /usr/lib32/wine/i386-unix/apphelp.dll.so
 /usr/lib32/wine/i386-unix/appwiz.cpl.so
+/usr/lib32/wine/i386-unix/appxdeploymentclient.dll.so
 /usr/lib32/wine/i386-unix/arp.exe.so
 /usr/lib32/wine/i386-unix/aspnet_regiis.exe.so
 /usr/lib32/wine/i386-unix/atl.dll.so
@@ -4179,6 +4186,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/sppc.dll.so
 /usr/lib32/wine/i386-unix/srclient.dll.so
 /usr/lib32/wine/i386-unix/srvcli.dll.so
+/usr/lib32/wine/i386-unix/srvsvc.dll.so
 /usr/lib32/wine/i386-unix/sspicli.dll.so
 /usr/lib32/wine/i386-unix/start.exe.so
 /usr/lib32/wine/i386-unix/sti.dll.so
@@ -4248,6 +4256,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/wimgapi.dll.so
 /usr/lib32/wine/i386-unix/win32u.dll.so
 /usr/lib32/wine/i386-unix/win32u.so
+/usr/lib32/wine/i386-unix/windows.applicationmodel.dll.so
 /usr/lib32/wine/i386-unix/windows.devices.bluetooth.dll.so
 /usr/lib32/wine/i386-unix/windows.devices.enumeration.dll.so
 /usr/lib32/wine/i386-unix/windows.devices.usb.dll.so
