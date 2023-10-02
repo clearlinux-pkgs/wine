@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.16
-Release  : 98
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.16.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.16.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.16.tar.xz.sign
+Version  : 8.17
+Release  : 99
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.17.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.17.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.17.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -209,8 +209,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.16
-cd %{_builddir}/wine-8.16
+%setup -q -n wine-8.17
+cd %{_builddir}/wine-8.17
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -234,24 +234,44 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695159990
+export SOURCE_DATE_EPOCH=1696269931
 export GCC_IGNORE_WERROR=1
-export CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
-export CXXFLAGS=$CFLAGS
-export FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
-export FCFLAGS=$FFLAGS
-unset LDFLAGS
-export CFLAGS="$CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
-export FCFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
-export FFLAGS="$FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
+CLEAR_INTERMEDIATE_CXXFLAGS=$CLEAR_INTERMEDIATE_CFLAGS
+CLEAR_INTERMEDIATE_FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
+CLEAR_INTERMEDIATE_FCFLAGS=$CLEAR_INTERMEDIATE_FFLAGS
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 %reconfigure --disable-static --with-wine64=%{_builddir}/build64 \
 --libdir=/usr/lib32 \
 --disable-win16
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1695159990
+export GCC_IGNORE_WERROR=1
+CLEAR_INTERMEDIATE_CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
+CLEAR_INTERMEDIATE_CXXFLAGS=$CLEAR_INTERMEDIATE_CFLAGS
+CLEAR_INTERMEDIATE_FFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
+CLEAR_INTERMEDIATE_FCFLAGS=$CLEAR_INTERMEDIATE_FFLAGS
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -Ofast -falign-functions=32 -fno-lto -fno-semantic-interposition "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
+export SOURCE_DATE_EPOCH=1696269931
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -2597,6 +2617,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/d3d12sdklayers.idl
 /usr/include/wine/windows/d3d12shader.h
 /usr/include/wine/windows/d3d12shader.idl
+/usr/include/wine/windows/d3d12video.h
+/usr/include/wine/windows/d3d12video.idl
 /usr/include/wine/windows/d3d8.h
 /usr/include/wine/windows/d3d8caps.h
 /usr/include/wine/windows/d3d8types.h
