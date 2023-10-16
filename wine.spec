@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.17
-Release  : 99
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.17.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.17.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.17.tar.xz.sign
+Version  : 8.18
+Release  : 100
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.18.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.18.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.18.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 libtiff
@@ -209,8 +209,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.17
-cd %{_builddir}/wine-8.17
+%setup -q -n wine-8.18
+cd %{_builddir}/wine-8.18
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -234,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1696269931
+export SOURCE_DATE_EPOCH=1697479547
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -fPIC -march=westmere"
 CLEAR_INTERMEDIATE_CXXFLAGS=$CLEAR_INTERMEDIATE_CFLAGS
@@ -271,7 +271,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1696269931
+export SOURCE_DATE_EPOCH=1697479547
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -890,10 +890,13 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/windows.globalization.dll
 /usr/lib32/wine/i386-windows/windows.media.devices.dll
 /usr/lib32/wine/i386-windows/windows.media.dll
+/usr/lib32/wine/i386-windows/windows.media.mediacontrol.dll
 /usr/lib32/wine/i386-windows/windows.media.speech.dll
 /usr/lib32/wine/i386-windows/windows.networking.dll
 /usr/lib32/wine/i386-windows/windows.networking.hostname.dll
 /usr/lib32/wine/i386-windows/windows.perception.stub.dll
+/usr/lib32/wine/i386-windows/windows.security.credentials.ui.userconsentverifier.dll
+/usr/lib32/wine/i386-windows/windows.storage.applicationdata.dll
 /usr/lib32/wine/i386-windows/windows.system.profile.systemmanufacturers.dll
 /usr/lib32/wine/i386-windows/windows.ui.dll
 /usr/lib32/wine/i386-windows/windowscodecs.dll
@@ -1428,7 +1431,6 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/libuserenv.a
 /usr/lib64/wine/libuserenv.delay.a
 /usr/lib64/wine/libusp10.a
-/usr/lib64/wine/libusp10.delay.a
 /usr/lib64/wine/libuxtheme.a
 /usr/lib64/wine/libuxtheme.delay.a
 /usr/lib64/wine/libvcruntime140.a
@@ -2069,10 +2071,13 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/windows.globalization.dll
 /usr/lib64/wine/x86_64-windows/windows.media.devices.dll
 /usr/lib64/wine/x86_64-windows/windows.media.dll
+/usr/lib64/wine/x86_64-windows/windows.media.mediacontrol.dll
 /usr/lib64/wine/x86_64-windows/windows.media.speech.dll
 /usr/lib64/wine/x86_64-windows/windows.networking.dll
 /usr/lib64/wine/x86_64-windows/windows.networking.hostname.dll
 /usr/lib64/wine/x86_64-windows/windows.perception.stub.dll
+/usr/lib64/wine/x86_64-windows/windows.security.credentials.ui.userconsentverifier.dll
+/usr/lib64/wine/x86_64-windows/windows.storage.applicationdata.dll
 /usr/lib64/wine/x86_64-windows/windows.system.profile.systemmanufacturers.dll
 /usr/lib64/wine/x86_64-windows/windows.ui.dll
 /usr/lib64/wine/x86_64-windows/windowscodecs.dll
@@ -3080,6 +3085,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/netcfgx.idl
 /usr/include/wine/windows/netcon.h
 /usr/include/wine/windows/netcon.idl
+/usr/include/wine/windows/netevent.h
 /usr/include/wine/windows/netfw.h
 /usr/include/wine/windows/netfw.idl
 /usr/include/wine/windows/netioapi.h
@@ -3289,6 +3295,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/structuredquerycondition.idl
 /usr/include/wine/windows/svrapi.h
 /usr/include/wine/windows/synchapi.h
+/usr/include/wine/windows/systemmediatransportcontrolsinterop.h
+/usr/include/wine/windows/systemmediatransportcontrolsinterop.idl
 /usr/include/wine/windows/t2embapi.h
 /usr/include/wine/windows/tapi.h
 /usr/include/wine/windows/taskschd.h
@@ -3476,6 +3484,8 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/windows.perception.spatial.surfaces.idl
 /usr/include/wine/windows/windows.security.credentials.h
 /usr/include/wine/windows/windows.security.credentials.idl
+/usr/include/wine/windows/windows.security.credentials.ui.h
+/usr/include/wine/windows/windows.security.credentials.ui.idl
 /usr/include/wine/windows/windows.security.cryptography.h
 /usr/include/wine/windows/windows.security.cryptography.idl
 /usr/include/wine/windows/windows.security.isolation.h
@@ -3527,6 +3537,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/include/wine/windows/winnt.h
 /usr/include/wine/windows/winnt.rh
 /usr/include/wine/windows/winperf.h
+/usr/include/wine/windows/winppi.h
 /usr/include/wine/windows/winreg.h
 /usr/include/wine/windows/winresrc.h
 /usr/include/wine/windows/winsafer.h
@@ -4287,10 +4298,13 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/windows.globalization.dll.so
 /usr/lib32/wine/i386-unix/windows.media.devices.dll.so
 /usr/lib32/wine/i386-unix/windows.media.dll.so
+/usr/lib32/wine/i386-unix/windows.media.mediacontrol.dll.so
 /usr/lib32/wine/i386-unix/windows.media.speech.dll.so
 /usr/lib32/wine/i386-unix/windows.networking.dll.so
 /usr/lib32/wine/i386-unix/windows.networking.hostname.dll.so
 /usr/lib32/wine/i386-unix/windows.perception.stub.dll.so
+/usr/lib32/wine/i386-unix/windows.security.credentials.ui.userconsentverifier.dll.so
+/usr/lib32/wine/i386-unix/windows.storage.applicationdata.dll.so
 /usr/lib32/wine/i386-unix/windows.system.profile.systemmanufacturers.dll.so
 /usr/lib32/wine/i386-unix/windows.ui.dll.so
 /usr/lib32/wine/i386-unix/windowscodecs.dll.so
