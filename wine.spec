@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xCEFAC8EAAF17519D (julliard@winehq.org)
 #
 Name     : wine
-Version  : 8.19
-Release  : 101
-URL      : https://dl.winehq.org/wine/source/8.x/wine-8.19.tar.xz
-Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.19.tar.xz
-Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.19.tar.xz.sign
+Version  : 8.20
+Release  : 102
+URL      : https://dl.winehq.org/wine/source/8.x/wine-8.20.tar.xz
+Source0  : https://dl.winehq.org/wine/source/8.x/wine-8.20.tar.xz
+Source1  : https://dl.winehq.org/wine/source/8.x/wine-8.20.tar.xz.sign
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause IJG ISC LGPL-2.1 MIT OLDAP-2.8 Zlib libtiff
@@ -211,8 +211,8 @@ man components for the wine package.
 
 
 %prep
-%setup -q -n wine-8.19
-cd %{_builddir}/wine-8.19
+%setup -q -n wine-8.20
+cd %{_builddir}/wine-8.20
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -236,7 +236,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1698689365
+export SOURCE_DATE_EPOCH=1699907170
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 CLEAR_INTERMEDIATE_CXXFLAGS=$CLEAR_INTERMEDIATE_CFLAGS
@@ -273,7 +273,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1698689365
+export SOURCE_DATE_EPOCH=1699907170
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -641,6 +641,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-windows/mssign32.dll
 /usr/lib32/wine/i386-windows/mssip32.dll
 /usr/lib32/wine/i386-windows/mstask.dll
+/usr/lib32/wine/i386-windows/msttsengine.dll
 /usr/lib32/wine/i386-windows/msv1_0.dll
 /usr/lib32/wine/i386-windows/msvcirt.dll
 /usr/lib32/wine/i386-windows/msvcm80.dll
@@ -1819,6 +1820,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/mssign32.dll
 /usr/lib64/wine/x86_64-windows/mssip32.dll
 /usr/lib64/wine/x86_64-windows/mstask.dll
+/usr/lib64/wine/x86_64-windows/msttsengine.dll
 /usr/lib64/wine/x86_64-windows/msv1_0.dll
 /usr/lib64/wine/x86_64-windows/msvcirt.dll
 /usr/lib64/wine/x86_64-windows/msvcm80.dll
@@ -4049,6 +4051,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib32/wine/i386-unix/mssign32.dll.so
 /usr/lib32/wine/i386-unix/mssip32.dll.so
 /usr/lib32/wine/i386-unix/mstask.dll.so
+/usr/lib32/wine/i386-unix/msttsengine.dll.so
 /usr/lib32/wine/i386-unix/msv1_0.dll.so
 /usr/lib32/wine/i386-unix/msv1_0.so
 /usr/lib32/wine/i386-unix/msvcirt.dll.so

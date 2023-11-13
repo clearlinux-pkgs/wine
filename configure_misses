@@ -188,6 +188,7 @@ Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimization-argument
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Wmicrosoft-enum-forward-reference
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wpragma-pack
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
 Configure miss: wl_display_connect in -lwayland-client
