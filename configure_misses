@@ -201,3 +201,7 @@ Configure miss: x86_64-generic-linux-gnu-otool
 Configure miss: x86_64-generic-linux-gnu-readelf
 Configure miss: x86_64-generic-linux-gnu-readelf
 Configure miss: x86_64-w64-mingw32-gcc option to enable C99 features
+Configure miss: xkb_context_new in -lxkbcommon
+Configure miss: xkb_context_new in -lxkbcommon
+Configure miss: xkbcommon/xkbcommon.h
+Configure miss: xkbcommon/xkbcommon.h
