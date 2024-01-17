@@ -9,7 +9,7 @@
 #
 Name     : wine
 Version  : 9.0
-Release  : 104
+Release  : 105
 URL      : https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz
 Source0  : https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz
 Source1  : https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz.sign
@@ -90,6 +90,7 @@ BuildRequires : libXrender-dev32
 BuildRequires : libgphoto2-dev
 BuildRequires : libjpeg-turbo-dev32
 BuildRequires : libpng-dev32
+BuildRequires : libxkbcommon-dev32
 BuildRequires : libxml2-dev32
 BuildRequires : mingw-binutils
 BuildRequires : mingw-crt
@@ -233,7 +234,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1705520671
+export SOURCE_DATE_EPOCH=1705528914
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 CLEAR_INTERMEDIATE_CXXFLAGS=$CLEAR_INTERMEDIATE_CFLAGS
@@ -270,7 +271,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1705520671
+export SOURCE_DATE_EPOCH=1705528914
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -2107,6 +2108,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-windows/wineps.drv
 /usr/lib64/wine/x86_64-windows/winepulse.drv
 /usr/lib64/wine/x86_64-windows/winevulkan.dll
+/usr/lib64/wine/x86_64-windows/winewayland.drv
 /usr/lib64/wine/x86_64-windows/winex11.drv
 /usr/lib64/wine/x86_64-windows/winexinput.sys
 /usr/lib64/wine/x86_64-windows/wing32.dll
@@ -3710,6 +3712,7 @@ find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine
 /usr/lib64/wine/x86_64-unix/wineps.so
 /usr/lib64/wine/x86_64-unix/winepulse.so
 /usr/lib64/wine/x86_64-unix/winevulkan.so
+/usr/lib64/wine/x86_64-unix/winewayland.so
 /usr/lib64/wine/x86_64-unix/winex11.so
 /usr/lib64/wine/x86_64-unix/winspool.so
 /usr/lib64/wine/x86_64-unix/ws2_32.so
