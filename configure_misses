@@ -22,6 +22,7 @@ Configure miss: flags needed for 64-bit compare-and-swap support
 Configure miss: flags needed for 64-bit compare-and-swap support
 Configure miss: g++ option to enable C++11 features
 Configure miss: g++ option to enable C++11 features
+Configure miss: gcc -m64 option to enable large file support
 Configure miss: getattrlist
 Configure miss: getattrlist
 Configure miss: gp_camera_new in -lgphoto2
@@ -100,6 +101,8 @@ Configure miss: request_sense
 Configure miss: request_sense
 Configure miss: res_getservers
 Configure miss: res_getservers
+Configure miss: rxkb_context_new in -lxkbregistry
+Configure miss: rxkb_context_new in -lxkbregistry
 Configure miss: sane_init in -lsane
 Configure miss: scsireq_t.cmd
 Configure miss: scsireq_t.cmd
@@ -184,13 +187,14 @@ Configure miss: whether the compiler supports -Werror=unused-command-line-argume
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -static-pie
-Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Wenum-conversion
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimization-argument
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wmicrosoft-enum-forward-reference
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wpragma-pack
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
+Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld  --no-default-config
 Configure miss: wl_display_connect in -lwayland-client
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-cpp
@@ -205,3 +209,5 @@ Configure miss: xkb_context_new in -lxkbcommon
 Configure miss: xkb_context_new in -lxkbcommon
 Configure miss: xkbcommon/xkbcommon.h
 Configure miss: xkbcommon/xkbcommon.h
+Configure miss: xkbcommon/xkbregistry.h
+Configure miss: xkbcommon/xkbregistry.h
