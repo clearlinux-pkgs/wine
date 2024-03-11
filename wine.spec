@@ -10,7 +10,7 @@
 %define keepstatic 1
 Name     : wine
 Version  : 9.0
-Release  : 106
+Release  : 107
 URL      : https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz
 Source0  : https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz
 Source1  : https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz.sign
