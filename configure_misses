@@ -11,10 +11,6 @@ Configure miss: SCardEstablishContext in -lpcsclite
 Configure miss: SCardEstablishContext in -lpcsclite
 Configure miss: asm/user.h
 Configure miss: asm/user.h
-Configure miss: broken string.h that generates warnings with -Wlogical-op
-Configure miss: broken string.h that generates warnings with -Wlogical-op
-Configure miss: broken string.h that generates warnings with -Wpointer-arith
-Configure miss: broken string.h that generates warnings with -Wpointer-arith
 Configure miss: capi20.h
 Configure miss: capi20.h
 Configure miss: clGetPlatformInfo in -lOpenCL
@@ -22,6 +18,7 @@ Configure miss: flags needed for 64-bit compare-and-swap support
 Configure miss: flags needed for 64-bit compare-and-swap support
 Configure miss: g++ option to enable C++11 features
 Configure miss: g++ option to enable C++11 features
+Configure miss: gcc -m64 option for timestamps after 2038
 Configure miss: gcc -m64 option to enable large file support
 Configure miss: getattrlist
 Configure miss: getattrlist
@@ -41,8 +38,14 @@ Configure miss: i686-w64-mingw32-clang
 Configure miss: i686-w64-mingw32-gcc
 Configure miss: inotify_add_watch in -linotify
 Configure miss: inotify_add_watch in -linotify
-Configure miss: libproc.h
-Configure miss: libproc.h
+Configure miss: libavcodec/avcodec.h
+Configure miss: libavcodec/avcodec.h
+Configure miss: libavcodec/bsf.h
+Configure miss: libavcodec/bsf.h
+Configure miss: libavformat/avformat.h
+Configure miss: libavformat/avformat.h
+Configure miss: libavutil/avutil.h
+Configure miss: libavutil/avutil.h
 Configure miss: libprocstat.h
 Configure miss: libprocstat.h
 Configure miss: libusb.h
@@ -59,8 +62,6 @@ Configure miss: mach-o/loader.h
 Configure miss: mach-o/loader.h
 Configure miss: mach/mach.h
 Configure miss: mach/mach.h
-Configure miss: mach_continuous_time
-Configure miss: mach_continuous_time
 Configure miss: machine/cpu.h
 Configure miss: machine/cpu.h
 Configure miss: machine/sysarch.h
@@ -91,8 +92,6 @@ Configure miss: port.h
 Configure miss: port.h
 Configure miss: port_create
 Configure miss: port_create
-Configure miss: proc_pidinfo
-Configure miss: proc_pidinfo
 Configure miss: pthread_getthreadid_np
 Configure miss: pthread_getthreadid_np
 Configure miss: pthread_np.h
@@ -101,8 +100,6 @@ Configure miss: request_sense
 Configure miss: request_sense
 Configure miss: res_getservers
 Configure miss: res_getservers
-Configure miss: rxkb_context_new in -lxkbregistry
-Configure miss: rxkb_context_new in -lxkbregistry
 Configure miss: sane_init in -lsane
 Configure miss: scsireq_t.cmd
 Configure miss: scsireq_t.cmd
@@ -119,8 +116,6 @@ Configure miss: struct ip_stats.ips_total
 Configure miss: struct ip_stats.ips_total
 Configure miss: struct ipstat.ips_total
 Configure miss: struct ipstat.ips_total
-Configure miss: struct msghdr.msg_accrights
-Configure miss: struct msghdr.msg_accrights
 Configure miss: struct mtget.mt_blksiz
 Configure miss: struct mtget.mt_blksiz
 Configure miss: struct stat.__st_birthtim
@@ -145,8 +140,6 @@ Configure miss: struct tcpstat.tcps_connattempt
 Configure miss: struct tcpstat.tcps_connattempt
 Configure miss: struct udpstat.udps_ipackets
 Configure miss: struct udpstat.udps_ipackets
-Configure miss: struct xinpgen
-Configure miss: struct xinpgen
 Configure miss: sys/attr.h
 Configure miss: sys/attr.h
 Configure miss: sys/cdio.h
@@ -175,6 +168,8 @@ Configure miss: thr_kill2
 Configure miss: thr_kill2
 Configure miss: unw_step
 Configure miss: unw_step in libunwind
+Configure miss: whether clang supports -target i686-windows -fuse-ld=lld -Wl,-subsystem:console -Wl,-WX
+Configure miss: whether clang supports -target i686-windows -fuse-ld=lld -Wl,-subsystem:console -Wl,-WX --no-default-config
 Configure miss: whether clang works
 Configure miss: whether getxattr takes additional arguments
 Configure miss: whether getxattr takes additional arguments
@@ -187,15 +182,21 @@ Configure miss: whether the compiler supports -Werror=unused-command-line-argume
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -static-pie
+Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wenum-conversion
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Wenum-enum-conversion
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimization-argument
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Wl,-debug:dwarf
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wmicrosoft-enum-forward-reference
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wpragma-pack
+Configure miss: whether x86_64-w64-mingw32-gcc supports -flarge-source-files -Wmisleading-indentation
+Configure miss: whether x86_64-w64-mingw32-gcc supports -fms-hotpatch -DMIN_CLANG_VERSION=18
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld  --no-default-config
 Configure miss: wl_display_connect in -lwayland-client
+Configure miss: wl_egl_window_create in -lwayland-egl
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld
@@ -205,9 +206,3 @@ Configure miss: x86_64-generic-linux-gnu-otool
 Configure miss: x86_64-generic-linux-gnu-readelf
 Configure miss: x86_64-generic-linux-gnu-readelf
 Configure miss: x86_64-w64-mingw32-gcc option to enable C99 features
-Configure miss: xkb_context_new in -lxkbcommon
-Configure miss: xkb_context_new in -lxkbcommon
-Configure miss: xkbcommon/xkbcommon.h
-Configure miss: xkbcommon/xkbcommon.h
-Configure miss: xkbcommon/xkbregistry.h
-Configure miss: xkbcommon/xkbregistry.h
