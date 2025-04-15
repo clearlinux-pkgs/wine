@@ -1,3 +1,5 @@
+Configure miss: -lOSMesa
+Configure miss: -lOSMesa
 Configure miss: -lcups
 Configure miss: -lkrb5
 Configure miss: -lnetapi
@@ -164,6 +166,7 @@ Configure miss: sys/thr.h
 Configure miss: sys/thr.h
 Configure miss: sys/vnode.h
 Configure miss: sys/vnode.h
+Configure miss: the directory containing the Wine tools
 Configure miss: thr_kill2
 Configure miss: thr_kill2
 Configure miss: unw_step
@@ -195,8 +198,6 @@ Configure miss: whether x86_64-w64-mingw32-gcc supports -flarge-source-files -Wm
 Configure miss: whether x86_64-w64-mingw32-gcc supports -fms-hotpatch -DMIN_CLANG_VERSION=18
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld  --no-default-config
-Configure miss: wl_display_connect in -lwayland-client
-Configure miss: wl_egl_window_create in -lwayland-egl
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld

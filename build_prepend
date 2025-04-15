@@ -11,3 +11,4 @@ export CXXFLAGS="$CFLAGS"
 --without-krb5
 make  %{?_smp_mflags}
 popd
+export PKG_CONFIG_LIBDIR=/usr/lib32/pkgconfig:/usr/share/pkgconfig

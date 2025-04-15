@@ -1,5 +1,5 @@
 PKG_NAME := wine
-URL = https://dl.winehq.org/wine/source/10.x/wine-10.2.tar.xz
+URL = https://dl.winehq.org/wine/source/10.x/wine-10.5.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common

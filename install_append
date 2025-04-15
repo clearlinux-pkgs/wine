@@ -1,7 +1,7 @@
+# install static dev libs
+find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
+
 pushd ../build64
 %make_install
+find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
 popd
-
-# install static dev libs
-find dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib32/wine/ \;
-find ../build64/dlls -name 'lib*.a' -exec install {} %{buildroot}/usr/lib64/wine/ \;
