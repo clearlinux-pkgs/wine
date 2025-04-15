@@ -1,7 +1,6 @@
 # This file contains additional runtime requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 freetype-lib32
-wine-lib32
 expat-lib32
 fontconfig-lib32
 libdrm-lib32

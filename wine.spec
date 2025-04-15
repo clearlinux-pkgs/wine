@@ -10,7 +10,7 @@
 %define keepstatic 1
 Name     : wine
 Version  : 10.5
-Release  : 111
+Release  : 112
 URL      : https://dl.winehq.org/wine/source/10.x/wine-10.5.tar.xz
 Source0  : https://dl.winehq.org/wine/source/10.x/wine-10.5.tar.xz
 Source1  : https://dl.winehq.org/wine/source/10.x/wine-10.5.tar.xz.sign
@@ -60,7 +60,6 @@ Requires: tiff-lib32
 Requires: unixODBC-lib
 Requires: v4l-utils-lib
 Requires: v4l-utils-lib32
-Requires: wine-lib32
 BuildRequires : SDL2-dev
 BuildRequires : SDL2-dev32
 BuildRequires : acl-dev
