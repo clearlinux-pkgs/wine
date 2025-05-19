@@ -182,8 +182,6 @@ Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unknown-warning-option
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
 Configure miss: whether the compiler supports -Werror=unused-command-line-argument
-Configure miss: whether the compiler supports -Wpragma-pack
-Configure miss: whether the compiler supports -Wpragma-pack
 Configure miss: whether the compiler supports -static-pie
 Configure miss: whether we need to define __i386__
 Configure miss: whether we need to define __x86_64__
@@ -193,11 +191,10 @@ Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimiza
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wl,-debug:dwarf
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wmicrosoft-enum-forward-reference
-Configure miss: whether x86_64-w64-mingw32-gcc supports -Wpragma-pack
 Configure miss: whether x86_64-w64-mingw32-gcc supports -flarge-source-files -Wmisleading-indentation
 Configure miss: whether x86_64-w64-mingw32-gcc supports -fms-hotpatch -DMIN_CLANG_VERSION=18
-Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld 
-Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-w64-mingw32 -fuse-ld=lld  --no-default-config
+Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-windows -fuse-ld=lld -Wl,-subsystem:console -Wl,-WX
+Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-windows -fuse-ld=lld -Wl,-subsystem:console -Wl,-WX --no-default-config
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-cpp
 Configure miss: x86_64-generic-linux-gnu-ld
