@@ -189,8 +189,10 @@ Configure miss: whether x86_64-w64-mingw32-gcc supports -Wenum-conversion
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wenum-enum-conversion
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=ignored-optimization-argument
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unknown-warning-option
+Configure miss: whether x86_64-w64-mingw32-gcc supports -Werror=unused-command-line-argument
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wl,-debug:dwarf
 Configure miss: whether x86_64-w64-mingw32-gcc supports -Wmicrosoft-enum-forward-reference
+Configure miss: whether x86_64-w64-mingw32-gcc supports -fasync-exceptions -DMIN_CLANG_VERSION=19
 Configure miss: whether x86_64-w64-mingw32-gcc supports -flarge-source-files -Wmisleading-indentation
 Configure miss: whether x86_64-w64-mingw32-gcc supports -fms-hotpatch -DMIN_CLANG_VERSION=18
 Configure miss: whether x86_64-w64-mingw32-gcc supports -target x86_64-windows -fuse-ld=lld -Wl,-subsystem:console -Wl,-WX
