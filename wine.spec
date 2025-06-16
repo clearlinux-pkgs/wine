@@ -9,11 +9,11 @@
 #
 %define keepstatic 1
 Name     : wine
-Version  : 10.9
-Release  : 116
-URL      : https://dl.winehq.org/wine/source/10.x/wine-10.9.tar.xz
-Source0  : https://dl.winehq.org/wine/source/10.x/wine-10.9.tar.xz
-Source1  : https://dl.winehq.org/wine/source/10.x/wine-10.9.tar.xz.sign
+Version  : 10.10
+Release  : 117
+URL      : https://dl.winehq.org/wine/source/10.x/wine-10.10.tar.xz
+Source0  : https://dl.winehq.org/wine/source/10.x/wine-10.10.tar.xz
+Source1  : https://dl.winehq.org/wine/source/10.x/wine-10.10.tar.xz.sign
 Source2  : CEFAC8EAAF17519D.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -213,8 +213,8 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) CEFAC8EAAF17519D' gpg.status
-%setup -q -n wine-10.9
-cd %{_builddir}/wine-10.9
+%setup -q -n wine-10.10
+cd %{_builddir}/wine-10.10
 %patch -P 1 -p1
 %patch -P 2 -p1
 
@@ -239,7 +239,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1748880116
+export SOURCE_DATE_EPOCH=1750088342
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="-O2 -g -Wp,-D_FORTIFY_SOURCE=2 -fexceptions  --param=ssp-buffer-size=32 -Wformat -Wformat-security -Wno-error -Wl,-z,max-page-size=0x4000 -march=westmere"
 CLEAR_INTERMEDIATE_CXXFLAGS=$CLEAR_INTERMEDIATE_CFLAGS
@@ -276,7 +276,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1748880116
+export SOURCE_DATE_EPOCH=1750088342
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wine
 cp %{_builddir}/wine-%{version}/COPYING.LIB %{buildroot}/usr/share/package-licenses/wine/a64734e065eb3fcf8b3eea74e695bf274048be81 || :
@@ -3538,6 +3538,7 @@ popd
 /usr/include/wine/windows/dyngraph.idl
 /usr/include/wine/windows/endpointvolume.h
 /usr/include/wine/windows/endpointvolume.idl
+/usr/include/wine/windows/errhandlingapi.h
 /usr/include/wine/windows/errorrep.h
 /usr/include/wine/windows/errors.h
 /usr/include/wine/windows/errrec.idl
@@ -4165,6 +4166,8 @@ popd
 /usr/include/wine/windows/windows.data.xml.dom.idl
 /usr/include/wine/windows/windows.devices.bluetooth.h
 /usr/include/wine/windows/windows.devices.bluetooth.idl
+/usr/include/wine/windows/windows.devices.bluetooth.rfcomm.h
+/usr/include/wine/windows/windows.devices.bluetooth.rfcomm.idl
 /usr/include/wine/windows/windows.devices.enumeration.h
 /usr/include/wine/windows/windows.devices.enumeration.idl
 /usr/include/wine/windows/windows.devices.geolocation.h
@@ -4238,6 +4241,8 @@ popd
 /usr/include/wine/windows/windows.networking.connectivity.idl
 /usr/include/wine/windows/windows.networking.h
 /usr/include/wine/windows/windows.networking.idl
+/usr/include/wine/windows/windows.networking.sockets.h
+/usr/include/wine/windows/windows.networking.sockets.idl
 /usr/include/wine/windows/windows.perception.spatial.h
 /usr/include/wine/windows/windows.perception.spatial.idl
 /usr/include/wine/windows/windows.perception.spatial.surfaces.h

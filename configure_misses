@@ -1,5 +1,3 @@
-Configure miss: -lOSMesa
-Configure miss: -lOSMesa
 Configure miss: -lcups
 Configure miss: -lkrb5
 Configure miss: -lnetapi
